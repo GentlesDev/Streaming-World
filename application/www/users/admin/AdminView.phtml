@@ -1,0 +1,171 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
+<header class="header-main">
+  <h1 class="title title-main" style="text-align:center;">Streaming World</h1>
+  <div class="ban-top">
+    <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav menu__list">
+        <li class="active menu__item menu__item--current"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artworks <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php foreach ($artworks as $artwork): ?>
+                    <li><a href="<?= $requestUrl ?>/oeuvres/<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                  <?php endforeach; ?>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </ul>
+          </li>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <li><a href="<?= $requestUrl ?>/products">Tous nos produits</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php foreach ($lines as $line) {?>
+                      <li>
+                        <a href="<?= $requestUrl ?>/products/product?name=<?=$line['ProductLine']?>"><?= ucfirst($line['ProductLine']) ?></a>
+                        </li>
+                      <?php } ?>
+                  </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            </ul>
+          </li>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <li><a href="<?= $requestUrl ?>/streaming">Tous nos streamings</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php foreach ($artworks as $artwork): ?>
+                      <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </ul>
+          </li>
+          <?php if (array_key_exists('role', $_SESSION) === false){ ?>
+            <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
+          <?php }else{ ?>
+            <li class="dropdown menu__item">
+              <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+              <ul class="dropdown-menu multi-column columns-3">
+                <div class="row">
+                  <div class="col-sm-3 multi-gd-img">
+                    <ul class="multi-column-dropdown">
+                      <?php if ($_SESSION['role'] === 'admin'){ ?>
+                        <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
+                      <?php } ?>
+                      <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
+                      <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </ul>
+            </li>
+          <?php } ?>
+        </ul>
+      </div>
+      <div class="top_nav_right">
+        <div class="cart box_1">
+          <a href="<?= $requestUrl ?>/basket">
+            <h3> <div class="total">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+              <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
+            </h3>
+          </a>
+          <p><a href="javascript:;" class="empty">Vider votre panier</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="login-right">
+      <h3>Admin</h3>
+      <div>
+        <hr>
+        <h4>Gestion des oeuvres !</h4>
+        <a href="<?= $requestUrl ?>/users/admin/artwork/add" class="addProduct"><i class="fas fa-plus-circle"></i> Ajouter une oeuvre</a>
+        <br>
+        <a href="<?= $requestUrl ?>/users/admin/artwork">Voir toutes nos oeuvres</a>
+        <hr>
+        <h4>Gestion des produits !</h4>
+        <a href="<?= $requestUrl ?>/users/admin/product/add" class="addProduct"><i class="fas fa-plus-circle"></i> Ajouter un nouveau produit</a>
+        <br>
+        <a href="<?= $requestUrl ?>/users/admin/product">Voir tous nos produits</a>
+        <hr>
+        <h4>Gestion du streaming !</h4>
+        <a href="<?= $requestUrl ?>/users/admin/streaming/add" class="addVid"><i class="fas fa-plus-circle"></i> Ajouter une nouvelle vidéo</a>
+        <br>
+        <a href="<?= $requestUrl ?>/users/admin/streaming">Voir toutes nos videos</a>
+        <hr>
+        <h4>Gestion des utilisateurs !</h4>
+        <?php foreach ($users as $user){ ?>
+          <?php if($user['Email'] !== $_SESSION['email']) { ?>
+            <?php if (strlen($user['Role']) === 0){ ?>
+              <p>Non</p>
+            <?php }else{ ?>
+              <table class="userTable">
+                <tbody>
+                  <tr>
+                    <td>Nom</td>
+                    <td>Prénom</td>
+                    <td>Email</td>
+                    <td>Role</td>
+                    <td>Action</td>
+                  </tr>
+                  <?php foreach ($users as $user): ?>
+                    <?php if($user['Email'] !== $_SESSION['email']) { ?>
+                      <tr>
+                        <td><?= $user['FirstName']?></td>
+                        <td><?= $user['LastName'] ?></td>
+                        <td><?= $user['Email'] ?></td>
+                        <td> <select class="userRole" data-id="<?=$user['Id']?>">
+                          <?php if ( $user['Role'] === 'premium'){ ?>
+                            <option value="premium" selected>premium</option>
+                            <option value="user">user</option>
+                          <?php }else if($user['Role'] === 'user'){ ?>
+                            <option value="premium">premium</option>
+                            <option value="user" selected>user</option>
+                          <?php } ?>
+                        </select></td>
+                        <td><a href="<?= $requestUrl ?>/users/admin/user/delete?userId=<?=$user['Id']?>"><i class="fas fa-trash"></i></a></td>
+                      </tr>
+                    <?php } ?>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            <?php } ?>
+          <?php } ?>
+        <?php } ?>
+
+        <hr>
+        <h4>Gestion des commandes !</h4>
+        <a href="<?= $requestUrl ?>/users/admin/order" class="addCoke"><i class="fas fa-plus-circle"></i> Gestion des commandes</a>
+      </div>
+    </div>
+    <script src="<?= $wwwUrl ?>/js/admin.js"></script>
+  </main>

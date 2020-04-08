@@ -1,0 +1,22 @@
+table {
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+td, th {
+    width: 30%;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+main{
+  background: none;
+}
+
+.tableArtwork td,
+.tableArtwork th{
+  width: 25%;
+
+}

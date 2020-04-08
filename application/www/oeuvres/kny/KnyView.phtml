@@ -1,0 +1,251 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/kimetsu.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/knyStyle.css">
+<div class="background"></div>
+<header>
+  <h1 class="title title-main" style="text-align:center;">Kimetsu No Yaiba</h1>
+  <div class="ban-top">
+    <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav menu__list">
+        <li class="active menu__item menu__item--current"><a class="menu__link" href="<?= $requestUrl ?>/">Home <span class="sr-only">(current)</span></a></li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">personnages <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/tanjiro">Tanjiro</a></li>
+                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/nezuko">Nezuko</a></li>
+                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/inosuke">Inosuke</a></li>
+                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/zenitsu">Zenitsu</a></li>
+                </ul>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </ul>
+        </li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <li><a href="<?= $requestUrl ?>/products">Tous nos produits</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php foreach ($lines as $line) {?>
+                    <li>
+                      <a href="<?= $requestUrl ?>/products/product?name=<?=$line['ProductLine']?>"><?= ucfirst($line['ProductLine']) ?></a>
+                      </li>
+                    <?php } ?>
+                </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          </ul>
+        </li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <li><a href="<?= $requestUrl ?>/streaming">Tous nos streamings</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php foreach ($artworks as $artwork): ?>
+                    <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </ul>
+        </li>
+        <?php if (array_key_exists('role', $_SESSION) === false){ ?>
+        <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
+      <?php }else{ ?>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php if ($_SESSION['role'] === 'admin'){ ?>
+                    <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
+                  <?php } ?>
+                  <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
+                  <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
+                </ul>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </ul>
+        </li>
+        <?php } ?>
+      </ul>
+    </div>
+    <div class="top_nav_right">
+      <div class="cart box_1">
+        <a href="<?= $requestUrl ?>/basket">
+          <h3> <div class="total">
+            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
+          </h3>
+        </a>
+        <p><a href="javascript:;" class="empty">Vider votre panier</a></p>
+
+      </div>
+    </div>
+  </div>
+</header>
+<main class = "container">
+  <section class="synopsis">
+    <h2 class="title title-second">Synopsis</h2>
+    <div class="banner logo-princ">
+      <img src="<?= $wwwUrl ?>/ressources/images/logo/kimetsu_no_yaiba_logo_mini.png" alt="logo pic">
+      <p class="info-banner">Logo Kimetsu No Yaiba</p>
+    </div>
+    <p>Kimetsu no yaiba (鬼滅の刃, « La Lame du tueur de démons »), est une série de manga écrite et dessinée par <a href="#koyoharu">Koyoharu Gotōge</a>. On y suit le périple de <a href="#tanjiro">Tanjirō Kamado</a> qui cherche un moyen de rendre à nouveau humaine sa petite sœur <a href="#nezuko">Nezuko</a> après qu'elle soit devenue une démon. Le manga est pré-publié dans le magazine Weekly Shōnen Jump de Shūeisha depuis le 15 février 2016. Une première version française est publiée par Panini Manga entre août 2017 et janvier 2018 sous le titre Les Rôdeurs de la nuit ; une nouvelle édition sous le titre actuel par le même éditeur est prévue pour septembre 2019. Une adaptation en anime par le studio <a href="#ufotable">Ufotable</a> est diffusée depuis le 6 avril 2019.</p>
+    <p>Dans un Japon de l'ère Taishō, <a href="#tanjiro">Tanjirō Kamado</a> est le fils aîné d'une famille dont le père est décédé. Pour subvenir aux besoins de celle-ci, il part vendre du charbon dans une autre ville. Malgré les difficultés de la vie, ils réussissent à trouver un peu de bonheur dans leur quotidien. Un jour, à cause des rumeurs qui circulent à propos d'un démon (鬼, Oni) mangeur d'hommes qui traînerait dans les parages la nuit tombée, il est dans l'impossibilité de rentrer chez lui et finit par passer la nuit chez un Bon Samaritain de la ville.Seulement, tout bascule à son retour lorsqu'il retrouve sa famille massacrée par un démon. <a href="#nezuko">Nezuko</a>, l'une de ses petites sœurs, est la seule survivante mais elle a aussi été transformée en démon… Étonnamment, celle-ci montre encore des signes d'émotions et de pensées humaines. C'est un long périple qui attend le jeune héros et sa petite sœur afin de trouver un antidote pour la rendre à nouveau humaine et venger le reste de sa famille.</p>
+  </section>
+  <section class="characters">
+    <h2 class="title title-second" id="chars" class="title title-chars">Les personnages</h2>
+    <p>Kimetsu No Yaiba est un univers riche en personnages. Ils suivent une évolution physique et mentale en fonction des épreuves rencontrées. Ce site sevira à présenter 4 personnages de l'œuvre.</p>
+    <article class="character" id="tanjiro">
+      <h3 class="title title-chars">Tanjiro Kamado</h3>
+      <div class="banner char-pic">
+        <img src="<?= $wwwUrl ?>/ressources/images/Tanjiro1.png" alt="chars pic">
+        <p class="info-banner">Tanjiro Kamado</p>
+      </div>
+      <p>Protagoniste de l'histoire, il est le premier enfant d'un vendeur de charbon de bois. Toute sa famille a été attaquée par un démon alors qu'il vendait du charbon de bois, seule sa...<a href="<?= $requestUrl ?>/oeuvres/kny/persos/tanjiro"><span class="lock-on-hover">[</span>Lire la suite<span class="lock-on-hover">]</span></a></p>
+    </article>
+    <article class="character" id="nezuko">
+      <h3 class="title title-chars">Nezuko Kamado</h3>
+      <div class="banner char-pic">
+        <img src="<?= $wwwUrl ?>/ressources/images/Nezuko1.png" alt="chars pic">
+        <p class="info-banner">Nezuko Kamado</p>
+      </div>
+      <p>La fille aînée d'un vendeur de charbon de bois et l'une des petites sœurs de Tanjirō. Elle est la seule survivante de leur famille après l'attaque d'un démon, cependant, elle a été...<a href="<?= $requestUrl ?>/oeuvres/kny/persos/nezuko"><span class="lock-on-hover">[</span>Lire la suite<span class="lock-on-hover">]</span></a></p>
+    </article>
+    <article class="character">
+      <h3 class="title title-chars">Zen'itsu Agatsuma</h3>
+      <div class="banner char-pic">
+        <img src="<?= $wwwUrl ?>/ressources/images/Zen'itsu1.png" alt="chars pic">
+        <p class="info-banner">Zen'itsu Agatsuma</p>
+      </div>
+      <p>Il est un pourfendeurs de démons et un compagnon de voyage de Tanjirō. Zenitsu est d'une personnalité lâche dû à une faible estime de lui-même, mais...<a href="<?= $requestUrl ?>/oeuvres/kny/persos/zenitsu"><span class="lock-on-hover">[</span>Lire la suite<span class="lock-on-hover">]</span></a></p>
+    </article>
+    <article class="character">
+      <h3 class="title title-chars">Inosuke Hashibira</h3>
+      <div class="banner char-pic">
+        <img src="<?= $wwwUrl ?>/ressources/images/Inosuke1.png" alt="chars pic">
+        <p class="info-banner">Inosuke Hashibira</p>
+      </div>
+      <p>Il est également un pourfendeur de démons et un compagnon de voyage de Tanjirō qui porte un masque de sanglier. Il a vécu la majeure partie de sa vie dans les bois, élevé par...<a href="<?= $requestUrl ?>/oeuvres/kny/persos/inosuke"><span class="lock-on-hover">[</span>Lire la suite<span class="lock-on-hover">]</span></a></p>
+    </article>
+  </section>
+  <section class="autor-life" id="koyoharu">
+    <h2 class="title title-second">L'auteur</h2>
+    <article class="autor-progress">
+      <figure class="manga-cover">
+        <img src="<?= $wwwUrl ?>/ressources/images/Koyoharu_Gotoge_Avatar.png" alt="mangaka cover">
+        <figcaption class="cover-namer">Koyoharu Gotoge Avatar</figcaption>
+      </figure>
+      <p><span>Koyoharu Gotōge</span>(吾峠呼世晴, Gotōge Koyoharu), né le 5 mai 1988, est un mangaka japonais et l'auteur de Kimetsu no Yaiba.</p>
+    </article>
+    <article class="autor-progress">
+      <figure class="manga-cover">
+        <img src="<?= $wwwUrl ?>/ressources/images/Kagarigari_Cover_Page.png" alt="manga cover">
+        <figcaption class="cover-name">Kagarigari Cover Page</figcaption>
+      </figure>
+      <p>A l'âge de 24 ans, il a participé aux 70ème "Jump Treasure Newcomer Manga Awards" en 2013 avec son œuvre Kagarigari (過狩り狩り). Kagarigari est un oneshot de chasseur de démon de 45 pages.</p>
+    </article>
+    <article class="autor-progress">
+      <figure class="manga-cover">
+        <img src="<?= $wwwUrl ?>/ressources/images/Monju_Shirou_Kyoudai_Cover_Page.png" alt="manga cover">
+        <figcaption class="cover-name">Monju Shirou Kyoudai Cover Page</figcaption>
+      </figure>
+      <p>L'année suivante, en 2014, il a fait ses débuts dans ls "Jump Next 2014 vol.2", avec un oneshot de 45 pages intitulé "Monju Shirou Kyoudai" (文殊史郎兄弟).</p>
+    </article>
+    <article class="autor-progress">
+      <figure class="manga-cover">
+        <img src="<?= $wwwUrl ?>/ressources/images/Rokkotsu-san_Cover_Page.png" alt="manga cover">
+        <figcaption class="cover-name">Rokkotsu-san Cover Page</figcaption>
+      </figure>
+      <p>Plus tard dans l'année, il a fait un nouveau oneshot de 46 pages intitulé "Rokkotsu-san" (肋骨さん), publié dans le "Weekly Shonen Jump 2014-39". Ce oneshot a fait partie du "Jump's Golden Future Cup as entry #3".</p>
+    </article>
+    <article class="autor-progress">
+      <figure class="manga-cover">
+        <img src="<?= $wwwUrl ?>/ressources/images/Haeniwa_no_Zigzag_Cover_Page.png" alt="manga cover">
+        <figcaption class="cover-name">Haeniwa no Zigzag Cover Page</figcaption>
+      </figure>
+      <p>L'année suivante, en 2015, Gotōge a écrit un autre oneshot de 47 pages "Haeniwa no Zigzag" (蠅庭のジグザグ), publié aussi dans le "Weekly Shonen Jump 2015-21". L'histoire est centrée sur Zigzag, qui possède le mystérieux pouvoir d'annuler l'effet des malédictions.</p>
+    </article>
+    <article class="autor-progress">
+      <figure class="manga-cover">
+        <img src="<?= $wwwUrl ?>/ressources/images/kimetsu_no_yaiba.jpg" alt="manga cover">
+        <figcaption class="cover-name">Kimetsu No Yaiba Cover Page</figcaption>
+      </figure>
+      <p>En 2016, Gotōge à débuté son première série manga avec "Kimetsu no Yaiba" (鬼滅の刃), dans le "Weekly Shonen Jump 2016-11 issue". Kimetsu no Yaiba est un manga de chasseur de démons plus ou moins basé sur sa première œuvre "Kagarigari".</p>
+    </article>
+  </section>
+  <section class="anime" id="ufotable">
+    <h2 class="title title-second">Studio d'animation</h2>
+    <figure class="ufo-slider">
+      <img alt="Ufotable Logo" src="<?= $wwwUrl ?>/ressources/images/logo/Ufotable_Logo.png">
+      <figcaption>Ufotable Logo</figcaption>
+    </figure>
+    <p><span>Ufotable</span>, (ユーフォーテーブル有限会社, Yūfōtēburu yūgen gaisha) est un studio d'animation japonaise situé à Suginami dans la préfecture de Tokyo, au Japon, fondée en octobre 2000. Il est principalement connu pour ses « animations d'animes » telles que les séries "Fate:zero", "Fate/Stay Night: Unlimited Blade Works", la trilogie des films "Fate/Stay Night: Heaven's feel", "Tales of Symphonia", "Kara no kyōkai" et "Kimetsu No Yaiba".</p>
+    <p>Voici quelques démonstrations:</p>
+    <div class="demo">
+      <div class="work">
+        <img src="<?= $wwwUrl ?>/ressources/images/fate_zero1.gif" alt="chars pic">
+        <p>Fate zero</p>
+      </div>
+      <div class="work">
+        <img src="<?= $wwwUrl ?>/ressources/images/fate_ubw1.gif" alt="chars pic">
+        <p>Fate/Stay Night: Unlimited Blade Works</p>
+      </div>
+      <div class="work">
+        <video src="<?= $wwwUrl ?>/ressources/vid/fate_ubw2.mp4"  controls width="498" height="280" id= "fate_ubw2" ></video>
+        <p>Fate/Stay Night: Unlimited Blade Works opening</p>
+      </div>
+      <div class="work">
+        <img src="<?= $wwwUrl ?>/ressources/images/fate_hf1.gif" alt="chars pic">
+        <p>Stay Night: Heaven's Feel</p>
+      </div>
+      <div class="work">
+        <video src="<?= $wwwUrl ?>/ressources/vid/fate_hf2.mp4"  controls width="498" height="280" id= "fate_hf2" >	</video>
+        <p>Fate/Stay Night: Heaven's Feel scene</p>
+      </div>
+      <div class="work">
+        <img src="<?= $wwwUrl ?>/ressources/images/tales_of1.gif" alt="chars pic">
+        <p>Tales of Symphonia</p>
+      </div>
+      <div class="work">
+        <video src="<?= $wwwUrl ?>/ressources/vid/kara_kyokai2.mp4" controls width="498" height="280" id= "kara_kyokai2" autoplay loop > Kara no Kyokai scene
+        </video>
+        <p>Kara no Kyokai scene</p>
+      </div>
+      <div class="work">
+        <video src="<?= $wwwUrl ?>/ressources/vid/kara_kyokai.mp4" controls width="498" height="280" id= "kara_kyokai" autoplay loop > Kara no Kyokai scene 2
+        </video>
+        <p>Kara no Kyokai scene 2</p>
+      </div>
+      <div class="work">
+        <video src="<?= $wwwUrl ?>/ressources/vid/kny2.mp4" controls width="498" height="280" id= "kny2"> Kimetsu No Yaiba scene
+        </video>
+        <p>Kimetsu No Yaiba scene</p>
+      </div>
+      <div class="work">
+        <img src="<?= $wwwUrl ?>/ressources/images/kny1.gif" alt="chars pic">
+        <p>Kimetsu no Yaiba</p>
+      </div>
+    </div>
+  </section>
+
+</main>

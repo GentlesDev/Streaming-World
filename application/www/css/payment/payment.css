@@ -1,0 +1,71 @@
+a.back {
+  color: #faa30f;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px 15px;
+  border-radius: 15px 0 15px 0;
+  margin-bottom: 10px;
+}
+
+a.back:hover {
+  background: black;
+  border-radius: 0 15px 0 15px;
+}
+
+h3{
+  margin-bottom: 20px;
+}
+
+p{
+  margin-bottom: 10px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+p span{
+  color: #faa30f;
+  font-weight: bold;
+}
+
+.ElementsApp, .ElementsApp .InputElement{
+  color: white;
+}
+
+form#payment-form {
+  width: 50%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+div#card-element {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+}
+
+div#card-errors {
+  color: red;
+}
+
+.btn-block {
+  margin-top: 10px;
+  background: none;
+  border: 0;
+  font-size: 15px;
+  transition: 0.5s all;
+  align-self: center;
+  display: inline-block;
+  width: 10%;
+  padding: 5px 10px;
+}
+
+.btn-block:hover {
+  color: black;
+  background: #faa30f;
+  transform: scale(1.2);
+
+}

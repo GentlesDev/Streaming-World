@@ -1,0 +1,30 @@
+main{
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+}
+
+a{
+  color: #fda30e;
+}
+
+.userTable {
+	border: 2px solid #fda30e;
+	padding: 15px 2%;
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.userTable tr {
+	border: 2px solid #fda30e;
+}
+
+.userTable td {
+	padding: 0 3%;
+	width: 19%;
+	height: 40px;
+}
+
+.userTable select {
+	overflow: none;
+}

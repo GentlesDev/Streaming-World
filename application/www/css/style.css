@@ -1,0 +1,319 @@
+/***********************************************************************************/
+/***************************************FONTS***************************************/
+/***********************************************************************************/
+
+@font-face{
+  font-family: 'mangaregular';
+  src: url('../fonts/manga1/manga-webfont.woff2') format('woff2'),
+  url('../fonts/manga1/manga-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'manga_speakregular';
+  src: url('../fonts/manga_speak/manga_speak-webfont.woff2') format('woff2'),
+  url('../fonts/manga_speak/manga_speak-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'mangalaregular';
+  src: url('../fonts/mangala/mangala-webfont.woff2') format('woff2'),
+  url('../fonts/mangala/mangala-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'manga_templeregular';
+  src: url('../fonts/manga_temple/mangat-webfont.woff2') format('woff2'),
+  url('../fonts/manga_temple/mangat-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'rock-on_demoregular';
+  src: url('../fonts/rock_on/typoster_rock-on_demo-webfont.woff2') format('woff2'),
+  url('../fonts/rock_on/typoster_rock-on_demo-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face{
+  font-family: 'savageregular';
+  src: url('../fonts/savage3/savage-webfont.woff2') format('woff2'),
+  url('../fonts/savage3/savage-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'vtks_beautiful_dreamsregular';
+  src: url('../fonts/vtks_beautiful_dreams/vtks_beautiful_dreams-webfont.woff2') format('woff2'),
+  url('../fonts/vtks_beautiful_dreams/vtks_beautiful_dreams-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'curse_of_the_zombieregular';
+  src: url('../fonts/curse_of_the_zombie/curse_of_the_zombie-webfont.woff2') format('woff2'),
+  url('../fonts/curse_of_the_zombie/curse_of_the_zombie-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'black_rose_personal_useRg';
+  src: url('../fonts/black_rose_2/black_rose_personal_use-webfont.woff2') format('woff2'),
+  url('../fonts/black_rose_2/black_rose_personal_use-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'magic_fleuronsregular';
+  src: url('../fonts/magic_fleurons/magic_fleurons_nc-webfont.woff2') format('woff2'),
+  url('../fonts/magic_fleurons/magic_fleurons_nc-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'strong_bold_bold_one';
+  src: url('../fonts/strong_bold/strong_bold_one-webfont.woff2') format('woff2'),
+  url('../fonts/strong_bold/strong_bold_one-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'electrox_regular';
+  src: url('../fonts/electrox/electrox-webfont.woff2') format('woff2'),
+  url('../fonts/electrox/electrox-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face{
+  font-family: 'woodcutter_electricregular';
+  src: url('../fonts/woodcutter_electric/woodcutter_electric-webfont.woff2') format('woff2'),
+  url('../fonts/woodcutter_electric/woodcutter_electric-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+/***********************************************************************************/
+/*******************************MARGES GÉNÉRALES************************************/
+/***********************************************************************************/
+
+.container{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+}
+
+/***********************************************************************************/
+/**********************************TOP BUTTON***************************************/
+/***********************************************************************************/
+
+#up{
+  position: fixed;
+  bottom : 10px;
+  right: -200px;
+  opacity: 0.8;
+  background-color: rgba(53, 53, 53, 0.65);
+  border-radius: 15px;
+  border: 3px solid #fda30e;
+}
+
+#up:hover{
+  background-color: rgb(53, 53, 53);
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+/****************************************************************************************/
+/**********************************GENERAL SELECTOR**************************************/
+/****************************************************************************************/
+
+*{
+  box-sizing: border-box;
+  /* outline: 1px solid forestgreen; */
+}
+
+/****************************************************************************************/
+/****************************************BODY********************************************/
+/****************************************************************************************/
+
+body{
+  margin: 0;
+}
+/****************************************************************************************/
+/*****************************************IMAGES*****************************************/
+/****************************************************************************************/
+
+img{
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/****************************************************************************************/
+/*************************************NAV MAIN*******************************************/
+/****************************************************************************************/
+
+.navigation-main{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navigation-main a{
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.navigation-main li{
+  color: white;
+}
+
+.list-main,
+.second-list{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: manga_speakregular;
+  background-color: rgba(125, 6, 6,0.2);
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-main:hover,
+.second-list:hover{
+  background-color: rgba(125, 6, 6, 0.8);
+}
+
+.list-main{
+  padding: 20px;
+}
+.second-list{
+  flex-direction: column;
+  width: 9.2%;
+  transition: 500ms;
+  position: absolute;
+  top: 68px;
+}
+
+.users{
+  right: 72px;
+}
+
+.hide{
+  transform: scaleY(0);
+}
+
+ul.second-list li {
+  padding: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 3;
+}
+
+.comeBack{
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fda30e;
+  padding: 5px 15px;
+  border-radius: 15px 0 15px 0;
+}
+
+.comeBack:hover{
+  background-color: rgba(0, 0, 0, 1);
+  color: #fda30e;
+  border-radius: 0 15px 0 15px;
+}
+
+/****************************************************************************************/
+/**************************************POP UP********************************************/
+/****************************************************************************************/
+
+.popUp {
+  border: 2px solid #fda30e;
+  border-radius:20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
+  background-color: black;
+  text-align: center;
+  padding: 10px 20px;
+  width: 50%;
+  margin-top: -200px;
+  margin-left: -400px;
+}
+
+.popUp .closePopUp {
+  width: 15%;
+  margin: 5px 20px 0 91%;
+  cursor: pointer;
+
+}
+
+.popUp img {
+  margin-top: 30px;
+  width: 40%;
+}
+
+.closePopUp:hover {
+  color: #fda30e;
+}
+
+.popUp button.closePopUp {
+  width: 80%;
+  margin: auto;
+  background-color: #fda30e;
+  color: white;
+  margin-top: 10px;
+  height: 42px;
+  border-radius: 12px;
+  padding-left: 3%;
+  border: none;
+}
+
+.access{
+  background-color: #fda30e;
+  color: white;
+  margin-top: 10px;
+  border-radius: 12px;
+  padding: 10px;
+  display: block;
+}
+
+.popUp p,
+.popUp h4{
+  color: white;
+}
+
+.empty,
+.total{
+  color: white;
+}
+
+
+.empty:hover,
+.total:hover{
+  color: black;
+}

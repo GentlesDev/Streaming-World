@@ -1,0 +1,92 @@
+.header-main p{
+  text-align: center;
+}
+.title-main{
+  font-size: 40px;
+  font-family: 'magic_fleuronsregular';
+  color:rgb(0, 0, 102);
+  text-align: center;
+  text-shadow: 10px 10px 10px rgb(0, 6, 26);
+}
+.title-second{
+  font-size: 28px;
+  font-family: 'magic_fleuronsregular';
+  text-align: center;
+  color: rgb(150, 2, 30);
+  text-decoration: underline;
+}
+.title-third{
+  text-align: left;
+  font-size: 40px;
+  font-family: 'strong_bold_bold_one';
+}
+p{
+  font-size: 20px;
+  font-family: mangalaregular;
+  text-align: justify;
+  text-indent: 50px;
+}
+
+
+.second-container{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.second-container figure{
+  width: 40%;
+  margin: 10px 0;
+  text-align: center;
+}
+
+
+.mvts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.mvt{
+  width: 30%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.mvt p{
+  margin-bottom: 20px;
+}
+
+.mvt figure{
+  margin-top: auto;
+  align-self: center;
+}
+
+figcaption{
+  font-style: italic;
+}
+#haut>div{
+  position:fixed;
+  height:100%;
+  width: 100%;
+  top:0;
+  left:0;
+  opacity:.55;
+  z-index:-1;
+}
+.capa{
+  font-style: italic;
+}
+
+.gras{
+  font-weight: bold;
+}
+
+.footer-main p{
+  text-align: center;
+}

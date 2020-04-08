@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
+<header class="header-main">
+  <h1 class="title title-main" style="text-align:center;">Streaming World</h1>
+  <div class="ban-top">
+    <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav menu__list">
+        <li class="active menu__item menu__item--current"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artworks <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php foreach ($artworks as $artwork): ?>
+                    <li><a href="<?= $requestUrl ?>/oeuvres/<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                  <?php endforeach; ?>
+                </ul>
+              <div class="clearfix"></div>
+            </div>
+          </ul>
+        </li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <li><a href="<?= $requestUrl ?>/products">Tous nos produits</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php foreach ($lines as $line) {?>
+                    <li>
+                      <a href="<?= $requestUrl ?>/products/product?name=<?=$line['ProductLine']?>"><?= ucfirst($line['ProductLine']) ?></a>
+                      </li>
+                    <?php } ?>
+                </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          </ul>
+        </li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <li><a href="<?= $requestUrl ?>/streaming">Tous nos streamings</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php foreach ($artworks as $artwork): ?>
+                    <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </ul>
+        </li>
+        <?php if (array_key_exists('role', $_SESSION) === false){ ?>
+          <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
+        <?php }else{ ?>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php if ($_SESSION['role'] === 'admin'){ ?>
+                      <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
+                    <?php } ?>
+                    <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
+                    <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </ul>
+          </li>
+        <?php } ?>
+      </ul>
+    </div>
+  </div>
+</div>
+</header>
+<main class="container">
+  <?php if ($error != null) {?>
+    <p><?= $error ?></p>
+  <?php } ?>
+
+  <div class="login-bottom">
+    <h3>Enregistrez vous !</h3>
+    <form class="b-form" action="Register" method="POST">
+      <div class="sign-up">
+        <h4>Votre prénom :</h4>
+        <input type="text" name="firstname" placeholder="Prénom">
+      </div>
+      <div class="sign-up">
+        <h4>Votre nom :</h4>
+        <input type="text" name="lastname" placeholder="Nom">
+      </div>
+      <div class="sign-up">
+        <h4>Votre pseudo :</h4>
+        <input type="text" name="pseudo" placeholder="Pseudo">
+      </div>
+      <div class="sign-up">
+        <h4>Email :</h4>
+        <input type="text" name="email" placeholder="Email">
+      </div>
+      <div class="sign-up">
+        <h4>Password :</h4>
+        <input type="password" name="password" placeholder="Mot de passe">
+
+      </div>
+      <div class="sign-up">
+        <h4>Adresse :</h4>
+        <input type="text" name="address" placeholder="Adresse">
+
+      </div>
+      <div class="sign-up">
+        <h4>Ville :</h4>
+        <input type="text" name="city" placeholder="Ville">
+
+      </div>
+      <div class="sign-up">
+        <h4>Code postal :</h4>
+        <input type="text" name="zip" placeholder="Code postal">
+
+      </div>
+      <div class="sign-up">
+        <input type="submit" value="REGISTER NOW">
+      </div>
+
+    </form>
+  </div>
+</main>

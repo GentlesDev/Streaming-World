@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streaming.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streamingStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/artwork/artwork.css">
+<header class="header-main">
+  <h1 class="title title-main" style="text-align:center;">Streaming World</h1>
+  <div class="ban-top">
+    <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav menu__list">
+        <li class="active menu__item menu__item--current"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
+        <li class="dropdown menu__item">
+          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artworks <span class="caret"></span></a>
+          <ul class="dropdown-menu multi-column columns-3">
+            <div class="row">
+              <div class="col-sm-3 multi-gd-img">
+                <ul class="multi-column-dropdown">
+                  <?php foreach ($artworks as $artwork): ?>
+                    <li><a href="<?= $requestUrl ?>/oeuvres/<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                  <?php endforeach; ?>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </ul>
+          </li>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <li><a href="<?= $requestUrl ?>/products">Tous nos produits</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php foreach ($lines as $line) {?>
+                      <li>
+                        <a href="<?= $requestUrl ?>/products/product?name=<?=$line['ProductLine']?>"><?= ucfirst($line['ProductLine']) ?></a>
+                        </li>
+                      <?php } ?>
+                  </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            </ul>
+          </li>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <li><a href="<?= $requestUrl ?>/streaming">Tous nos streamings</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php foreach ($artworks as $artwork): ?>
+                      <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </ul>
+          </li>
+          <?php if (array_key_exists('role', $_SESSION) === false){ ?>
+            <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
+          <?php }else{ ?>
+            <li class="dropdown menu__item">
+              <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+              <ul class="dropdown-menu multi-column columns-3">
+                <div class="row">
+                  <div class="col-sm-3 multi-gd-img">
+                    <ul class="multi-column-dropdown">
+                      <?php if ($_SESSION['role'] === 'admin'){ ?>
+                        <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
+                      <?php } ?>
+                      <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
+                      <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </ul>
+            </li>
+          <?php } ?>
+        </ul>
+      </div>
+      <div class="top_nav_right">
+        <div class="cart box_1">
+          <a href="<?= $requestUrl ?>/basket">
+            <h3> <div class="total">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+              <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
+            </h3>
+          </a>
+          <p><a href="javascript:;" class="empty">Vider votre panier</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <main class="container">
+    <div class="episode-list">
+      <?php foreach ($streamings as $streaming): ?>
+        <div class="episode-detail">
+          <a href="<?= $requestUrl ?>/streaming/artwork/episode?artworkId=<?= $streaming['ArtworkId'] ?>&status=<?= $streaming['Status'] ?>&id=<?= $streaming['Id'] ?>"><?= $streaming['Caption'] ?>
+            <img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $streaming['Image_Cover'] ?>" alt="">
+            En ligne le <?= $streaming['CreationTimestamp'] ?></a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </main>

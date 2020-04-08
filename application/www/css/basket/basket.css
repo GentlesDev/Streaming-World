@@ -1,0 +1,54 @@
+main{
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+td,
+th{
+  padding: 10px;
+  text-align: center;
+}
+
+h3,
+h4{
+  margin-bottom: 10px
+}
+
+h3{
+  color: #faa30f;
+}
+
+/* button{
+  background-color: #fda30e;
+  border: none;
+  padding: 10px;
+} */
+
+input,
+button{
+  background-color: rgba(0,0,0,0);
+  border: none;
+  padding: 10px;
+  transition: 0.5s all;
+}
+
+button:hover{
+  background-color: #fda30e;
+  color: black;
+}
+
+input:hover{
+  background-color: #fda30e;
+  color: black;
+  transform: scale(1.2);
+}
+
+.totalPrice{
+  font-size: 20px;
+  font-weight: bold;
+  color: #faa30f;
+}
