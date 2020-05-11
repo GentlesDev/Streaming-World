@@ -11,7 +11,6 @@ class EpisodeController
       $episodes = $artworkModel->getAllEpisodesByArtworksId($_GET['artworkId']);
       $status = $streamings['Status'];
       $posts = $artworkModel->getAllPostsByEpisode($_GET['artworkId'], $_GET['status']);
-      $comments = $artworkModel->getAllCommentsByPost($_GET['status']);
       // var_dump($posts);
       // var_dump($comments);
       // var_dump($status);
@@ -25,8 +24,7 @@ class EpisodeController
         "streamings"=>$streamings,
         "artworks"=>$artworks,
         "episodes"=>$episodes,
-        "posts"=>$posts,
-        "comments"=>$comments
+        "posts"=>$posts
       ];
 
     }
@@ -39,7 +37,6 @@ class EpisodeController
       $episodes = $artworkModel->getAllEpisodesByArtworksId($_GET['artworkId']);
       $status = $streamings['Status'];
       $posts = $artworkModel->getAllPostsByEpisode($_GET['artworkId'], $_GET['status']);
-      $comments = $artworkModel->getAllCommentsByPost($_POST['postId']);
       $artworkModel->addPost($_POST);
       // $artworkModel->addComment($_POST);
       // var_dump($posts);
@@ -52,8 +49,7 @@ class EpisodeController
         "streamings"=>$streamings,
         "artworks"=>$artworks,
         "episodes"=>$episodes,
-        "posts"=>$posts,
-        "comments"=>$comments
+        "posts"=>$posts
       ];
 
 

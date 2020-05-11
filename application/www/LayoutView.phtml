@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,39 +13,151 @@
   <!-- Feuilles de styles de l'application -->
   <script src="<?= $wwwUrl ?>/js/classes/Basket.class.js"></script>
   <!-- Librairie jQuery -->
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
   <!-- JavaScript de l'application -->
   <script src="<?= $wwwUrl ?>/js/utilities.js"></script>
 </head>
+
 <body id='haut'>
+  <?php if (strpos($_SERVER['REQUEST_URI'], 'oeuvres') === false) { ?>
+    <h1 class="title title-main" style="text-align:center;">Streaming World</h1>
+    <div class="ban-top">
+      <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav menu__list">
+          <li class="active menu__item menu__item--current"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artworks <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img" style="width:100%">
+                  <ul class="multi-column-dropdown">
+                    <?php foreach ($artworks as $artwork) {
+                      $url = $requestUrl . "/oeuvres/" . $artwork['Url'];
+                      $host = 'http://' . $_SERVER["HTTP_HOST"];
+                      $link = $host . $url;
+                      $errorUrl = file_get_contents($link, false, null, 131, 23);
+                      if ($errorUrl === "Streaming World - Error") { ?>
+                        <li><?= $artwork['Name'] ?> - <small><em>Coming Soon</em></small> </li>
+                      <?php } else { ?>
+                        <li><a href="<?= $requestUrl ?>/oeuvres/<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                    <?php }
+                    } ?>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+            </ul>
+          </li>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <li><a href="<?= $requestUrl ?>/products">Tous nos produits</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php foreach ($lines as $line) { ?>
+                      <li>
+                        <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?></a>
+                      </li>
+                    <?php } ?>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <li><a href="<?= $requestUrl ?>/streaming">Tous nos streamings</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php foreach ($artworks as $artwork) : ?>
+                      <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </ul>
+          </li>
+          <?php if (array_key_exists('role', $_SESSION) === false) { ?>
+            <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
+          <?php } else { ?>
+            <li class="dropdown menu__item">
+              <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+              <ul class="dropdown-menu multi-column columns-3">
+                <div class="row">
+                  <div class="col-sm-3 multi-gd-img">
+                    <ul class="multi-column-dropdown">
+                      <?php if ($_SESSION['role'] === 'admin') { ?>
+                        <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
+                      <?php } ?>
+                      <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
+                      <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </ul>
+            </li>
+          <?php } ?>
+        </ul>
+      </div>
+      <div class="top_nav_right">
+        <div class="cart box_1">
+          <a href="<?= $requestUrl ?>/basket">
+            <h3>
+              <div class="total">
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
+            </h3>
+          </a>
+          <p><a href="javascript:;" class="empty">Vider votre panier</a></p>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  <?php } ?>
   <?php include $this->viewData['template']; ?>
   <div id="errorPopUp" class="hide popUp">
-    <p id="closePopUpError" class="closePopUp">X</p><p>
-    </p><h4>Impossible !</h4>
+    <p id="closePopUpError" class="closePopUp">X</p>
+    <p>
+    </p>
+    <h4>Impossible !</h4>
     <p>Si vous ne rentrez pas un chiffre, on ne peut pas compter !</p>
-    <img src="<?= $wwwUrl?>/ressources/images/products/no.png">
+    <img src="<?= $wwwUrl ?>/ressources/images/products/no.png">
     <button class="closePopUp">Retour aux achats</button>
   </div>
   <div id="productPopUp" class="hide popUp">
-    <p id="closePopUpProduct" class="closePopUp">X</p><p>
-    </p><h4>Félicitation !</h4>
+    <p id="closePopUpProduct" class="closePopUp">X</p>
+    <p>
+    </p>
+    <h4>Félicitation !</h4>
     <p>Votre produit a été ajouté à votre panier ! (<em id="productNumber"></em> produit(s))</p>
-    <img src="<?= $wwwUrl?>/ressources/images/products/ok.jpg">
+    <img src="<?= $wwwUrl ?>/ressources/images/products/ok.jpg">
     <a href="<?= $requestUrl ?>/basket" class="access">Accéder à votre panier</a>
   </div>
   <footer class="footer-main" style="text-align:center; padding-top: 90px;">
     <small style="color: white; font-style: italic;">Copyright (c) 2020 Copyright Holder All Rights Reserved.</small>
     <div id="up">
       <a href="#top">
-        <img alt="toplogo" class="top-logo" src="<?= $wwwUrl ?>/ressources/images/top/top.gif"/>
+        <img alt="toplogo" class="top-logo" src="<?= $wwwUrl ?>/ressources/images/top/top.gif" />
       </a>
     </div>
   </footer>
   <script type="text/javascript" src='<?= $wwwUrl ?>/js/kimetsu.js'></script>
   <script type="text/javascript" src='<?= $wwwUrl ?>/js/product.js'></script>
 </body>
+
 </html>

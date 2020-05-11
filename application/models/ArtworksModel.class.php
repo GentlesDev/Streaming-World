@@ -42,7 +42,7 @@ class ArtworksModel {
             WHERE Id = ?', [
               $post['name'],
               $post["url"],
-              $file["cover_pics"]["name"],
+              $files["cover_pics"]["name"],
               $post['artworkId']]
             );
           } else if (empty($files["cover_pics"]["name"])) {
@@ -51,7 +51,7 @@ class ArtworksModel {
               WHERE Id = ?', [
               $post['name'],
               $post["url"],
-              $file["artwork_pics"]["name"],
+              $files["artwork_pics"]["name"],
               $post['artworkId']]
               );
             }else{
@@ -62,8 +62,8 @@ class ArtworksModel {
               $post["caption"],
               $post["status"],
               $post["description"],
-              $file["artwork_pics"]["name"],
-              $file["cover_pics"]["name"],
+              $files["artwork_pics"]["name"],
+              $files["cover_pics"]["name"],
               $post['artworkId']]
               );
             }
@@ -181,7 +181,7 @@ class ArtworksModel {
               $post["caption"],
               $post["status"],
               $post["description"],
-              $file["vid_pics"]["name"],
+              $files["vid_pics"]["name"],
               $post['vidId']]
               );
             }
@@ -217,10 +217,9 @@ class ArtworksModel {
           public function getAllPostsByEpisode($art, $id)
           {
             $database = new Database();
-            $sql = 'SELECT *
+            $sql = 'SELECT  post.Id, post.Content, post.CreationTimestamp, post.Nickname, post.Product_Id, post.Episode_Id, post.Artwork_Id
             FROM post
-            INNER JOIN streaming ON streaming.Status = post.Episode_Id
-            WHERE Artworks_Id = ? && Episode_Id = ?';
+            WHERE Artwork_Id = ? && Episode_Id = ?';
             return $database->query($sql, [$art, $id]);
           }
 
@@ -229,37 +228,13 @@ class ArtworksModel {
             $database = new Database();
             $database->executeSql
             (
-            'INSERT INTO post(Content, NickName, CreationTimestamp, Episode_Id)
-            VALUES (?, ?, NOW(), ?)',[
+            'INSERT INTO post(Content, NickName, CreationTimestamp, Episode_Id, Artwork_Id)
+            VALUES (?, ?, NOW(), ?, ?)',[
             $post['post'],
             $_SESSION['pseudo'],
-            $post['episodeId']
+            $post['episodeId'],
+            $post['artworkId']
             ]);
           }
-
-          public function getAllCommentsByPost($id)
-          {
-            $database = new Database();
-            $sql = 'SELECT *
-            FROM comment
-            INNER JOIN post ON post.Id = comment.Post_Id
-            WHERE Post_Id = ?';
-            return $database->query($sql, [$id]);
-          }
-
-          public function addComment($post)
-          {
-            $database = new Database();
-            $database->executeSql
-            (
-            'INSERT INTO comment(Content, NickName, CreationTimestamp, Post_Id)
-            VALUES (?, ?, NOW(), ?)',[
-            $post['com'],
-            $_SESSION['pseudo'],
-            $post['postId']
-            ]);
-          }
-
-
         }
         ?>

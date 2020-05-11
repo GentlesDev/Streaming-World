@@ -2,9 +2,6 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/basket/basket.css">
-
-<header class="header-main">
-  <h1 class="title title-main" style="text-align:center;">Streaming World</h1>
   <div class="ban-top">
     <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav menu__list">
@@ -15,12 +12,12 @@
             <div class="row">
               <div class="col-sm-3 multi-gd-img">
                 <ul class="multi-column-dropdown">
-                  <?php foreach ($artworks as $artwork): ?>
+                  <?php foreach ($artworks as $artwork) : ?>
                     <li><a href="<?= $requestUrl ?>/oeuvres/<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
                   <?php endforeach; ?>
                 </ul>
-              <div class="clearfix"></div>
-            </div>
+                <div class="clearfix"></div>
+              </div>
           </ul>
         </li>
         <li class="dropdown menu__item">
@@ -34,15 +31,15 @@
               </div>
               <div class="col-sm-3 multi-gd-img">
                 <ul class="multi-column-dropdown">
-                  <?php foreach ($lines as $line) {?>
+                  <?php foreach ($lines as $line) { ?>
                     <li>
-                      <a href="<?= $requestUrl ?>/products/product?name=<?=$line['ProductLine']?>"><?= ucfirst($line['ProductLine']) ?></a>
-                      </li>
-                    <?php } ?>
+                      <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?></a>
+                    </li>
+                  <?php } ?>
                 </ul>
-              <div class="clearfix"></div>
+                <div class="clearfix"></div>
+              </div>
             </div>
-          </div>
           </ul>
         </li>
         <li class="dropdown menu__item">
@@ -56,7 +53,7 @@
               </div>
               <div class="col-sm-3 multi-gd-img">
                 <ul class="multi-column-dropdown">
-                  <?php foreach ($artworks as $artwork): ?>
+                  <?php foreach ($artworks as $artwork) : ?>
                     <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
                   <?php endforeach; ?>
                 </ul>
@@ -65,16 +62,16 @@
             </div>
           </ul>
         </li>
-        <?php if (array_key_exists('role', $_SESSION) === false){ ?>
+        <?php if (array_key_exists('role', $_SESSION) === false) { ?>
           <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
-        <?php }else{ ?>
+        <?php } else { ?>
           <li class="dropdown menu__item">
             <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
             <ul class="dropdown-menu multi-column columns-3">
               <div class="row">
                 <div class="col-sm-3 multi-gd-img">
                   <ul class="multi-column-dropdown">
-                    <?php if ($_SESSION['role'] === 'admin'){ ?>
+                    <?php if ($_SESSION['role'] === 'admin') { ?>
                       <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
                     <?php } ?>
                     <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
@@ -91,9 +88,10 @@
     <div class="top_nav_right">
       <div class="cart box_1">
         <a href="<?= $requestUrl ?>/basket">
-          <h3> <div class="total">
-            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-            <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> items)</div>
+          <h3>
+            <div class="total">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+              <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> items)</div>
 
           </h3>
         </a>
@@ -102,35 +100,38 @@
       </div>
     </div>
   </div>
-</div>
 </header>
 <main class="container">
-<h3>Votre panier !</h3>
-<h4>Récapitulatif de la commande</h4>
+  <h3>Votre panier !</h3>
+  <h4>Récapitulatif de la commande</h4>
 
-<div id="displayBasket">
-	<table class="basketTable">
-		<thead>
-			<tr><th>Quantité</th>
-			<th>Nom</th>
-			<th class="desktop">Prix Unitaire</th>
-			<th>Prix Total</th>
-			<th>Action</th>
-		</tr></thead>
-		<tfoot>
-					<tr>
-						<td>Prix Total</td>
-						<td></td>
-						<td class="desktop"></td>
-						<td class="totalPrice"><span id="totalPrice"></span> €</td>
-						<td></td>
-					</tr>
-				</tfoot>
-		<tbody><tr></tr></tbody>
-	</table>
-</div>
-<form class="p-form" action="<?= $requestUrl ?>/payment" method="POST">
-	<input type="hidden" name="basketItem" id="basketItem" value="">
-	<input type="submit" value="Payer ma commande">
-</form>
+  <div id="displayBasket">
+    <table class="basketTable">
+      <thead>
+        <tr>
+          <th>Quantité</th>
+          <th>Nom</th>
+          <th class="desktop">Prix Unitaire</th>
+          <th>Prix Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td>Prix Total</td>
+          <td></td>
+          <td class="desktop"></td>
+          <td class="totalPrice"><span id="totalPrice"></span> €</td>
+          <td></td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
+  <form class="p-form" action="<?= $requestUrl ?>/payment" method="POST">
+    <input type="hidden" name="basketItem" id="basketItem" value="">
+    <input type="submit" value="Payer ma commande">
+  </form>
 </main>
