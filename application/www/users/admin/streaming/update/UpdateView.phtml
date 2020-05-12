@@ -3,20 +3,29 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
-  <main class="container">
+<main class="container">
 
-    <h3 style="text-align: center;">Modifiez la video !</h3>
+  <h3 style="text-align: center;">Modifiez la video !</h3>
 
-    <a class="comeBack" href="<?= $requestUrl ?>/users/admin/streaming"><i class="fas fa-arrow-circle-left"></i></a>
+  <a class="comeBack" href="<?= $requestUrl ?>/users/admin/streaming"><i class="fas fa-arrow-circle-left"></i></a>
 
-    <form class="b-form" action="<?= $requestUrl ?>/users/admin/streaming/update" method="POST" enctype="multipart/form-data">
-      <input type="text" name="caption" placeholder="<?= $streaming['Caption'] ?>" value="<?= $streaming['Caption'] ?>">
-      <input type="file" name="vid_pics">
-      <input type="text" name="artworksId" placeholder="<?= $streaming['Artworks_Id'] ?>" value="<?= $streaming['Artworks_Id'] ?>">
-      <textarea type="text" name="description" maxlength="1000"><?= $streaming['Description'] ?></textarea>
-      <input type="text" name="status" placeholder="<?= $streaming['Status'] ?>" value="<?= $streaming['Status'] ?>">
-      <input type="hidden" name="vidId" value="<?=$streaming['Id']?>">
-      <input type="hidden" name="artworkId" value="<?=$streaming['Artworks_Id']?>">
-      <input type="submit" name="Enregister">
-    </form>
-  </main>
+  <form class="b-form" action="<?= $requestUrl ?>/users/admin/streaming/update" method="POST" enctype="multipart/form-data">
+    <input type="text" name="caption" placeholder="Titre de la vidéo" value="<?= $streaming['Caption'] ?>">
+    <label for="vid">Vidéo</label>
+    <input type="file" name="vid_pics" id="vid">
+    <label for="artwork-Id">Nom de l'artwork</label>
+    <select style="margin: 20px 0;" name="artworksId" id="artwork-Id">
+      <option value="<?= $streaming['Id'] ?>" selected><?= $streaming['Name'] ?></option>
+      <?php foreach ($artworks as $artwork) {
+        if ($artwork['Id'] !== $streaming['Artworks_Id']) { ?>
+          <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
+      <?php }
+      } ?>
+    </select>
+    <textarea type="text" name="description" maxlength="1000" placeholder="Description"><?= $streaming['Description'] ?></textarea>
+    <input type="text" name="status" placeholder="Numéro de l'épisode" value="<?= $streaming['Status'] ?>">
+    <input type="hidden" name="vidId" value="<?= $streaming['Id'] ?>">
+    <input type="hidden" name="artworkId" value="<?= $streaming['Artworks_Id'] ?>">
+    <input type="submit" name="Enregister">
+  </form>
+</main>

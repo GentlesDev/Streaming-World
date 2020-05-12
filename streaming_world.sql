@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 mai 2020 à 11:35
+-- Généré le :  mar. 12 mai 2020 à 13:56
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `Episode_Id` int(255) DEFAULT NULL,
   `Artwork_Id` int(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `post`
@@ -137,7 +137,10 @@ CREATE TABLE IF NOT EXISTS `post` (
 INSERT INTO `post` (`Id`, `Content`, `CreationTimestamp`, `Nickname`, `Product_Id`, `Episode_Id`, `Artwork_Id`) VALUES
 (1, 'hate de voir la suite !!', '2020-01-04 15:30:46', 'admin', NULL, 1, 1),
 (31, 'Superbe episode!', '2020-01-04 16:25:56', 'admin', NULL, 1, 2),
-(30, 'Superbe episode!', '2020-01-04 16:25:46', 'admin', NULL, 1, 7);
+(30, 'Superbe episode!', '2020-01-04 16:25:46', 'admin', NULL, 1, 7),
+(32, 'Ex', '2020-05-12 14:29:26', 'admin', NULL, 22, 8),
+(33, 'woaa', '2020-05-12 14:31:46', 'admin', NULL, 22, 8),
+(34, 'Best animation db', '2020-05-12 14:32:06', 'admin', NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -147,19 +150,20 @@ INSERT INTO `post` (`Id`, `Content`, `CreationTimestamp`, `Nickname`, `Product_I
 
 DROP TABLE IF EXISTS `productline`;
 CREATE TABLE IF NOT EXISTS `productline` (
+  `LineId` int(255) NOT NULL AUTO_INCREMENT,
   `ProductLine` varchar(50) COLLATE latin1_bin NOT NULL,
-  PRIMARY KEY (`ProductLine`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+  PRIMARY KEY (`LineId`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 --
 -- Déchargement des données de la table `productline`
 --
 
-INSERT INTO `productline` (`ProductLine`) VALUES
-('accessoires'),
-('blu-ray'),
-('figurines'),
-('tome');
+INSERT INTO `productline` (`LineId`, `ProductLine`) VALUES
+(1, 'accessoires'),
+(2, 'blu-ray'),
+(3, 'figurines'),
+(4, 'tome');
 
 -- --------------------------------------------------------
 
@@ -186,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`Id`, `Artworks_Id`, `Name`, `Photo`, `ProductLine`, `Description`, `QuantityInStock`, `BuyPrice`, `Price`) VALUES
-(1, 2, 'SonGoku Ultra Instinct Dragon Ball Super', 'GokuMui.png', 'figurines', 'Banpresto Figurine - DBZ - Son Goku FES Vol 8 - Ultra Instinct Son Goku - 20 cm ', 50, 0.8, 70),
+(1, 2, 'SonGoku Ultra Instinct Dragon Ball Super', 'GokuMui.png', 'figurines', 'Banpresto Figurine - DBZ - Son Goku FES Vol 8 - Ultra Instinct Son Goku - 20 cm ', 50, 0.8, 75),
 (2, 3, 'Naruto Shippuden Bijuu Mode', 'NarutoBijuu.jpg', 'figurines', 'TAMASHII NATIONS Naruto Shippuden Naruto Uzumaki -Kurama- Kizuna Relation, BandaiFiguartsZERO', 35, 0.8, 42),
 (3, 4, 'Monkey D. Luffy 4ème', 'LuffyGear4.jpg', 'figurines', 'One Piece Modèle Surdimensionné Monkey D. Luffy 4ème Scène Statue Décoration D\'animation', 120, 0.8, 128),
 (5, 1, 'Kamado Tanjiro', 'tanjiro.jpg', 'figurines', 'Demon Slayer PVC Action Figures Kamado Tanjirou Tenth Style The Dragon of Change Anime Kimetsu no Yaiba Figurine', 500, 15, 50),

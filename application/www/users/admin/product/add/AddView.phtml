@@ -4,25 +4,32 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
 
-  <main class="container">
+<main class="container">
 
-    <h3 style="text-align:center;" >Ajoutez un nouveau produit !</h3>
+  <h3 style="text-align:center;">Ajoutez un nouveau produit !</h3>
 
-    <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
+  <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
 
-    <form class="b-form" action="<?= $requestUrl ?>/users/admin/product/add" method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Nom du produit">
-      <input type="file" name="product_pics">
-      <input type="text" name="artworksId" placeholder="Id du artwork">
-      <select type="text" name="productline">
-        <?php foreach ($lines as $line): ?>
-          <option value="<?= $line['ProductLine'] ?>"><?= $line['ProductLine'] ?></option>
-        <?php endforeach; ?>
-      </select>
-      <textarea type="text" name="description" maxlength="1000"></textarea>
-      <input type="text" name="quantity" placeholder="Quantité">
-      <input type="text" name="buyPrice" placeholder="Prix de d'achat">
-      <input type="text" name="price" placeholder="Prix de vente">
-      <input type="submit" name="Enregister">
-    </form>
-  </main>
+  <form class="b-form" action="<?= $requestUrl ?>/users/admin/product/add" method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Nom du produit" required>
+    <label for="product-image">Image du produit</label>
+    <input type="file" name="product_pics" id="product-image" required>
+    <label for="artwork-Id">Nom de l'artwork</label>
+    <select style="margin: 20px 0;" name="artworksId" placeholder="Id du artwork" id="artwork-Id" required>
+      <?php foreach ($artworks as $artwork) { ?>
+        <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
+      <?php } ?>
+    </select>
+    <label for="product-type">Type de produit</label>
+    <select style="margin: 20px 0; text-transform:capitalize;" name="productline" id=product-type required>
+      <?php foreach ($lines as $line) : ?>
+        <option value="<?= $line['ProductLine'] ?>" style="text-transform:capitalize;"><?= $line['ProductLine'] ?></option>
+      <?php endforeach; ?>
+    </select>
+    <textarea type="text" name="description" maxlength="1000" placeholder="Description" required></textarea>
+    <input type="text" name="quantity" placeholder="Quantité" required>
+    <input type="text" name="buyPrice" placeholder="Prix de d'achat" required>
+    <input type="text" name="price" placeholder="Prix de vente" required>
+    <input type="submit" name="Enregister">
+  </form>
+</main>

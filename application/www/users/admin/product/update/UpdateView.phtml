@@ -5,27 +5,35 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
 
 
-  <main class="container">
+<main class="container">
+  <h3 style="text-align: center;">Modifiez le produit !</h3>
+  <a class="comeBack" href="<?= $requestUrl ?>/users/admin/product"><i class="fas fa-arrow-circle-left"></i></a>
 
-    <h3 style="text-align: center;">Modifiez le produit !</h3>
-
-    <a class="comeBack" href="<?= $requestUrl ?>/users/admin/product"><i class="fas fa-arrow-circle-left"></i></a>
-
-    <form class="b-form" action="<?= $requestUrl ?>/users/admin/product/update" method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="<?= $product['Name'] ?>" value="<?= $product['Name'] ?>">
-      <input type="file" name="product_pics">
-      <input type="text" name="artworksId" placeholder="<?= $product['Artworks_Id'] ?>" value="<?= $product['Artworks_Id'] ?>">
-      <select type="text" name="productline">
-        <option value="<?= $product['ProductLine'] ?>" selected><?= $product['ProductLine'] ?></option>
-        <?php foreach ($lines as $line): ?>
+  <form class="b-form" action="<?= $requestUrl ?>/users/admin/product/update" method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Nom du produit" value="<?= $product['productName'] ?>">
+    <input type="file" name="product_pics">
+    <label for="artwork-Id">Nom de l'artwork</label>
+    <select style="margin: 20px 0;" name="artworksId" id="artwork-Id">
+      <option value="<?= $product['Id'] ?>" selected><?= $product['Name'] ?></option>
+      <?php foreach ($artworks as $artwork) { 
+        if($artwork['Id'] !== $product['Artworks_Id']) {?>
+        <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
+      <?php }} ?>
+    </select>
+    <label for="product-type">Type de produit</label>
+    <select style="margin: 20px 0; text-transform:capitalize;" name="productline" id=product-type required>
+      <option value="<?= $product['ProductLine'] ?>" selected><?= $product['ProductLine'] ?></option>
+      <?php foreach ($lines as $line) :
+        if ($line['LineId'] !== $product['LineId']) { ?>
           <option value="<?= $line['ProductLine'] ?>"><?= $line['ProductLine'] ?></option>
-        <?php endforeach; ?>
-      </select>
-      <textarea type="text" name="description" maxlength="1000"><?= $product['Description'] ?></textarea>
-      <input type="text" name="quantity" placeholder="<?= $product['QuantityInStock'] ?>" value="<?= $product['QuantityInStock'] ?>">
-      <input type="text" name="buyPrice" placeholder="<?= $product['BuyPrice'] ?>" value="<?= $product['BuyPrice'] ?>">
-      <input type="text" name="price" placeholder="<?= $product['Price'] ?>" value="<?= $product['Price'] ?>">
-      <input type="hidden" name="productId" value="<?=$product['Id']?>">
-      <input type="submit" name="Enregister">
-    </form>
-  </main>
+      <?php }
+      endforeach; ?>
+    </select>
+    <textarea type="text" name="description" maxlength="1000" placeholder="Description"><?= $product['Description'] ?></textarea>
+    <input type="text" name="quantity" placeholder="Quantité du produit" value="<?= $product['QuantityInStock'] ?>">
+    <input type="text" name="buyPrice" placeholder="Prix d'achat" value="<?= $product['BuyPrice'] ?>">
+    <input type="text" name="price" placeholder="Prix de vente" value="<?= $product['Price'] ?>">
+    <input type="hidden" name="productId" value="<?= $product['Id'] ?>">
+    <input type="submit" name="Enregister">
+  </form>
+</main>

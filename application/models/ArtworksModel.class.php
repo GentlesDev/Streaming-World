@@ -153,7 +153,7 @@ class ArtworksModel {
           {
             $database = new Database();
             $sql = 'SELECT streaming.Id, Status, Artworks_Id, Caption, Description, Video, CreationTimestamp,
-            artworks.Id AS ArtworkId, artworks.Image, Image_Cover, Url
+            artworks.Id AS ArtworkId, artworks.Image, Image_Cover, Url, Name
             FROM streaming
             INNER JOIN artworks ON artworks.Id = streaming.Artworks_Id
             WHERE streaming.Id = ? && artworks.Id = ?';
@@ -235,6 +235,9 @@ class ArtworksModel {
             $post['episodeId'],
             $post['artworkId']
             ]);
+            $http = new HTTP();
+            $http->redirectTo("/streaming/artwork/episode?artworkId=". $post['artworkId']."&status=". $post['episodeId']);
+            exit();
           }
         }
         ?>

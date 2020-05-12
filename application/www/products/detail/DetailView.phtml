@@ -8,13 +8,13 @@
   <a class="comeBack" href="<?= $requestUrl ?>/products"><i class="fas fa-arrow-circle-left"></i></a>
   <div class="productDetail">
     <img src="<?= $wwwUrl ?>/ressources/images/products/<?= $product['Photo'] ?>">
-    <h3><?= $product['Name'] ?></h3>
+    <h3><?= $product['productName'] ?></h3>
     <p><?= $product['Description'] ?></p>
     <div class="paymentPart">
       <span>Prix Unitaire : <em><?= $product['Price'] ?> €</em></span>
       <form>
         <input type="text" name="quantity" id="product-<?= $product['Id'] ?>">
-        <button class="addToBasket" data-name="<?= $product['Name'] ?>" data-price="<?= $product['Price'] ?>" data-id="<?= $product['Id'] ?>">
+        <button class="addToBasket" data-name="<?= $product['productName'] ?>" data-price="<?= $product['Price'] ?>" data-id="<?= $product['Id'] ?>">
           <p>Ajouter au panier</p>
         </button>
       </form>

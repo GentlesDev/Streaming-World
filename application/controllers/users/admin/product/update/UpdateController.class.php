@@ -12,8 +12,7 @@ class UpdateController
     $productsModel = new ProductsModel();
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
-    $product = $productsModel->getOneProduct();
-
+    $product = $productsModel->getOneProduct($_GET['productId']);
 
     // var_dump($figurines);
     return [
@@ -31,6 +30,7 @@ class UpdateController
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $productsModel->updateProduct($_POST, $_FILES);
+    $product = $productsModel->getOneProduct($_GET['productId']);
     return [
       'product'=>$product,
       "artworks"=>$artworks,

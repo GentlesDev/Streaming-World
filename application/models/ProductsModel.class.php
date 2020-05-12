@@ -16,9 +16,11 @@ class ProductsModel {
   {
     $database = new Database();
     $sql =
-    'SELECT *
+      'SELECT products.Id, products.Artworks_Id, products.Name AS productName, products.Photo, products.ProductLine, products.Description, products.QuantityInStock, products.BuyPrice, products.Price, artworks.Id, artworks.Name, artworks.Url, artworks.Image, artworks.Image_Cover, productline.LineId, productline.ProductLine
     FROM products
-    WHERE Id = ?';
+    INNER JOIN productline ON productline.ProductLine = products.ProductLine
+    INNER JOIN artworks ON artworks.Id = products.Artworks_Id
+    WHERE products.Id = ?';
     // var_dump($database);
     return $database->queryOne($sql, [$id]);
   }
@@ -57,7 +59,7 @@ class ProductsModel {
   public function updateProduct($_post, $_files)
   {
     $database = new Database();
-    if (empty($files["product_pics"]["name"])) {
+    if (empty($_files["product_pics"]["name"])) {
       $database->executeSql('UPDATE products
       SET Name = ?, Artworks_Id = ?, ProductLine = ?, Description = ?, QuantityInStock = ?, BuyPrice = ?, Price = ?
       WHERE Id = ?', [
@@ -76,7 +78,7 @@ class ProductsModel {
       WHERE Id = ?', [
         $_post["name"],
         $_post['artworksId'],
-        $_file["product_pics"]["name"],
+        $_files["product_pics"]["name"],
         $_post["productline"],
         $_post["description"],
         $_post["quantity"],
