@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 04 jan. 2020 à 16:46
+-- Généré le :  mar. 12 mai 2020 à 11:35
 -- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Version de PHP :  7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `artworks` (
   `Image` varchar(120) NOT NULL,
   `Image_Cover` varchar(150) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `artworks`
@@ -49,23 +49,8 @@ INSERT INTO `artworks` (`Id`, `Name`, `Url`, `Image`, `Image_Cover`) VALUES
 (4, 'One Piece', 'op', 'op_cover.gif', 'op_cover.jpg'),
 (5, 'My Hero Academia', 'mha', 'mha_cover.gif', 'mha_cover.jpg'),
 (6, 'One Punch Man', 'opm', 'opm_cover.gif', 'opm_cover.jpg'),
-(7, 'Vinland Saga', 'vs', 'vs_cover.gif', 'vs_cover.jpg');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `comment`
---
-
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE IF NOT EXISTS `comment` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Post_Id` int(200) NOT NULL,
-  `Contents` varchar(900) NOT NULL,
-  `Nickname` varchar(255) NOT NULL,
-  `CreationTimestamp` datetime NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+(7, 'Vinland Saga', 'vs', 'vs_cover.gif', 'vs_cover.jpg'),
+(8, 'Gintama', 'gintama', 'gintama_cover.gif', 'gintama_cover.jpg');
 
 -- --------------------------------------------------------
 
@@ -141,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `Nickname` varchar(255) NOT NULL,
   `Product_Id` int(255) DEFAULT NULL,
   `Episode_Id` int(255) DEFAULT NULL,
+  `Artwork_Id` int(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
@@ -148,10 +134,10 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- Déchargement des données de la table `post`
 --
 
-INSERT INTO `post` (`Id`, `Content`, `CreationTimestamp`, `Nickname`, `Product_Id`, `Episode_Id`) VALUES
-(1, 'hate de voir la suite !!', '2020-01-04 15:30:46', 'admin', NULL, 1),
-(31, 'Superbe episode!', '2020-01-04 16:25:56', 'admin', NULL, 1),
-(30, 'Superbe episode!', '2020-01-04 16:25:46', 'admin', NULL, 1);
+INSERT INTO `post` (`Id`, `Content`, `CreationTimestamp`, `Nickname`, `Product_Id`, `Episode_Id`, `Artwork_Id`) VALUES
+(1, 'hate de voir la suite !!', '2020-01-04 15:30:46', 'admin', NULL, 1, 1),
+(31, 'Superbe episode!', '2020-01-04 16:25:56', 'admin', NULL, 1, 2),
+(30, 'Superbe episode!', '2020-01-04 16:25:46', 'admin', NULL, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -230,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `streaming` (
   `Video` varchar(120) NOT NULL,
   `CreationTimestamp` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `streaming`
@@ -287,7 +273,8 @@ INSERT INTO `streaming` (`Id`, `Artworks_Id`, `Caption`, `Status`, `Description`
 (50, 7, 'Vinland Saga 20 VOSTFR', 20, 'ep 20', 'Vinland_Saga_20_VOSTFR.mp4', '2020-01-04 10:48:50'),
 (51, 7, 'Vinland Saga 21 VOSTFR', 21, 'ep 21', 'Vinland_Saga_21_VOSTFR-1.mp4', '2020-01-04 10:49:41'),
 (52, 7, 'Vinland Saga 22 VOSTFR', 22, 'ep 22', 'Vinland_Saga_22_VOSTFR.mp4', '2020-01-04 10:50:20'),
-(53, 7, 'Vinland Saga 23 VOSTFR', 23, 'ep 23', 'Vinland_Saga_23_VOSTFR.mp4', '2020-01-04 10:51:20');
+(53, 7, 'Vinland Saga 23 VOSTFR', 23, 'ep 23', 'Vinland_Saga_23_VOSTFR.mp4', '2020-01-04 10:51:20'),
+(54, 8, 'Gintama 22 VOSTFR', 22, 'Retrouvez l\'episode 22 du meilleur anime d\'humour!', 'gintama22.mp4', '2020-05-12 13:33:39');
 
 -- --------------------------------------------------------
 

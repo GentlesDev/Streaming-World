@@ -11,7 +11,7 @@
     <?php foreach ($artworks as $artwork): ?>
       <div class="banner-vid">
         <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artwork['Image'] ?>" alt="">
-      <p><?= $artwork['Name'] ?></p></a>
+      <p style="text-transform: capitalize"><?= $artwork['Name'] ?></p></a>
     </div>
     <?php endforeach; ?>
   </div>

@@ -38,9 +38,9 @@
                       $link = $host . $url;
                       $errorUrl = file_get_contents($link, false, null, 131, 23);
                       if ($errorUrl === "Streaming World - Error") { ?>
-                        <li><?= $artwork['Name'] ?> - <small><em>Coming Soon</em></small> </li>
+                        <li style="text-transform: capitalize"><?= $artwork['Name'] ?> - <small><em>Coming Soon</em></small> </li>
                       <?php } else { ?>
-                        <li><a href="<?= $requestUrl ?>/oeuvres/<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                        <li style="text-transform: capitalize"><a href="<?= $requestUrl ?>/oeuvres/<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
                     <?php }
                     } ?>
                   </ul>
@@ -82,7 +82,7 @@
                 <div class="col-sm-3 multi-gd-img">
                   <ul class="multi-column-dropdown">
                     <?php foreach ($artworks as $artwork) : ?>
-                      <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                      <li style="text-transform: capitalize"><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
                     <?php endforeach; ?>
                   </ul>
                 </div>

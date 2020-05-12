@@ -5,18 +5,24 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
 
 
-  <main class="container">
+<main class="container">
 
-    <h3 style="text-align:center">Ajoutez une nouvelle video !</h3>
+  <h3 style="text-align:center">Ajoutez une nouvelle video !</h3>
 
-    <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
+  <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
 
-    <form class="b-form" action="<?= $requestUrl ?>/users/admin/streaming/add" method="post" enctype="multipart/form-data">
-        <input type="text" name="caption" placeholder="Nom de la video">
-        <input type="file" accept=".mp4" name="vid_pics">
-        <input type="text" name="artworksId" placeholder="Id du artwork">
-        <textarea type="text" name="description" maxlength="1000"></textarea>
-        <input type="text" name="status" placeholder="N° de l'episode">
-          <input type="submit" name="Enregister">
-    </form>
-  </main>
+  <form class="b-form" action="<?= $requestUrl ?>/users/admin/streaming/add" method="post" enctype="multipart/form-data">
+    <input type="text" name="caption" placeholder="Nom de la video" required>
+    <label for="vid">Video :</label>
+    <input type="file" accept=".mp4" name="vid_pics" id="vid" required>
+    <label for="artwork-Id">Nom de l'artwork</label>
+    <select style="margin: 20px 0;" name="artworksId" placeholder="Id du artwork" id="artwork-Id" required>
+      <?php foreach ($artworks as $artwork) { ?>
+        <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
+      <?php } ?>
+    </select>
+    <textarea type="text" name="description" maxlength="1000" required placeholder="Description de la vidéo"></textarea>
+    <input type="text" name="status" placeholder="N° de l'episode" required>
+    <input type="submit" name="Enregister">
+  </form>
+</main>

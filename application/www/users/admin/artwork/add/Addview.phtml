@@ -5,17 +5,19 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
 
 
-  <main class="container">
+<main class="container">
 
-    <h3 style="text-align:center">Ajoutez une oeuvre !</h3>
+  <h3 style="text-align:center">Ajoutez une oeuvre !</h3>
 
-    <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
+  <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
 
-    <form class="b-form" action="<?= $requestUrl ?>/users/admin/artwork/add" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Nom de l'oeuvre">
-        <input type="text" name="url" placeholder="Url de l'oeuvre">
-        <input type="file" name="artwork_pics">
-        <input type="file" name="cover_pics">
-          <input type="submit" name="Enregister">
-    </form>
-  </main>
+  <form class="b-form" action="<?= $requestUrl ?>/users/admin/artwork/add" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Nom de l'oeuvre" required>
+    <input type="text" name="url" placeholder="Url de l'oeuvre" required>
+    <label for="artwork-gif">Gif de l'artwork</label>
+    <input type="file" name="artwork_pics" required>
+    <label for="artwork-back">Background de l'artwork</label>
+    <input type="file" name="cover_pics" required>
+    <input type="submit" name="Enregister">
+  </form>
+</main>

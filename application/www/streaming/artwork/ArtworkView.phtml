@@ -4,12 +4,15 @@
 
   <main class="container">
     <div class="episode-list">
-      <?php foreach ($streamings as $streaming) : ?>
+      <?php if (empty($streamings) === false) {
+      foreach ($streamings as $streaming) { ?>
         <div class="episode-detail">
           <a href="<?= $requestUrl ?>/streaming/artwork/episode?artworkId=<?= $streaming['ArtworkId'] ?>&status=<?= $streaming['Status'] ?>&id=<?= $streaming['Id'] ?>"><?= $streaming['Caption'] ?>
             <img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $streaming['Image_Cover'] ?>" alt="">
             En ligne le <?= $streaming['CreationTimestamp'] ?></a>
         </div>
-      <?php endforeach; ?>
+      <?php }}else{ ?>
+        <p>Il n'y a aucun épisode pour le moment...</p>
+      <?php } ?>
     </div>
   </main>
