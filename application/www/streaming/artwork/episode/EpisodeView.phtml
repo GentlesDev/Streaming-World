@@ -35,16 +35,21 @@
         <div class="post">
           <h5 class="title-post"><?= $posts[$i]['Nickname'] ?></h5>
           <p><?= $posts[$i]['Content'] ?></p>
-          <p><em><?= $posts[$i]['CreationTimestamp'] ?></em></p>
+          <small><em>Le <?= date('d/m/Y à H:m:s', strtotime($posts[$i]['CreationTimestamp'])) ?></em></small>
+          <hr class="separation">
         </div>
       <?php } ?>
     </div>
-    <form class="form-post" action="<?= $requestUrl ?>/streaming/artwork/episode?artworkId=<?= $streamings['ArtworkId'] ?>&status=<?= $streamings['Status'] ?>" method="post">
-      <textarea name="post" rows="4" cols="80" placeholder="Ecrire un nouveau commentaire"></textarea>
-      <input type="hidden" name="episodeId" value="<?= $streamings['Status'] ?>">
-      <input type="hidden" name="artworkId" value="<?= $streamings['Artworks_Id'] ?>">
-      <input type="submit" name="envoyer" value="Envoyer">
-    </form>
+    <?php if (array_key_exists('pseudo', $_SESSION)) { ?>
+      <form class="form-post" action="<?= $requestUrl ?>/streaming/artwork/episode?artworkId=<?= $streamings['ArtworkId'] ?>&status=<?= $streamings['Status'] ?>" method="post">
+        <textarea name="post" rows="4" cols="80" placeholder="Ecrire un nouveau commentaire"></textarea>
+        <input type="hidden" name="episodeId" value="<?= $streamings['Status'] ?>">
+        <input type="hidden" name="artworkId" value="<?= $streamings['Artworks_Id'] ?>">
+        <button type="submit" name="envoyer">Envoyer</button>
+      </form>
+    <?php } else { ?>
+      <p>Vous devez vous <a href="<?= $requestUrl ?>/users/login">connecter</a> afin de pouvoir poster un commentaire.</p>
+    <?php } ?>
   </section>
 </main>
 <script type="text/javascript" src="<?= $wwwUrl ?>/js/episode.js"></script>

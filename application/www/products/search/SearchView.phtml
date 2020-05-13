@@ -3,47 +3,58 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/products/products.css">
 
-  <main class="container">
-    <h2 class="result">Résultats des recherches pour "<strong><?= $search ?></strong>"</h2>
-    <a class="comeBack" href="<?= $requestUrl ?>/products"><i class="fas fa-hand-point-left"></i> Retour</a>
-    <div class="search-bar">
-      <form class="search-form" action="<?= $requestUrl ?>/products/search" method="post">
-        <input type="search" name="search" placeholder="Recherchez votre film, série, anime...">
-        <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
-      </form>
-    </div>
-    <div class="products">
-      <ul class="list">
-        <?php foreach ($results as $result) { ?>
-          <li class="product-mosaic">
-            <a href="<?= $requestUrl ?>/products/detail?productId=<?= $result['Id'] ?>">
-              <div>
-                <?php if (strlen($result['Name']) >= 20) { ?>
-                  <h3><?= substr($result['Name'], 0, 20) ?> ...</h3>
-                <?php } else { ?>
-                  <h3><?= $result['Name'] ?></h3>
-                <?php } ?>
-                <img src="<?= $wwwUrl ?>/ressources/images/products/<?= $result['Photo'] ?>">
-                <p><?= substr($result['Description'], 0, 30) ?> ...</p>
-              </div>
-            </a>
-            <form>
-              <input type="text" name="quantity" id="product-<?= $result['Id'] ?>">
-              <button class="addToBasket" data-name="<?= $result['Name'] ?>" data-price="<?= $result['Price'] ?>" data-id="<?= $result['Id'] ?>">
-                <p>Ajouter au panier</p>
-              </button>
-            </form>
+<main class="container">
+  <h2 style="width:100%; text-align:center;" class="result">Résultats des recherches pour "<strong><?= $search ?></strong>"</h2>
+  <a style="margin:10px;" class="comeBack" href="<?= $requestUrl ?>/products"><i class="fas fa-hand-point-left"></i> Retour</a>
+  <div class="search-bar">
+    <form class="search-form" style="width:14%;" action="<?= $requestUrl ?>/products/search" method="post">
+      <input type="search" name="search" placeholder="Recherchez votre produit !">
+      <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+  <div class="products">
+    <ul class="list">
+      <?php foreach ($results as $result) { ?>
+        <li class="product-mosaic">
+          <a href="<?= $requestUrl ?>/products/detail?productId=<?= $result['Id'] ?>">
+            <div>
+              <?php if (strlen($result['Name']) >= 20) { ?>
+                <h3><?= substr($result['Name'], 0, 20) ?> ...</h3>
+              <?php } else { ?>
+                <h3><?= $result['Name'] ?></h3>
+              <?php } ?>
+              <img src="<?= $wwwUrl ?>/ressources/images/products/<?= $result['Photo'] ?>">
+              <p><?= substr($result['Description'], 0, 30) ?> ...</p>
+            </div>
+          </a>
+          <form>
+            <input type="number" style="-webkit-appearance: none; margin: 0;" name="quantity" id="product-<?= $result['Id'] ?>">
+            <button class="addToBasket" data-name="<?= $result['Name'] ?>" data-price="<?= $result['Price'] ?>" data-id="<?= $result['Id'] ?>">
+              <p>Ajouter au panier</p>
+            </button>
+          </form>
+        </li>
+      <?php } ?>
+    </ul>
+    <?php if (empty($results)) { ?>
+      <ul class="lines" style="width: 81%">
+        <h4>Toutes les catégories:</h4>
+        <?php foreach ($lines as $line) { ?>
+          <li class="product-lines">
+            <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?></a>
           </li>
         <?php } ?>
       </ul>
+    <?php } else { ?>
       <ul class="lines">
         <h4>Toutes les catégories:</h4>
         <?php foreach ($lines as $line) { ?>
           <li class="product-lines">
-            <a href="<?= $requestUrl ?>/products?product=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?>
+            <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?></a>
           </li>
         <?php } ?>
       </ul>
-    </div>
-  </main>
-  <script type="text/javascript" src="<?= $wwwUrl ?>/js/search.js"></script>
+    <?php } ?>
+  </div>
+</main>
+<script type="text/javascript" src="<?= $wwwUrl ?>/js/search.js"></script>

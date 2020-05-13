@@ -6,8 +6,8 @@
 <main class="container">
   <h2 class="title-section">Tous nos produits !</h2>
   <div class="search-bar">
-    <form class="search-form" action="<?= $requestUrl ?>/products/search" method="post">
-      <input type="search" name="search" placeholder="Recherchez votre film, série, anime...">
+    <form class="search-form" style="width:14%;" action="<?= $requestUrl ?>/products/search" method="post">
+      <input type="search" name="search" placeholder="Recherchez votre produit !">
       <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
     </form>
   </div>
@@ -27,7 +27,7 @@
             </div>
           </a>
           <form>
-            <input type="text" name="quantity" id="product-<?= $product['Id'] ?>">
+            <input type="number" name="quantity" id="product-<?= $product['Id'] ?>">
             <button class="addToBasket" data-name="<?= $product['Name'] ?>" data-price="<?= $product['Price'] ?>" data-id="<?= $product['Id'] ?>">
               <p>Ajouter au panier</p>
             </button>
@@ -35,24 +35,24 @@
         </li>
       <?php } ?>
     </ul>
-    <?php if (empty($products)) {?>
+    <?php if (empty($products)) { ?>
       <ul class="lines" style="width: 81%">
-      <h4>Toutes les catégories:</h4>
-      <?php foreach ($lines as $line) { ?>
-        <li class="product-lines">
-          <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?>
-        </li>
-      <?php } ?>
-    </ul>
-    <?php }else{ ?>
-    <ul class="lines">
-      <h4>Toutes les catégories:</h4>
-      <?php foreach ($lines as $line) { ?>
-        <li class="product-lines">
-          <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?>
-        </li>
-      <?php } ?>
-    </ul>
-      <?php } ?>
+        <h4>Toutes les catégories:</h4>
+        <?php foreach ($lines as $line) { ?>
+          <li class="product-lines">
+            <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?></a>
+          </li>
+        <?php } ?>
+      </ul>
+    <?php } else { ?>
+      <ul class="lines">
+        <h4>Toutes les catégories:</h4>
+        <?php foreach ($lines as $line) { ?>
+          <li class="product-lines">
+            <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?></a>
+          </li>
+        <?php } ?>
+      </ul>
+    <?php } ?>
   </div>
 </main>

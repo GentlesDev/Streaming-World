@@ -31,8 +31,13 @@
       </tbody>
     </table>
   </div>
-  <form class="p-form" action="<?= $requestUrl ?>/payment" method="POST">
-    <input type="hidden" name="basketItem" id="basketItem" value="">
-    <input type="submit" value="Payer ma commande">
-  </form>
+  <?php if (array_key_exists('pseudo', $_SESSION)) { ?>
+    <form class="p-form" action="<?= $requestUrl ?>/payment" method="POST">
+      <input type="hidden" name="basketItem" id="basketItem" value="">
+      <input type="submit" value="Payer ma commande">
+    </form>
+  <?php } else { ?>
+    <p>Vous devez vous <a href="<?= $requestUrl ?>/users/login">connecter</a> afin de pouvoir accéder à cette fonctionnalité.</p>
+  <?php } ?>
+
 </main>

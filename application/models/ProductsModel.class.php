@@ -16,7 +16,7 @@ class ProductsModel {
   {
     $database = new Database();
     $sql =
-      'SELECT products.Id, products.Artworks_Id, products.Name AS productName, products.Photo, products.ProductLine, products.Description, products.QuantityInStock, products.BuyPrice, products.Price, artworks.Id, artworks.Name, artworks.Url, artworks.Image, artworks.Image_Cover, productline.LineId, productline.ProductLine
+      'SELECT products.Id AS ProductId, products.Artworks_Id, products.Name AS productName, products.Photo, products.ProductLine, products.Description, products.QuantityInStock, products.BuyPrice, products.Price, artworks.Id, artworks.Name, artworks.Url, artworks.Image, artworks.Image_Cover, productline.LineId, productline.ProductLine
     FROM products
     INNER JOIN productline ON productline.ProductLine = products.ProductLine
     INNER JOIN artworks ON artworks.Id = products.Artworks_Id
@@ -116,6 +116,33 @@ class ProductsModel {
     $database = new Database();
     $database->executeSql('DELETE FROM products WHERE Id = ?', [$id]);
   }
+
+  public function getAllPostsByProduct($id)
+  {
+    $database = new Database();
+    $sql = 'SELECT  post.Id, post.Content, post.CreationTimestamp, post.Nickname, post.Product_Id, post.Episode_Id, post.Artwork_Id
+            FROM post
+            WHERE Product_Id = ?';
+    return $database->query($sql, [$id]);
+  }
+
+  public function addPost($post)
+  {
+    $database = new Database();
+    $database->executeSql(
+        'INSERT INTO post(Content, NickName, CreationTimestamp, Product_Id)
+            VALUES (?, ?, NOW(), ?)',
+        [
+          $post['post'],
+          $_SESSION['pseudo'],
+          $post['productId']
+        ]
+      );
+    $http = new HTTP();
+    $http->redirectTo("/products/detail?productId=".$post['productId']);
+    exit();
+  }
+
 
 }
 ?>
