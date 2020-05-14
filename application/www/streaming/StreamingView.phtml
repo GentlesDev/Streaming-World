@@ -8,10 +8,10 @@
     <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
   </form>
     <div class="display-vid">
-    <?php foreach ($artworks as $artwork): ?>
+    <?php foreach ($artworkStreams as $artworkStream): ?>
       <div class="banner-vid">
-        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artwork['Image'] ?>" alt="">
-      <p style="text-transform: capitalize"><?= $artwork['Name'] ?></p></a>
+        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artworkStream['Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artworkStream['Image'] ?>" alt="">
+      <p style="text-transform: capitalize"><?= $artworkStream['Name'] ?></p></a>
     </div>
     <?php endforeach; ?>
   </div>

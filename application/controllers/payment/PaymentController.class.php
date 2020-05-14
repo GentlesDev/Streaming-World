@@ -17,7 +17,9 @@ class PaymentController
        $artworks = $artworkModel->getAllArtworks();
        $productsModel = new ProductsModel();
        $lines = $productsModel->getAllLines();
+       $artworkStreams = $artworkModel->getAllArtworksAvailable();
        return[
+        "artworkStreams" => $artworkStreams,
          'lines'=>$lines,
          "artworks"=>$artworks
        ];
@@ -31,7 +33,9 @@ class PaymentController
       $artworks = $artworkModel->getAllArtworks();
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
+        "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         "artworks"=>$artworks
       ];

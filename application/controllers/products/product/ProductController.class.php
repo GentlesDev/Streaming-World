@@ -10,7 +10,9 @@ class ProductController
       $artworks = $artworkModel->getAllArtworks();
       $lines = $productsModel->getAllLines();
       $products = $productsModel->getOneLine();
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
+        "artworkStreams" => $artworkStreams,
         "artworks"=>$artworks,
         'lines'=>$lines,
         'products'=>$products

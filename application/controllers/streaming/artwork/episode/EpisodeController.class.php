@@ -11,6 +11,7 @@ class EpisodeController
       $episodes = $artworkModel->getAllEpisodesByArtworksId($_GET['artworkId']);
       $status = $streamings['Status'];
       $posts = $artworkModel->getAllPostsByEpisode($_GET['artworkId'], $_GET['status']);
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       // var_dump($posts);
       // var_dump($comments);
       // var_dump($status);
@@ -19,6 +20,7 @@ class EpisodeController
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
       return[
+        "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         'status'=>$status,
         "streamings"=>$streamings,
@@ -43,7 +45,9 @@ class EpisodeController
       // var_dump($comments);
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
+        "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         'status'=>$status,
         "streamings"=>$streamings,

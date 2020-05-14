@@ -9,7 +9,9 @@ class SearchController
       $artworks = $artworkModel->getAllArtworks();
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
+        "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         "artworks"=>$artworks
       ];
@@ -26,7 +28,9 @@ class SearchController
       // var_dump($streamings);
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
+        "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         "search"=>$search,
         "artworks"=>$artworks,

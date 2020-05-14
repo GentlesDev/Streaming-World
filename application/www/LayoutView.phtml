@@ -81,8 +81,8 @@
                 </div>
                 <div class="col-sm-3 multi-gd-img">
                   <ul class="multi-column-dropdown">
-                    <?php foreach ($artworks as $artwork) : ?>
-                      <li style="text-transform: capitalize"><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
+                    <?php foreach ($artworkStreams as $artworkStream) : ?>
+                      <li style="text-transform: capitalize"><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artworkStream['Url'] ?>"><?= $artworkStream['Name'] ?></a></li>
                     <?php endforeach; ?>
                   </ul>
                 </div>
@@ -156,6 +156,7 @@
       </a>
     </div>
   </footer>
+  <script>let variable = <?php echo json_encode($artworkStreams) ?>;</script>
   <script type="text/javascript" src='<?= $wwwUrl ?>/js/kimetsu.js'></script>
   <script type="text/javascript" src='<?= $wwwUrl ?>/js/product.js'></script>
 </body>

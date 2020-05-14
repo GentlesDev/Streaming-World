@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 mai 2020 à 13:56
+-- Généré le :  jeu. 14 mai 2020 à 14:21
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `artworks` (
   `Url` varchar(500) NOT NULL,
   `Image` varchar(120) NOT NULL,
   `Image_Cover` varchar(150) NOT NULL,
+  `In_Streaming` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
@@ -42,15 +43,17 @@ CREATE TABLE IF NOT EXISTS `artworks` (
 -- Déchargement des données de la table `artworks`
 --
 
-INSERT INTO `artworks` (`Id`, `Name`, `Url`, `Image`, `Image_Cover`) VALUES
-(1, 'Kimetsu No Yaiba', 'kny', 'kny_cover.gif', 'kny_cover.jpg'),
-(2, 'Dragon Ball', 'db', 'db_cover.gif', 'db_cover.jpg'),
-(3, 'Naruto', 'naruto', 'naruto_cover.gif', 'naruto_cover.jpg'),
-(4, 'One Piece', 'op', 'op_cover.gif', 'op_cover.jpg'),
-(5, 'My Hero Academia', 'mha', 'mha_cover.gif', 'mha_cover.jpg'),
-(6, 'One Punch Man', 'opm', 'opm_cover.gif', 'opm_cover.jpg'),
-(7, 'Vinland Saga', 'vs', 'vs_cover.gif', 'vs_cover.jpg'),
-(8, 'Gintama', 'gintama', 'gintama_cover.gif', 'gintama_cover.jpg');
+INSERT INTO `artworks` (`Id`, `Name`, `Url`, `Image`, `Image_Cover`, `In_Streaming`) VALUES
+(1, 'Kimetsu No Yaiba', 'kny', 'kny_cover.gif', 'kny_cover.jpg', 'oui'),
+(2, 'Dragon Ball', 'db', 'db_cover.gif', 'db_cover.jpg', 'oui'),
+(3, 'Naruto', 'naruto', 'naruto_cover.gif', 'naruto_cover.jpg', 'oui'),
+(4, 'One Piece', 'op', 'op_cover.gif', 'op_cover.jpg', 'oui'),
+(5, 'My Hero Academia', 'mha', 'mha_cover.gif', 'mha_cover.jpg', 'oui'),
+(6, 'One Punch Man', 'opm', 'opm_cover.gif', 'opm_cover.jpg', 'non'),
+(7, 'Vinland Saga', 'vs', 'vs_cover.gif', 'vs_cover.jpg', 'oui'),
+(8, 'Gintama', 'gintama', 'gintama_cover.gif', 'gintama_cover.jpg', 'oui'),
+(9, 'Hajime No Ippo', 'ippo', 'ippo_cover.gif', 'ippo_cover.jpg', 'oui'),
+(10, 'Fate', 'fate', 'fate_cover.gif', 'fate_cover.jpg', 'oui');
 
 -- --------------------------------------------------------
 
@@ -128,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `Episode_Id` int(255) DEFAULT NULL,
   `Artwork_Id` int(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `post`
@@ -140,7 +143,10 @@ INSERT INTO `post` (`Id`, `Content`, `CreationTimestamp`, `Nickname`, `Product_I
 (30, 'Superbe episode!', '2020-01-04 16:25:46', 'admin', NULL, 1, 7),
 (32, 'Ex', '2020-05-12 14:29:26', 'admin', NULL, 22, 8),
 (33, 'woaa', '2020-05-12 14:31:46', 'admin', NULL, 22, 8),
-(34, 'Best animation db', '2020-05-12 14:32:06', 'admin', NULL, 1, 2);
+(34, 'Best animation db', '2020-05-12 14:32:06', 'admin', NULL, 1, 2),
+(35, 'wow', '2020-05-13 14:52:51', 'admin', 2, NULL, NULL),
+(36, 'nani', '2020-05-13 14:53:20', 'admin', 3, NULL, NULL),
+(37, 'Superbe figurine', '2020-05-13 14:57:41', 'admin', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -250,11 +256,11 @@ INSERT INTO `streaming` (`Id`, `Artworks_Id`, `Caption`, `Status`, `Description`
 (23, 1, 'Kimetsu No Yaiba 19 VOSTFR', 19, 'ep 5', 'Kimetsu_no_Yaiba_19_VOSTFR.mp4', '2020-01-01 17:00:31'),
 (24, 1, 'Kimetsu No Yaiba 20 VOSTFR', 20, 'ep 4', 'Kimetsu_no_Yaiba_20_VOSTFR.mp4', '2020-01-01 17:00:46'),
 (25, 1, 'Kimetsu No Yaiba 21 VOSTFR', 21, 'ep 4', 'Kimetsu_no_Yaiba_21_VOSTFR.mp4', '2020-01-01 17:01:01'),
-(26, 1, 'Kimetsu No Yaiba 22 VOSTFR', 22, 'ep 8', 'Kimetsu_no_Yaiba_22_VOSTFR.mp4', '2020-01-01 17:01:25'),
+(26, 1, 'Kimetsu No Yaiba 22 VOSTFR', 22, 'ep 22', 'Kimetsu_no_Yaiba_22_VOSTFR.mp4', '2020-01-01 17:01:25'),
 (27, 1, 'Kimetsu No Yaiba 23 VOSTFR', 23, 'tkt', 'Kimetsu_no_Yaiba_23_VOSTFR.mp4', '2019-12-31 10:37:46'),
 (28, 1, 'Kimetsu No Yaiba 24 VOSTFR', 24, 'ep 4', 'Kimetsu_no_Yaiba_24_VOSTFR.mp4', '2020-01-01 17:00:07'),
 (29, 1, 'Kimetsu No Yaiba 25 VOSTFR', 25, 'ep 5', 'Kimetsu_no_Yaiba_25_VOSTFR.mp4', '2020-01-01 17:00:31'),
-(30, 1, 'Kimetsu No Yaiba 26 VOSTFR', 26, 'ep 4', 'Kimetsu_no_Yaiba_26_VOSTFR.mp4', '2020-01-01 17:00:46'),
+(30, 1, 'Kimetsu No Yaiba 26 VOSTFR', 26, 'magnifique !!!!', 'Kimetsu_no_Yaiba_26_VOSTFR.mp4', '2020-01-01 17:00:46'),
 (31, 7, 'Vinland Saga 01 VOSTFR', 1, 'ep 1', 'Vinland_Saga_01_VOSTFR.mp4', '2020-01-02 14:52:03'),
 (32, 7, 'Vinland Saga 02 VOSTFR', 2, 'ep 2', 'Vinland_Saga_02_VOSTFR.mp4', '2020-01-02 14:53:18'),
 (33, 7, 'Vinland Saga 03 VOSTFR', 3, 'ep 3', 'Vinland_Saga_03_VOSTFR.mp4', '2020-01-02 14:54:15'),

@@ -11,7 +11,9 @@ class DetailController
       $product = $productsModel->getOneProduct($_GET['productId']);
       $lines = $productsModel->getAllLines();
       $posts = $productsModel->getAllPostsByProduct($_GET['productId']);
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
+        "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         "artworks"=>$artworks,
         "product"=>$product,
@@ -28,8 +30,10 @@ class DetailController
     $product = $productsModel->getOneProduct($_GET['productId']);
     $lines = $productsModel->getAllLines();
     $posts = $productsModel->getAllPostsByProduct($_GET['productId']);
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     $productsModel->addPost($_POST);
     return [
+      "artworkStreams" => $artworkStreams,
       'lines' => $lines,
       "artworks" => $artworks,
       "product" => $product,

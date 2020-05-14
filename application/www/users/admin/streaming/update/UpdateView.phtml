@@ -15,7 +15,7 @@
     <input type="file" name="vid_pics" id="vid">
     <label for="artwork-Id">Nom de l'artwork</label>
     <select style="margin: 20px 0;" name="artworksId" id="artwork-Id">
-      <option value="<?= $streaming['Id'] ?>" selected><?= $streaming['Name'] ?></option>
+      <option value="<?= $streaming['Artworks_Id'] ?>" selected><?= $streaming['Name'] ?></option>
       <?php foreach ($artworks as $artwork) {
         if ($artwork['Id'] !== $streaming['Artworks_Id']) { ?>
           <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>

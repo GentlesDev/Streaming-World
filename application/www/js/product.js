@@ -2,7 +2,7 @@
 
 let basket = new Basket();
 
-$('.addToBasket').on('click', function(event){
+$('.addToBasket').on('click', function (event) {
   event.preventDefault();
   let id = $(this).data('id');
   // console.log(id);
@@ -10,25 +10,25 @@ $('.addToBasket').on('click', function(event){
   // console.log(name);
   let price = $(this).data('price');
   // console.log(price);
-  let quantity = $('#product-'+id).val();
+  let quantity = $('#product-' + id).val();
   // console.log(quantity);
-  if(isNaN(quantity) || quantity == '' || quantity <= 0) {
+  if (isNaN(quantity) || quantity == '' || quantity <= 0) {
     $('#errorPopUp').removeClass('hide');
-    $('#product-'+id).val('');
+    $('#product-' + id).val('');
   } else {
     basket.addBasket(id, name, quantity, price);
     $('#productPopUp').removeClass('hide');
     $('#productNumber').text(quantity);
-    $('#product-'+id).val('');
+    $('#product-' + id).val('');
   }
 });
 
-$('.closePopUp').on('click', function() {
+$('.closePopUp').on('click', function () {
   $('#productPopUp').addClass('hide');
   $('#errorPopUp').addClass('hide');
 });
 
-$('.empty').on('click', function() {
+$('.empty').on('click', function () {
   basket.clearBasket();
   // console.log('ok');
 });
@@ -36,7 +36,7 @@ $('.empty').on('click', function() {
 if (window.location.href.indexOf('/basket') != -1) {
 
   basket.displayBasketAll();
-  $(document).on('click','.trash', function(event) {
+  $(document).on('click', '.trash', function (event) {
     event.preventDefault();
     let id = $(this).data('index');
     console.log(id);
@@ -44,17 +44,17 @@ if (window.location.href.indexOf('/basket') != -1) {
   });
 }
 
-if(window.location.href.indexOf('/payment') != -1) {
+if (window.location.href.indexOf('/payment') != -1) {
 
   basket.loadBasketInput('#orders');
 }
 
-if(window.location.href.indexOf('/sucess') != -1) {
+if (window.location.href.indexOf('/sucess') != -1) {
 
   basket.clearBasket();
 }
 
-if(window.location.href.indexOf('/products?product') != -1) {
+if (window.location.href.indexOf('/products?product') != -1) {
   console.log('ok');
 }
 
@@ -62,14 +62,28 @@ if(window.location.href.indexOf('/products?product') != -1) {
 let url_string = window.location.href;
 let url = new URL(url_string);
 let params = url.searchParams.get("artworkId");
-console.log(params);
+//console.log(params);
 //let urlpara = window.location.search;
 //const urlParams = new URLSearchParams(urlpara);
 //let artwork = urlParams.get('artworkId');
 //console.log(artwork);
-if (params == 2) {
-  $('#haut').css('background', 'url(../ressources/images/bg/' + params + '/bg.jpg)');
-} else {
-  console.log('nope');
-
+//PERMET DE CHANGER LE BG EN FONCTION DE URL
+let currentBg = $('#haut').css('background');
+let j = 1;
+for (let i = 0; i < variable.length; i++) {
+  //console.log(j);
+  if (params == j) {
+    let newurl = currentBg.replace('images/tanjiro_nezu.png', 'images/bg/' + j + '/bg.jpg');
+    $('#haut').css('background', newurl);
+  }
+  j++;
+}
+if (params == 3) {
+  $('#haut').css('background-position-y', '30px');
+} else if (params == 4) {
+  $('#haut').css('background-position-y', '60px');
+} else if (params == 6) {
+  $('#haut').css('background-position-y', '50px');
+} else if (params == 4 || params == 8 || params == 9) {
+  $('#haut').css('background-position', 'top');
 }

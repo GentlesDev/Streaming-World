@@ -10,7 +10,9 @@ class ArtworkController
       $streamings = $artworkModel->displayEps($_GET['name']);
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
+      $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
+        "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         "streamings"=>$streamings,
         "artworks"=>$artworks

@@ -12,9 +12,11 @@ class AddController
     $artworks = $artworkModel->getAllArtworks();
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
-
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    
     // var_dump($figurines);
     return [
+      "artworkStreams" => $artworkStreams,
       'lines'=>$lines,
       "artworks"=>$artworks
     ];
@@ -28,9 +30,11 @@ class AddController
     $artworkModel->addVideo($_POST, $_FILES);
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     // var_dump($_POST);
     // var_dump($_FILES);
     return [
+      "artworkStreams" => $artworkStreams,
       'lines'=>$lines,
       "artworks"=>$artworks,
     ];

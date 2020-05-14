@@ -18,7 +18,10 @@ class SucessController
        $productsModel = new ProductsModel();
        $lines = $productsModel->getAllLines();
 
+       $artworkStreams = $artworkModel->getAllArtworksAvailable();
+       
        return[
+        "artworkStreams" => $artworkStreams,
          'lines'=>$lines,
          "user"=>$user,
          "artworks"=>$artworks

@@ -17,7 +17,9 @@ class UpdateController
     // var_dump($figurines);
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return [
+      "artworkStreams" => $artworkStreams,
       'lines'=>$lines,
       "streaming"=>$streaming,
       "artworks"=>$artworks
@@ -32,10 +34,11 @@ class UpdateController
     $artworkModel->updateVideo($_POST, $_FILES);
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return [
+      "artworkStreams" => $artworkStreams,
       'lines'=>$lines,
-      '$streaming'=>$streaming,
-      "artworks"=>$artworks,
+      "artworks"=>$artworks
     ];
 
 

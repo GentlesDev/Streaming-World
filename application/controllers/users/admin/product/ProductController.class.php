@@ -12,7 +12,9 @@ class ProductController
     $artworks = $artworkModel->getAllArtworks();
     $products = $productsModel->getAllProducts();
     $lines = $productsModel->getAllLines();
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return[
+      "artworkStreams" => $artworkStreams,
       'products'=>$products,
       "artworks"=>$artworks,
       'lines'=>$lines
@@ -28,7 +30,9 @@ class ProductController
     $artworks = $artworkModel->getAllArtworks();
     $products = $productsModel->getAllProducts();
     $lines = $productsModel->getAllLines();
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return[
+      "artworkStreams" => $artworkStreams,
       'products'=>$products,
       "artworks"=>$artworks,
       'lines'=>$lines

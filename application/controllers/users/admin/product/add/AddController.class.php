@@ -11,7 +11,9 @@ class AddController
     $productsModel = new ProductsModel();
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return[
+      "artworkStreams" => $artworkStreams,
       "artworks"=>$artworks,
       'lines'=>$lines
     ];
@@ -28,7 +30,9 @@ class AddController
     $productsModel = new ProductsModel();
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return[
+      "artworkStreams" => $artworkStreams,
       "artworks"=>$artworks,
       'lines'=>$lines
     ];
