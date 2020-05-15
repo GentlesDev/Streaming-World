@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
 
-
+<?php if ($error != null) { ?>
+  <small style="color: red; margin-left:370px; font-style: italic;"><?= $error ?></small>
+<?php } ?>
 <main class="container">
 
   <h3 style="text-align:center">Ajoutez une nouvelle video !</h3>

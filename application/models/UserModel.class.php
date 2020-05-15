@@ -70,7 +70,7 @@ class UserModel {
               return null;
             }
             else{
-              return "Mot de passe introuvable";
+              return "Mot de passe incorrect";
             }
           }
 
@@ -126,6 +126,7 @@ class UserModel {
         public function updateRole($post)
         {
           if((array_key_exists('role', $_SESSION) === false) || $_SESSION['role'] === "user" || $_SESSION['role'] === "premium") {
+            $http = new Http();
             $http->redirectTo('users/login');
           }else{
             if ($post['valeur'] == 'premium' || $post['valeur'] == 'user') {

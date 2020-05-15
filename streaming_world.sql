@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 14 mai 2020 à 14:21
+-- Généré le :  ven. 15 mai 2020 à 15:00
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `artworks` (
   `Image_Cover` varchar(150) NOT NULL,
   `In_Streaming` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `artworks`
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `artworks` (
 
 INSERT INTO `artworks` (`Id`, `Name`, `Url`, `Image`, `Image_Cover`, `In_Streaming`) VALUES
 (1, 'Kimetsu No Yaiba', 'kny', 'kny_cover.gif', 'kny_cover.jpg', 'oui'),
-(2, 'Dragon Ball', 'db', 'db_cover.gif', 'db_cover.jpg', 'oui'),
+(2, 'Dragon Ball Films&OAV', 'dbfo', 'db_cover.gif', 'db_cover.jpg', 'oui'),
 (3, 'Naruto', 'naruto', 'naruto_cover.gif', 'naruto_cover.jpg', 'oui'),
 (4, 'One Piece', 'op', 'op_cover.gif', 'op_cover.jpg', 'oui'),
 (5, 'My Hero Academia', 'mha', 'mha_cover.gif', 'mha_cover.jpg', 'oui'),
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `streaming` (
   `Video` varchar(120) NOT NULL,
   `CreationTimestamp` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `streaming`
@@ -284,7 +284,8 @@ INSERT INTO `streaming` (`Id`, `Artworks_Id`, `Caption`, `Status`, `Description`
 (51, 7, 'Vinland Saga 21 VOSTFR', 21, 'ep 21', 'Vinland_Saga_21_VOSTFR-1.mp4', '2020-01-04 10:49:41'),
 (52, 7, 'Vinland Saga 22 VOSTFR', 22, 'ep 22', 'Vinland_Saga_22_VOSTFR.mp4', '2020-01-04 10:50:20'),
 (53, 7, 'Vinland Saga 23 VOSTFR', 23, 'ep 23', 'Vinland_Saga_23_VOSTFR.mp4', '2020-01-04 10:51:20'),
-(54, 8, 'Gintama 22 VOSTFR', 22, 'Retrouvez l\'episode 22 du meilleur anime d\'humour!', 'gintama22.mp4', '2020-05-12 13:33:39');
+(54, 8, 'Gintama 22 VOSTFR', 22, 'Retrouvez l\'episode 22 du meilleur anime d\'humour!', 'gintama22.mp4', '2020-05-12 13:33:39'),
+(60, 8, 'Gintama 23 VOSTFR', 23, 'madao 23', 'gintama23.mp4', '2020-05-15 16:37:04');
 
 -- --------------------------------------------------------
 

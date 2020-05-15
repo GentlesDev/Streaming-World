@@ -4,9 +4,18 @@ class ArtworksModel
   public function addArtwork($post, $files)
   {
     $database = new Database();
+    $artwork = $database->queryOne(
+      "SELECT Name, Url FROM artworks WHERE Name = ?",
+      [$post['name']]
+    );
+    // var_dump($post);
+    // var_dump($files);
+    if ($artwork !== false) {
+      return 'Vous ne pouvez pas enregistrer deux artworks ayant le même nom ou le même url.';
+    }else{
     $database->executeSql(
-      'INSERT INTO artworks(Name, Url, Image, Image_Cover)
-      VALUES (?, ?, ?, ?)',
+      'INSERT INTO artworks(Name, Url, Image, Image_Cover, In_Streaming)
+      VALUES (?, ?, ?, ?, "non")',
       [
         $post['name'],
         $post['url'],
@@ -18,6 +27,8 @@ class ArtworksModel
     $http->moveUploadedFile("artwork_pics", "/ressources/images/cover");
     $http->moveUploadedFile("cover_pics", "/ressources/images/cover");
     $http->redirectTo("/users/admin");
+    return null;
+    }
   }
 
   public function suppArtwork($id)
@@ -144,7 +155,6 @@ class ArtworksModel
     return $database->query($sql, [$get]);
   }
 
-
   public function getAllEpisodes()
   {
     $database = new Database();
@@ -228,6 +238,26 @@ class ArtworksModel
   public function addVideo($post, $file)
   {
     $database = new Database();
+    $vid = $database->query(
+      'SELECT streaming.Id, Status, Artworks_Id, Caption, Video, CreationTimestamp,
+            artworks.Id AS ArtworkId, artworks.Image, Image_Cover, Url
+            FROM streaming
+            INNER JOIN artworks ON artworks.Id = streaming.Artworks_Id
+            WHERE Artworks_Id = ? && Status = ?',
+      [
+        $post['artworksId'],
+        $post['status']
+      ]
+    );
+    // var_dump($vid);
+    if (empty($vid) === false) {
+      return "Vous ne pouvez pas ajouter deux épisodes avec le même status !";
+    }else{
+    $artwork = $database->queryOne(
+        "SELECT * FROM artworks WHERE Id = ?",
+        [$post['artworksId']]
+      );
+      if($artwork['In_Streaming'] === "oui"){
     $database->executeSql("INSERT INTO streaming (Caption, Video, Artworks_Id,  Description, Status, CreationTimestamp)
             VALUES (?, ?, ?, ?, ?, NOW())", [
       $post["caption"],
@@ -240,15 +270,51 @@ class ArtworksModel
     $http->moveUploadedFile("vid_pics", "/../../../streaming_vids");
     $http->redirectTo("/users/admin");
     exit();
+            }else{
+      $database->executeSql(
+        'UPDATE artworks
+              SET In_Streaming = "oui"
+              WHERE Id = ?',
+        [$post['artworksId']]
+      );
+      $database->executeSql("INSERT INTO streaming (Caption, Video, Artworks_Id,  Description, Status, CreationTimestamp)
+            VALUES (?, ?, ?, ?, ?, NOW())", [
+        $post["caption"],
+        $file["vid_pics"]["name"],
+        $post['artworksId'],
+        $post["description"],
+        $post['status']
+      ]);
+      $http = new HTTP();
+      $http->moveUploadedFile("vid_pics", "/../../../streaming_vids");
+      $http->redirectTo("/users/admin");
+      exit();
+            }
+      }
   }
 
   public function suppVideo($id)
   {
     $database = new Database();
-    $database->executeSql(
-      'DELETE FROM streaming WHERE Id = ?',
-      [$id]
-    );
+      $database->executeSql(
+        'DELETE FROM streaming WHERE Id = ?',
+        [$id]
+      );
+    $vid = $database->query( 'SELECT streaming.Id, Status, Artworks_Id, Caption, Video, CreationTimestamp,
+            artworks.Id AS ArtworkId, artworks.Image, Image_Cover, Url
+            FROM streaming
+            INNER JOIN artworks ON artworks.Id = streaming.Artworks_Id
+            WHERE Artworks_Id = ?',
+            [$_GET['artworkId']]
+            );
+            if (empty($vid)) {
+      $database->executeSql(
+        'UPDATE artworks
+              SET In_Streaming = "non"
+              WHERE Id = ?',
+        [$_GET['artworkId']]
+      );
+            }
   }
 
   public function getAllPostsByEpisode($art, $id)

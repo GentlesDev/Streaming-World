@@ -12,10 +12,12 @@ class AddController
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
+      $error = null;
       return[
         "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
-        "artworks"=>$artworks
+        "artworks"=>$artworks,
+        "error"=>$error
       ];
 
 
@@ -25,14 +27,15 @@ class AddController
     {
       $artworkModel = new ArtworksModel();
       $artworks = $artworkModel->getAllArtworks();
-      $artworkModel->addArtwork($_POST, $_FILES);
+      $error = $artworkModel->addArtwork($_POST, $_FILES);
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
         "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
-        "artworks"=>$artworks
+        "artworks"=>$artworks,
+        "error"=>$error
       ];
 
     }

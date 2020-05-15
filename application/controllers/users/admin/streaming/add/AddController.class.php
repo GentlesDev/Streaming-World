@@ -9,16 +9,16 @@ class AddController
       $http->redirectTo('/');
     }
     $artworkModel = new ArtworksModel();
+    $error = null;  
     $artworks = $artworkModel->getAllArtworks();
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
-    
-    // var_dump($figurines);
     return [
       "artworkStreams" => $artworkStreams,
-      'lines'=>$lines,
-      "artworks"=>$artworks
+      "lines"=>$lines,
+      "artworks"=>$artworks,
+      'error' => $error
     ];
 
   }
@@ -26,8 +26,8 @@ class AddController
   public function httpPostMethod(Http $http, array $formFields)
   {
     $artworkModel = new ArtworksModel();
+    $error = $artworkModel->addVideo($_POST, $_FILES);
     $artworks = $artworkModel->getAllArtworks();
-    $artworkModel->addVideo($_POST, $_FILES);
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
@@ -37,6 +37,7 @@ class AddController
       "artworkStreams" => $artworkStreams,
       'lines'=>$lines,
       "artworks"=>$artworks,
+      'error' => $error
     ];
 
 
