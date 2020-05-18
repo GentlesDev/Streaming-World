@@ -70,7 +70,7 @@ let params = url.searchParams.get("artworkId");
 //PERMET DE CHANGER LE BG EN FONCTION DE URL
 let currentBg = $('#haut').css('background');
 let j = 1;
-for (let i = 0; i < variable.length; i++) {
+for (let i = 0; i <= variable.length; i++) {
   //console.log(j);
   if (params == j) {
     let newurl = currentBg.replace('images/tanjiro_nezu.png', 'images/bg/' + j + '/bg.jpg');

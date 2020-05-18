@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streaming.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streamingStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/artwork/artwork.css">
+
+<main class="container">
+    <div class="episode-list">
+        <?php if (empty($specifies) === false) {
+            foreach ($specifies as $specifies) { ?>
+                <div class="episode-detail">
+                    <a href="<?= $requestUrl ?>/streaming/artwork/episode?artworkId=<?= $specifies['ArtworkId'] ?>&status=<?= $specifies['Status'] ?>&id=<?= $specifies['Id'] ?>"><?= $specifies['Caption'] ?>
+                        <img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $specifies['Image_Cover'] ?>" alt="">
+                        En ligne le <?= $specifies['CreationTimestamp'] ?></a>
+                </div>
+            <?php }
+        } else { ?>
+            <p>Il n'y a aucun épisode pour le moment...</p>
+        <?php } ?>
+    </div>
+</main>

@@ -10,7 +10,7 @@
     <div class="display-vid">
     <?php foreach ($artworkStreams as $artworkStream): ?>
       <div class="banner-vid">
-        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artworkStream['Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artworkStream['Image'] ?>" alt="">
+        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artworkStream['Url'] ?>&artworkId=<?= $artworkStream['Id'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artworkStream['Image'] ?>" alt="">
       <p style="text-transform: capitalize"><?= $artworkStream['Name'] ?></p></a>
     </div>
     <?php endforeach; ?>

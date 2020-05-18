@@ -2,17 +2,20 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streamingStyle.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/artwork/artwork.css">
 
-  <main class="container">
-    <div class="episode-list">
-      <?php if (empty($streamings) === false) {
-      foreach ($streamings as $streaming) { ?>
-        <div class="episode-detail">
-          <a href="<?= $requestUrl ?>/streaming/artwork/episode?artworkId=<?= $streaming['ArtworkId'] ?>&status=<?= $streaming['Status'] ?>&id=<?= $streaming['Id'] ?>"><?= $streaming['Caption'] ?>
-            <img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $streaming['Image_Cover'] ?>" alt="">
-            En ligne le <?= $streaming['CreationTimestamp'] ?></a>
-        </div>
-      <?php }}else{ ?>
-        <p>Il n'y a aucun épisode pour le moment...</p>
-      <?php } ?>
-    </div>
-  </main>
+<main class="container">
+  <h2 class="title-section"><?= $title['Name'] ?></h2>
+  <form class="search-form" action="<?= $requestUrl ?>/streaming/search" method="post">
+    <input type="search" name="search" id="search" placeholder="Recherchez votre film, série, anime...">
+    <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
+  </form>
+  <div class="display-vid">
+    <?php foreach ($specifies as $specifie) : ?>
+      <div class="banner-vid">
+        <a href="<?= $requestUrl ?>/streaming/artwork/specifies?name=<?= $specifie['Url'] ?>&artworkId=<?= $specifie['Id'] ?>&specifie=<?= $specifie['Specifie_Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $specifie['Image'] ?>" alt="">
+          <p style="text-transform: capitalize"><?= $specifie['Name'] . ' ' . $specifie['Specifie_Name'] ?></p>
+        </a>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</main>
+<script type="text/javascript" src="<?= $wwwUrl ?>/js/search.js"></script>

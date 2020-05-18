@@ -112,6 +112,17 @@ class ArtworksModel
     return $database->query($sql, []);
   }
 
+  public function getAllArtworkSpecifies($get)
+  {
+    $database = new Database();
+
+    $sql = 'SELECT * 
+    FROM `artworks_specifies` 
+    INNER JOIN artworks ON artworks_specifies.Artwork_Id = artworks.Id 
+    WHERE Artwork_Id = ? && In_Streaming = "oui"';
+    return $database->query($sql, [$get]);
+  }
+
   public function getAllArtworks()
   {
     $database = new Database();
@@ -165,16 +176,17 @@ class ArtworksModel
     return $database->query($sql, []);
   }
 
-  public function getAllEpisodesByArtworksId($id)
+  public function getAllEpisodesByArtworksId()
   {
     $database = new Database();
-    $sql = 'SELECT streaming.Id, Status, Artworks_Id, Caption, Video, CreationTimestamp,
-            artworks.Id AS ArtworkId, artworks.Image, Image_Cover, Url
+    $sql = 'SELECT streaming.Id, streaming.Status, streaming.Artworks_Id, streaming.Caption, streaming.Video, streaming.CreationTimestamp, streaming.Saison,
+            artworks.Id AS ArtworkId, artworks.Image, artworks.Image_Cover, artworks.Url, artworks_specifies.Specifie_Name, artworks_specifies.Specifie_Image
             FROM streaming
+            INNER JOIN artworks_specifies ON artworks_specifies.Specifie_Name = streaming.Saison
             INNER JOIN artworks ON artworks.Id = streaming.Artworks_Id
-            WHERE Artworks_Id = ?
+            WHERE artworks_specifies.Specifie_Url = ? && artworks_specifies.Artwork_Id = ?
             ORDER BY Caption';
-    return $database->query($sql, [$id]);
+    return $database->query($sql, [$_GET['specifie'], $_GET['artworkId']]);
   }
 
   public function getOneEpisode($status, $art)

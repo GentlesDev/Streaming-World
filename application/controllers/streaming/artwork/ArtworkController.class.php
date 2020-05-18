@@ -11,7 +11,11 @@ class ArtworkController
       $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
+      $title = $artworkModel->getOneArtwork($_GET['artworkId']);
+      $specifies = $artworkModel->getAllArtworkSpecifies($_GET['artworkId']);
       return[
+        "specifies" => $specifies,
+        "title"=>$title,
         "artworkStreams" => $artworkStreams,
         'lines'=>$lines,
         "streamings"=>$streamings,
