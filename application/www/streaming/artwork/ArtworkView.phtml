@@ -11,8 +11,16 @@
   <div class="display-vid">
     <?php foreach ($specifies as $specifie) : ?>
       <div class="banner-vid">
-        <a href="<?= $requestUrl ?>/streaming/artwork/specifies?name=<?= $specifie['Url'] ?>&artworkId=<?= $specifie['Id'] ?>&specifie=<?= $specifie['Specifie_Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $specifie['Image'] ?>" alt="">
-          <p style="text-transform: capitalize"><?= $specifie['Name'] . ' ' . $specifie['Specifie_Name'] ?></p>
+        <a href="<?= $requestUrl ?>/streaming/artwork/specifies?name=<?= $specifie['Url'] ?>&artworkId=<?= $specifie['Id'] ?>&specifie=<?= $specifie['Specifie_Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/saisons/<?= $specifie['Specifie_Image'] ?>" alt="">
+          <?php if (strpos($specifie['Specifie_Name'], $specifie['Name']) === false) { ?>
+            <?php if (strlen($specifie['Name'] . $specifie['Specifie_Name']) >= 40) { ?>
+              <p style="text-transform: capitalize"><?= substr($specifie['Name'] . ' ' . $specifie['Specifie_Name'], 0, 40) ?>...</p>
+            <?php } else { ?>
+              <p style="text-transform: capitalize"><?= $specifie['Name'] . ' ' . $specifie['Specifie_Name'] ?></p>
+            <?php }
+          } else { ?>
+            <p style="text-transform: capitalize"><?= substr($specifie['Specifie_Name'], 0, 40) ?></p>
+          <?php } ?>
         </a>
       </div>
     <?php endforeach; ?>

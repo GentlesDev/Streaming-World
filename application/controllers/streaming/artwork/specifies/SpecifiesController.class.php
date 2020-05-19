@@ -9,9 +9,9 @@ class SpecifiesController
         $artworks = $artworkModel->getAllArtworks();
         $productsModel = new ProductsModel();
         $lines = $productsModel->getAllLines();
-        $title = $artworkModel->getOneArtwork($_GET['artworkId']);
+        $title = $artworkModel->getOneArtworkSpecifie();
         $specifies = $artworkModel->getAllEpisodesByArtworksId();
-        $artworkStreams = $artworkModel->getAllArtworkSpecifies($_GET['artworkId']);
+        $artworkStreams = $artworkModel->getAllArtworksAvailable($_GET['artworkId']);
         return [
             "specifies" => $specifies,
             "artworkStreams" => $artworkStreams,

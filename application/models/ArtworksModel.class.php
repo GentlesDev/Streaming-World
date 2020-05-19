@@ -144,6 +144,18 @@ class ArtworksModel
     return $database->queryOne($sql, [$get]);
   }
 
+  public function getOneArtworkSpecifie()
+  {
+    $database = new Database();
+    $sql = 'SELECT *
+            FROM artworks
+            INNER JOIN artworks_specifies ON artworks.Id = artworks_specifies.Artwork_Id
+            WHERE artworks_specifies.Specifie_Url = ?';
+    // var_dump($database);
+    return $database->queryOne($sql, [$_GET['specifie']]);
+  }
+
+
   public function search($post)
   {
     $database = new Database();
@@ -180,13 +192,14 @@ class ArtworksModel
   {
     $database = new Database();
     $sql = 'SELECT streaming.Id, streaming.Status, streaming.Artworks_Id, streaming.Caption, streaming.Video, streaming.CreationTimestamp, streaming.Saison,
-            artworks.Id AS ArtworkId, artworks.Image, artworks.Image_Cover, artworks.Url, artworks_specifies.Specifie_Name, artworks_specifies.Specifie_Image
+            artworks.Id AS ArtworkId, artworks.Image, artworks.Image_Cover, artworks.Url,
+            artworks_specifies.Specifie_Name, artworks_specifies.Specifie_Image, artworks_specifies.Specifie_Url, artworks_specifies.Artwork_Id
             FROM streaming
             INNER JOIN artworks_specifies ON artworks_specifies.Specifie_Name = streaming.Saison
             INNER JOIN artworks ON artworks.Id = streaming.Artworks_Id
-            WHERE artworks_specifies.Specifie_Url = ? && artworks_specifies.Artwork_Id = ?
+            WHERE streaming.Artworks_Id = ?  && artworks_specifies.Specifie_Url = ?
             ORDER BY Caption';
-    return $database->query($sql, [$_GET['specifie'], $_GET['artworkId']]);
+    return $database->query($sql, [$_GET['artworkId'], $_GET['specifie']]);
   }
 
   public function getOneEpisode($status, $art)
@@ -200,15 +213,17 @@ class ArtworksModel
     return $database->queryOne($sql, [$status, $art]);
   }
 
-  public function getOneEpisodeByArtworkId($id, $art)
+  public function getOneEpisodeByArtworkId($status, $art, $spe)
   {
     $database = new Database();
-    $sql = 'SELECT streaming.Id, Status, Artworks_Id, Caption, Description, Video, CreationTimestamp,
-            artworks.Id AS ArtworkId, artworks.Image, Image_Cover, Url, Name
+    $sql = 'SELECT streaming.Id, streaming.Status, streaming.Artworks_Id, streaming.Caption, streaming.Description, streaming.Video, streaming.CreationTimestamp, streaming.Saison,
+            artworks.Id AS ArtworkId, artworks.Image, artworks.Image_Cover, artworks.Url, artworks.Name,
+            artworks_specifies.Specifie_Name, artworks_specifies.Specifie_Image, artworks_specifies.Specifie_Url
             FROM streaming
+            INNER JOIN artworks_specifies ON artworks_specifies.Specifie_Name = streaming.Saison
             INNER JOIN artworks ON artworks.Id = streaming.Artworks_Id
-            WHERE streaming.Id = ? && artworks.Id = ?';
-    return $database->queryOne($sql, [$id, $art]);
+            WHERE streaming.Status = ? && artworks.Id = ? && artworks_specifies.Specifie_Url = ?';
+    return $database->queryOne($sql, [$status, $art, $spe]);
   }
 
   public function updateVideo($post, $files)
@@ -352,7 +367,7 @@ class ArtworksModel
       ]
     );
     $http = new HTTP();
-    $http->redirectTo("/streaming/artwork/episode?artworkId=" . $post['artworkId'] . "&status=" . $post['episodeId']);
+    $http->redirectTo("/streaming/artwork/specifies/episode?artworkId=" . $post['artworkId'] . "&specifie=" . $post['specifieUrl'] . "&status=" . $post['episodeId']);
     exit();
   }
 }

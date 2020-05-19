@@ -14,7 +14,7 @@ ul {
   align-items: center;
 }
 
-.episode-list a{
+.episode-list a {
   color: white;
 }
 
@@ -26,4 +26,9 @@ ul {
   width: 23%;
   padding: 10px;
   line-height: 2;
+}
+
+.display-vid img {
+  width: 339px;
+  height: 190px;
 }
