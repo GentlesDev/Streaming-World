@@ -1,4 +1,7 @@
-<link rel="stylesheet" type="text/css" href="<?= $wwwUrl ?>/css/admin.css">
+<link rel="stylesheet" type="text/css" href="<?= $wwwUrl ?>/css/admin/admin.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <a href="<?= $requestUrl ?>/users/admin/order"><button type="button" name="button" class="btn btn-back">Retour</button></a>
 
 <h2 class="title title-page">Détail de la commande</h2>
@@ -9,11 +12,11 @@
     <th>Quantité</th>
   </thead>
   <tbody>
-    <?php foreach ($orderdetail as $order): ?>
+    <?php foreach ($orderdetail as $order) : ?>
       <tr>
         <td><?= $order['Name'] ?></td>
-        <td><?=number_format($order['PriceEach'], 2)?> €</td>
-        <td><?=$order['Quantity_ordered']?></td>
+        <td><?= number_format($order['PriceEach'], 2) ?> €</td>
+        <td><?= $order['Quantity_ordered'] ?></td>
       </tr>
     <?php endforeach ?>
   </tbody>

@@ -9,6 +9,7 @@ class EpisodeController
       $streamings = $artworkModel->getOneEpisodeByArtworkId($_GET['status'], $_GET['artworkId'], $_GET['specifie']);
       $artworks = $artworkModel->getAllArtworks();
       $episodes = $artworkModel->getAllEpisodesByArtworksId();
+      $number = $artworkModel->getTheStatusEpisodesByArtworksId();
       $status = $streamings['Status'];
       $posts = $artworkModel->getAllPostsByEpisode($_GET['artworkId'], $_GET['status']);
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
@@ -25,7 +26,8 @@ class EpisodeController
         "streamings"=>$streamings,
         "artworks"=>$artworks,
         "episodes"=>$episodes,
-        "posts"=>$posts
+        "posts"=>$posts,
+        'number'=> $number
       ];
 
     }
@@ -36,6 +38,7 @@ class EpisodeController
       $streamings = $artworkModel->getOneEpisodeByArtworkId($_GET['status'], $_GET['artworkId'], $_GET['specifie']);
       $artworks = $artworkModel->getAllArtworks();
       $episodes = $artworkModel->getAllEpisodesByArtworksId();
+      $number = $artworkModel->getTheStatusEpisodesByArtworksId();
       $status = $streamings['Status'];
       $posts = $artworkModel->getAllPostsByEpisode($_GET['artworkId'], $_GET['status']);
       $artworkModel->addPost($_POST);
@@ -52,7 +55,8 @@ class EpisodeController
         "streamings"=>$streamings,
         "artworks"=>$artworks,
         "episodes"=>$episodes,
-        "posts"=>$posts
+        "posts"=>$posts,
+        'number'=> $number
       ];
 
 

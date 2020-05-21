@@ -86,4 +86,7 @@ if (params == 3) {
   $('#haut').css('background-position-y', '50px');
 } else if (params == 4 || params == 8 || params == 9) {
   $('#haut').css('background-position', 'top');
+} else if (params == 10) {
+  $('#haut').css('background-position-y', '105px');
 }
+

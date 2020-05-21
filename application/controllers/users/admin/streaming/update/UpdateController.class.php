@@ -9,7 +9,7 @@ class UpdateController
       $http->redirectTo('/');
     }
     $artworkModel = new ArtworksModel();
-    $streaming = $artworkModel->getOneEpisodeByArtworkId($_GET['streamingId'], $_GET['artworkId']);
+    $streaming = $artworkModel->getOneEpisodeByArtworkId($_GET['streamingId'], $_GET['artworkId'], $_GET['specifie']);
     // var_dump($streaming);
     $artworks = $artworkModel->getAllArtworks();
 

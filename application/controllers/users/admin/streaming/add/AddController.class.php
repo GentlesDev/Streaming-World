@@ -11,6 +11,7 @@ class AddController
     $artworkModel = new ArtworksModel();
     $error = null;  
     $artworks = $artworkModel->getAllArtworks();
+    $specifies = $artworkModel->getAllSpecifies();
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
@@ -18,7 +19,8 @@ class AddController
       "artworkStreams" => $artworkStreams,
       "lines"=>$lines,
       "artworks"=>$artworks,
-      'error' => $error
+      'error' => $error,
+      'specifies' => $specifies
     ];
 
   }
@@ -31,13 +33,15 @@ class AddController
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $specifies = $artworkModel->getAllSpecifies();
     // var_dump($_POST);
     // var_dump($_FILES);
     return [
       "artworkStreams" => $artworkStreams,
       'lines'=>$lines,
       "artworks"=>$artworks,
-      'error' => $error
+      'error' => $error,
+      'specifies' => $specifies
     ];
 
 

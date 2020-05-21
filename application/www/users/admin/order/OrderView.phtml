@@ -1,4 +1,7 @@
-<link rel="stylesheet" type="text/css" href="<?= $wwwUrl ?>/css/admin.css">
+<link rel="stylesheet" type="text/css" href="<?= $wwwUrl ?>/css/admin/admin.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <div>
   <h3>Récapitulatif des commandes</h3>
   <a href="<?= $requestUrl ?>/users/admin"><button type="button" name="button" class="btn btn-back">Retour</button></a>
@@ -12,11 +15,11 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($orders as $order): ?>
+      <?php foreach ($orders as $order) : ?>
         <tr>
           <td><a href="<?= $requestUrl ?>/users/admin/order/detail?orderId=<?= $order['Id'] ?>"><?= $order['Id'] ?></a></td>
           <td><?= $order['TotalAmount'] ?>€</td>
-          <td><?=date('d/m/Y à H:i:s', strtotime($order['CreationTimestamp']))?></td>
+          <td><?= date('d/m/Y à H:i:s', strtotime($order['CreationTimestamp'])) ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
+
+<?php if ($error != null) { ?>
+    <small style="color: red; margin-left:370px; font-style: italic;"><?= $error ?></small>
+<?php } ?>
+
+<main class="container">
+
+    <h3 style="text-align:center">Ajoutez une saison !</h3>
+
+    <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
+
+    <form class="b-form" action="<?= $requestUrl ?>/users/admin/specifie/add" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Nom de la saison" required>
+        <input type="text" name="url" placeholder="Url de la saison" required>
+        <label for="artwork">Artwork rattaché</label>
+        <select style="margin: 20px 0;" name="artwork" id="artwork">
+            <?php foreach ($artworkStreams as $artwork) { ?>
+                <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
+            <?php } ?>
+        </select>
+        <label for="artwork-back">Image de la saison</label>
+        <input type="file" name="cover_pics" required>
+        <input type="submit" name="Enregister">
+    </form>
+</main>

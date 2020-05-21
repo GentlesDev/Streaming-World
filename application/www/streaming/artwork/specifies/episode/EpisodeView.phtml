@@ -13,7 +13,11 @@
 <main class="container">
   <div class="content">
     <div class="episode">
-      <?php if ($status - 1 === 0) { ?>
+      <?php 
+      $tab = [];
+        var_dump($number);
+      //var_dump($tab);
+      if ($episode['Status'] ){ ?>
 
       <?php } else { ?>
         <a href="<?= $requestUrl ?>/streaming/artwork/specifies/episode?artworkId=<?= $streamings['ArtworkId'] ?>&specifie=<?= $streamings['Specifie_Url'] ?>&status=<?= $status - 1 ?>"><i class="far fa-arrow-alt-circle-left"></i> Episode précédent</a>

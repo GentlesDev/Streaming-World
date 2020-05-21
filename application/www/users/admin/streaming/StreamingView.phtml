@@ -11,14 +11,16 @@
         <tr class="titleCoke">
           <td>Nom</td>
           <td>Description</td>
+          <td>Saison</td>
           <td>Action</td>
         </tr>
         <?php foreach ($streamings as $streaming):?>
           <tr>
             <td class="nCoke"><?=$streaming['Caption']?></td>
             <td class="nCoke"><?=$streaming['Description']?></td>
+            <td class="nCoke"><?= $streaming['Saison'] ?></td>
             <td class="aCoke">
-              <a href="<?= $requestUrl ?>/users/admin/streaming/update?streamingId=<?= $streaming['Id'] ?>&artworkId=<?= $streaming['Artworks_Id'] ?>"><i class="fas fa-pen"></i></a>
+              <a href="<?= $requestUrl ?>/users/admin/streaming/update?streamingId=<?= $streaming['Id'] ?>&artworkId=<?= $streaming['Artworks_Id'] ?>&specifie=<?= $streaming['Specifie_Url'] ?>"><i class="fas fa-pen"></i></a>
               <a href="<?= $requestUrl ?>/users/admin/streaming/delete?streamingId=<?= $streaming['Id'] ?>&artworkId=<?= $streaming['Artworks_Id'] ?>"><i class="fas fa-trash"></i></a>
             </td>
           </tr>

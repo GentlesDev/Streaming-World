@@ -2,70 +2,75 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
-  <main class="container">
-    <div class="login-right">
-      <h3>Admin</h3>
-      <div>
-        <hr>
-        <h4>Gestion des oeuvres !</h4>
-        <a href="<?= $requestUrl ?>/users/admin/artwork/add" class="addProduct"><i class="fas fa-plus-circle"></i> Ajouter une oeuvre</a>
-        <br>
-        <a href="<?= $requestUrl ?>/users/admin/artwork">Voir toutes nos oeuvres</a>
-        <hr>
-        <h4>Gestion des produits !</h4>
-        <a href="<?= $requestUrl ?>/users/admin/product/add" class="addProduct"><i class="fas fa-plus-circle"></i> Ajouter un nouveau produit</a>
-        <br>
-        <a href="<?= $requestUrl ?>/users/admin/product">Voir tous nos produits</a>
-        <hr>
-        <h4>Gestion du streaming !</h4>
-        <a href="<?= $requestUrl ?>/users/admin/streaming/add" class="addVid"><i class="fas fa-plus-circle"></i> Ajouter une nouvelle vidéo</a>
-        <br>
-        <a href="<?= $requestUrl ?>/users/admin/streaming">Voir toutes nos videos</a>
-        <hr>
-        <h4>Gestion des utilisateurs !</h4>
-        <?php foreach ($users as $user){ ?>
-          <?php if($user['Email'] !== $_SESSION['email']) { ?>
-            <?php if (strlen($user['Role']) === 0){ ?>
-              <p>Non</p>
-            <?php }else{ ?>
-              <table class="userTable">
-                <tbody>
-                  <tr>
-                    <td>Nom</td>
-                    <td>Prénom</td>
-                    <td>Email</td>
-                    <td>Role</td>
-                    <td>Action</td>
-                  </tr>
-                  <?php foreach ($users as $user): ?>
-                    <?php if($user['Email'] !== $_SESSION['email']) { ?>
-                      <tr>
-                        <td><?= $user['FirstName']?></td>
-                        <td><?= $user['LastName'] ?></td>
-                        <td><?= $user['Email'] ?></td>
-                        <td> <select class="userRole" data-id="<?=$user['Id']?>">
-                          <?php if ( $user['Role'] === 'premium'){ ?>
+<main class="container">
+  <div class="login-right">
+    <h3>Admin</h3>
+    <div>
+      <hr>
+      <h4>Gestion des oeuvres !</h4>
+      <a href="<?= $requestUrl ?>/users/admin/artwork/add" class="addProduct"><i class="fas fa-plus-circle"></i> Ajouter une oeuvre</a>
+      <br>
+      <a href="<?= $requestUrl ?>/users/admin/artwork">Voir toutes les oeuvres</a>
+      <hr>
+      <h4>Gestion des saisons !</h4>
+      <a href="<?= $requestUrl ?>/users/admin/specifie/add" class="addProduct"><i class="fas fa-plus-circle"></i> Ajouter une saison</a>
+      <br>
+      <a href="<?= $requestUrl ?>/users/admin/specifie">Voir toutes les saisons</a>
+      <hr>
+      <h4>Gestion des produits !</h4>
+      <a href="<?= $requestUrl ?>/users/admin/product/add" class="addProduct"><i class="fas fa-plus-circle"></i> Ajouter un nouveau produit</a>
+      <br>
+      <a href="<?= $requestUrl ?>/users/admin/product">Voir tous les produits</a>
+      <hr>
+      <h4>Gestion du streaming !</h4>
+      <a href="<?= $requestUrl ?>/users/admin/streaming/add" class="addVid"><i class="fas fa-plus-circle"></i> Ajouter une nouvelle vidéo</a>
+      <br>
+      <a href="<?= $requestUrl ?>/users/admin/streaming">Voir toutes les videos</a>
+      <hr>
+      <h4>Gestion des utilisateurs !</h4>
+      <?php foreach ($users as $user) { ?>
+        <?php if ($user['Email'] !== $_SESSION['email']) { ?>
+          <?php if (strlen($user['Role']) === 0) { ?>
+            <p>Non</p>
+          <?php } else { ?>
+            <table class="userTable">
+              <tbody>
+                <tr>
+                  <td>Nom</td>
+                  <td>Prénom</td>
+                  <td>Email</td>
+                  <td>Role</td>
+                  <td>Action</td>
+                </tr>
+                <?php foreach ($users as $user) : ?>
+                  <?php if ($user['Email'] !== $_SESSION['email']) { ?>
+                    <tr>
+                      <td><?= $user['FirstName'] ?></td>
+                      <td><?= $user['LastName'] ?></td>
+                      <td><?= $user['Email'] ?></td>
+                      <td> <select class="userRole" data-id="<?= $user['Id'] ?>">
+                          <?php if ($user['Role'] === 'premium') { ?>
                             <option value="premium" selected>premium</option>
                             <option value="user">user</option>
-                          <?php }else if($user['Role'] === 'user'){ ?>
+                          <?php } else if ($user['Role'] === 'user') { ?>
                             <option value="premium">premium</option>
                             <option value="user" selected>user</option>
                           <?php } ?>
                         </select></td>
-                        <td><a href="<?= $requestUrl ?>/users/admin/user/delete?userId=<?=$user['Id']?>"><i class="fas fa-trash"></i></a></td>
-                      </tr>
-                    <?php } ?>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
-            <?php } ?>
+                      <td><a href="<?= $requestUrl ?>/users/admin/user/delete?userId=<?= $user['Id'] ?>"><i class="fas fa-trash"></i></a></td>
+                    </tr>
+                  <?php } ?>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
           <?php } ?>
         <?php } ?>
+      <?php } ?>
 
-        <hr>
-        <h4>Gestion des commandes !</h4>
-        <a href="<?= $requestUrl ?>/users/admin/order" class="addCoke"><i class="fas fa-plus-circle"></i> Gestion des commandes</a>
-      </div>
+      <hr>
+      <h4>Gestion des commandes !</h4>
+      <a href="<?= $requestUrl ?>/users/admin/order" class="addCoke"><i class="fas fa-plus-circle"></i> Gestion des commandes</a>
     </div>
-    <script src="<?= $wwwUrl ?>/js/admin.js"></script>
-  </main>
+  </div>
+  <script src="<?= $wwwUrl ?>/js/admin.js"></script>
+</main>
