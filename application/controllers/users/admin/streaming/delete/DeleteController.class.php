@@ -7,8 +7,8 @@ class DeleteController
     if (empty($_SESSION) == true || $_SESSION['role'] !== "admin") {
       $http->redirectTo('/');
     }
-    $artworkModel = new ArtworksModel();
-    $artworkModel->suppVideo($_GET['streamingId']);
+    $streamingModel = new StreamingModel();
+    $streamingModel->deleteEpisode($_GET['streamingId']);
     $http->redirectTo("/users/admin");
   }
 

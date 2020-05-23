@@ -16,15 +16,15 @@
                 <td>Artwork</td>
                 <td>Action</td>
             </tr>
-            <?php foreach ($specifies as $specifie) : ?>
+            <?php foreach ($seasons as $season) : ?>
                 <tr>
-                    <td class="nCoke"><?= $specifie['Specifie_Name'] ?></td>
-                    <td class="nCoke"><?= $specifie['Specifie_Url'] ?></td>
-                    <td class="nCoke"><img src="<?= $wwwUrl ?>/ressources/images/saisons/<?= $specifie['Specifie_Image'] ?>" alt=""></td>
-                    <td class="nCoke"><?= $specifie['Artwork_Name'] ?></td>
+                    <td class="nCoke"><?= $season['Season_Name'] ?></td>
+                    <td class="nCoke"><?= $season['Season_Url'] ?></td>
+                    <td class="nCoke"><img src="<?= $wwwUrl ?>/ressources/images/saisons/<?= $season['Season_Image'] ?>" alt=""></td>
+                    <td class="nCoke"><?= $season['Artwork_Name'] ?></td>
                     <td class="aCoke">
-                        <a href="<?= $requestUrl ?>/users/admin/specifie/update?specifie=<?= $specifie['Id'] ?>"><i class="fas fa-pen"></i></a>
-                        <a href="<?= $requestUrl ?>/users/admin/specifie/delete?specifie=<?= $specifie['Id'] ?>"><i class="fas fa-trash"></i></a>
+                        <a href="<?= $requestUrl ?>/users/admin/season/update?season=<?= $season['Id'] ?>"><i class="fas fa-pen"></i></a>
+                        <a href="<?= $requestUrl ?>/users/admin/season/delete?season=<?= $season['Id'] ?>"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

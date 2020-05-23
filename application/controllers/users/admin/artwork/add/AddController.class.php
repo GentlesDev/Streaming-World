@@ -8,32 +8,30 @@ class AddController
       }
 
       $artworkModel = new ArtworksModel();
-      $artworks = $artworkModel->getAllArtworks();
       $productsModel = new ProductsModel();
+      $artworks = $artworkModel->getAllArtworks();
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       $error = null;
       return[
         "artworkStreams" => $artworkStreams,
-        'lines'=>$lines,
+        "lines"=>$lines,
         "artworks"=>$artworks,
         "error"=>$error
       ];
-
-
     }
 
     public function httpPostMethod(Http $http, array $formFields)
     {
       $artworkModel = new ArtworksModel();
+      $productsModel = new ProductsModel();
       $artworks = $artworkModel->getAllArtworks();
       $error = $artworkModel->addArtwork($_POST, $_FILES);
-      $productsModel = new ProductsModel();
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
         "artworkStreams" => $artworkStreams,
-        'lines'=>$lines,
+        "lines"=>$lines,
         "artworks"=>$artworks,
         "error"=>$error
       ];

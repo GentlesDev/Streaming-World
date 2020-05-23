@@ -1,22 +1,20 @@
 <?php
 
-class SpecifiesController
+class SeasonController
 {
     public function httpGetMethod(Http $http, array $queryFields)
     {
 
         $artworkModel = new ArtworksModel();
-        $artworks = $artworkModel->getAllArtworks();
         $productsModel = new ProductsModel();
+        $artworks = $artworkModel->getAllArtworks();
+        $seasons = $artworkModel->getAllSeasons();
         $lines = $productsModel->getAllLines();
-        $title = $artworkModel->getOneArtworkSpecifie();
-        $specifies = $artworkModel->getAllEpisodesByArtworksId();
-        $artworkStreams = $artworkModel->getAllArtworksAvailable($_GET['artworkId']);
+        $artworkStreams = $artworkModel->getAllArtworksAvailable();
         return [
-            "specifies" => $specifies,
             "artworkStreams" => $artworkStreams,
-            "title" => $title,
-            "lines" => $lines,
+            'lines' => $lines,
+            "seasons" => $seasons,
             "artworks" => $artworks
         ];
     }

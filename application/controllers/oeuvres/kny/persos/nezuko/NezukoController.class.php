@@ -11,7 +11,7 @@ class NezukoController
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
         "artworkStreams" => $artworkStreams,
-        'lines'=>$lines,
+        "lines"=>$lines,
         "artworks"=>$artworks
       ];
 

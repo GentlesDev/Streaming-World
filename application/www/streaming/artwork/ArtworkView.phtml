@@ -9,17 +9,17 @@
     <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
   </form>
   <div class="display-vid">
-    <?php foreach ($specifies as $specifie) : ?>
+    <?php foreach ($seasons as $season) : ?>
       <div class="banner-vid">
-        <a href="<?= $requestUrl ?>/streaming/artwork/specifies?name=<?= $specifie['Url'] ?>&artworkId=<?= $specifie['Id'] ?>&specifie=<?= $specifie['Specifie_Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/saisons/<?= $specifie['Specifie_Image'] ?>" alt="">
-          <?php if (strpos($specifie['Specifie_Name'], $specifie['Name']) === false) { ?>
-            <?php if (strlen($specifie['Name'] . $specifie['Specifie_Name']) >= 40) { ?>
-              <p style="text-transform: capitalize"><?= substr($specifie['Name'] . ' ' . $specifie['Specifie_Name'], 0, 40) ?>...</p>
+        <a href="<?= $requestUrl ?>/streaming/artwork/seasons?name=<?= $season['Url'] ?>&artworkId=<?= $season['Id'] ?>&season=<?= $season['Season_Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/saisons/<?= $season['Season_Image'] ?>" alt="">
+          <?php if (strpos($season['Season_Name'], $season['Name']) === false) { ?>
+            <?php if (strlen($season['Name'] . $season['Season_Name']) >= 40) { ?>
+              <p style="text-transform: capitalize"><?= substr($season['Name'] . ' ' . $season['Season_Name'], 0, 40) ?>...</p>
             <?php } else { ?>
-              <p style="text-transform: capitalize"><?= $specifie['Name'] . ' ' . $specifie['Specifie_Name'] ?></p>
+              <p style="text-transform: capitalize"><?= $season['Name'] . ' ' . $season['Season_Name'] ?></p>
             <?php }
           } else { ?>
-            <p style="text-transform: capitalize"><?= substr($specifie['Specifie_Name'], 0, 40) ?></p>
+            <p style="text-transform: capitalize"><?= substr($season['Season_Name'], 0, 40) ?></p>
           <?php } ?>
         </a>
       </div>

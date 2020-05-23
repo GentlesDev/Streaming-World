@@ -2,17 +2,17 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streamingStyle.css">
 
 <main class="container">
-  <h2 class="result">Résultats des recherches pour "<strong><?= $search ?></strong>"</h2>
+  <h2 class="result">Résultats des recherches pour "<strong><?= $_POST['search'] ?></strong>"</h2>
   <a class="comeBack" href="<?= $requestUrl ?>/streaming"><i class="fas fa-hand-point-left"></i> Retour</a>
   <form class="search-form" action="<?= $requestUrl ?>/streaming/search" method="post">
     <input type="search" name="search" id="search" placeholder="Recherchez votre film, série, anime...">
     <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
   </form>
   <div class="display-vid">
-    <?php foreach ($streamings as $streaming) : ?>
+    <?php foreach ($searches as $search) : ?>
       <div class="banner-vid">
-        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $streaming['Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $streaming['Image'] ?>" alt="">
-          <p style="text-transform: capitalize"><?= $streaming['Name'] ?></p>
+        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $search['Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $search['Image'] ?>" alt="">
+          <p style="text-transform: capitalize"><?= $search['Name'] ?></p>
         </a>
       </div>
     <?php endforeach; ?>

@@ -6,10 +6,8 @@ class DeleteController
         if (empty($_SESSION) == true || $_SESSION['role'] !== "admin") {
             $http->redirectTo('/');
         }
-
         $artworkModel = new ArtworksModel();
-
-        $artworkModel->suppSpecifie($_GET['specifie']);
+        $artworkModel->suppSeason($_GET['season']);
         $http->redirectTo("/users/admin");
     }
 

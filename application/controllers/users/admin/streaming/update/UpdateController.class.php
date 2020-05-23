@@ -9,20 +9,18 @@ class UpdateController
       $http->redirectTo('/');
     }
     $artworkModel = new ArtworksModel();
-    $streaming = $artworkModel->getOneEpisodeByArtworkId($_GET['streamingId'], $_GET['artworkId'], $_GET['specifie']);
-    // var_dump($streaming);
-    $artworks = $artworkModel->getAllArtworks();
-
-
-    // var_dump($figurines);
     $productsModel = new ProductsModel();
+    $streamingModel = new StreamingModel();
+    $episode = $streamingModel->getOneEpisodeByArtworkId($_GET['streamingId'], $_GET['artworkId'], $_GET['season']);
+    $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    // var_dump($episode);
     return [
       "artworkStreams" => $artworkStreams,
-      'lines'=>$lines,
-      "streaming"=>$streaming,
-      "artworks"=>$artworks
+      "lines" => $lines,
+      "episode" => $episode,
+      "artworks" => $artworks
     ];
 
   }
@@ -30,15 +28,16 @@ class UpdateController
   public function httpPostMethod(Http $http, array $formFields)
   {
     $artworkModel = new ArtworksModel();
-    $artworks = $artworkModel->getAllArtworks();
-    $artworkModel->updateVideo($_POST, $_FILES);
     $productsModel = new ProductsModel();
+    $streamingModel = new StreamingModel();
+    $artworks = $artworkModel->getAllArtworks();
+    $streamingModel->updateEpisode($_POST, $_FILES);
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return [
       "artworkStreams" => $artworkStreams,
-      'lines'=>$lines,
-      "artworks"=>$artworks
+      "lines" => $lines,
+      "artworks" => $artworks
     ];
 
 

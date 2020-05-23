@@ -10,7 +10,7 @@ class BasketController
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       $lines = $productsModel->getAllLines();
       return[
-        'lines'=>$lines,
+        "lines"=>$lines,
         "artworks"=> $artworks,
         "artworkStreams" => $artworkStreams
       ];

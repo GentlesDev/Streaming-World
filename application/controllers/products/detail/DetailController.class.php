@@ -13,11 +13,11 @@ class DetailController
       $posts = $productsModel->getAllPostsByProduct($_GET['productId']);
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
-        "artworkStreams" => $artworkStreams,
+        'artworkStreams' => $artworkStreams,
         'lines'=>$lines,
-        "artworks"=>$artworks,
-        "product"=>$product,
-        "posts"=>$posts
+        'artworks'=>$artworks,
+        'product'=>$product,
+        'posts'=>$posts
       ];
 
     }
@@ -33,11 +33,11 @@ class DetailController
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
     $productsModel->addPost($_POST);
     return [
-      "artworkStreams" => $artworkStreams,
+      'artworkStreams' => $artworkStreams,
       'lines' => $lines,
-      "artworks" => $artworks,
-      "product" => $product,
-      "posts" => $posts
+      'artworks' => $artworks,
+      'product' => $product,
+      'posts' => $posts
     ];
 
 

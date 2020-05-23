@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streaming.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streamingStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/episode/episode.css">
+<div class="background"></div>
+
+<aside class="episode-list">
+  <ul>
+    <?php foreach ($episodes as $episode) : ?>
+      <li><a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $episode['ArtworkId'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>"><?= $episode['Caption'] ?></a></li>
+    <?php endforeach; ?>
+  </ul>
+</aside>
+<main class="container">
+  <div class="content">
+    <div class="episode">
+      <?php if ($status - 1 === 0) { ?>
+
+      <?php } else { ?>
+        <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $status - 1 ?>"><i class="far fa-arrow-alt-circle-left"></i> Episode précédent</a>
+      <?php } ?>
+      <h2 class="title-vid"><?= $artworkEpisode['Caption'] ?></h2>
+      <?php if (($status + 1) > count($episodes)) { ?>
+
+      <?php } else { ?>
+        <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $status + 1 ?>">Episode suivant <i class="far fa-arrow-alt-circle-right"></i></a>
+      <?php } ?>
+    </div>
+    <video src="../../../../../streaming_vids/<?= $artworkEpisode['Video'] ?> " controls width="854" height="480" controlsList="nodownload" poster="<?= $wwwUrl ?>/ressources/images/cover/<?= $artworkEpisode['Image_Cover'] ?>">
+    </video>
+  </div>
+  <section class="espace-com">
+    <h4>Espace commentaire</h4>
+    <div class="show-post">
+      <?php for ($i = 0; $i < count($posts); $i++) { ?>
+        <div class="post">
+          <h5 class="title-post"><?= $posts[$i]['Nickname'] ?></h5>
+          <p><?= $posts[$i]['Content'] ?></p>
+          <small><em>Le <?= date('d/m/Y à H:m:s', strtotime($posts[$i]['CreationTimestamp'])) ?></em></small>
+          <hr class="separation">
+        </div>
+      <?php } ?>
+    </div>
+    <?php if (array_key_exists('pseudo', $_SESSION)) { ?>
+      <form class="form-post" action="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $artworkEpisode['Status'] ?>" method="post">
+        <textarea name="post" rows="4" cols="80" placeholder="Ecrire un nouveau commentaire"></textarea>
+        <input type="hidden" name="episodeId" value="<?= $artworkEpisode['Status'] ?>">
+        <input type="hidden" name="artworkId" value="<?= $artworkEpisode['Artworks_Id'] ?>">
+        <input type="hidden" name="seasonUrl" value="<?= $artworkEpisode['Season_Url'] ?>">
+        <button type="submit" name="envoyer">Envoyer</button>
+      </form>
+    <?php } else { ?>
+      <p>Vous devez vous <a href="<?= $requestUrl ?>/users/login">connecter</a> afin de pouvoir poster un commentaire.</p>
+    <?php } ?>
+  </section>
+</main>
+<script type="text/javascript" src="<?= $wwwUrl ?>/js/episode.js"></script>

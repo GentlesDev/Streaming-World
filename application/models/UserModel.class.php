@@ -4,17 +4,17 @@ class UserModel {
   {
     $database = new Database();
     $hashPassword = $this->hashPassword($post['password']);
-    $user = $database->queryOne
-    (
-      "SELECT Id FROM users WHERE Email = ?", [ $post['email'] ]
+    $user = $database->queryOne( "SELECT Id 
+    FROM users 
+    WHERE Email = ?", 
+    [ $post['email'] ]
     );
     if($user !== false) {
       return 'Email déja existant !';
     } else {
-      $database->executeSql
-      (
-        'INSERT INTO users(FirstName, LastName, Email, Pseudo ,Role, Password, Address, City, Zip, CreationTimestamp)
-        VALUES (?, ?, ?, ?, "user", ?, ?, ?, ?, NOW())',[
+      $database->executeSql('INSERT INTO users(FirstName, LastName, Email, Pseudo ,Role, Password, Address, City, Zip, CreationTimestamp)
+        VALUES (?, ?, ?, ?, "user", ?, ?, ?, ?, NOW())',
+        [
           $post['firstname'],
           $post['lastname'],
           $post['email'],
@@ -22,7 +22,8 @@ class UserModel {
           $hashPassword,
           $post['address'],
           $post['city'],
-          $post['zip']]
+          $post['zip']
+        ]
         );
         $http = new Http();
         $http->redirectTo('/users/login');
@@ -35,24 +36,21 @@ class UserModel {
     }
 
     private function hashPassword($post){
-
       $salt = '$2y$11$'.substr(bin2hex(openssl_random_pseudo_bytes(32)), 0, 22);
-
       return crypt($post, $salt);
     }
 
     public function logUser($post)
     {
       $database = new Database();
-
-      $login = $database->queryOne
-      (
-        'SELECT *
+      $login = $database->queryOne('SELECT *
         FROM users
         WHERE Email = ? || Pseudo = ?',
         [
-          $post['email'], $post['email']]
-          );
+          $post['email'], 
+          $post['email']
+        ]
+        );
 
           if ($login === false) {
             return "Addresse mail ou pseudo introuvable";
@@ -73,17 +71,14 @@ class UserModel {
               return "Mot de passe incorrect";
             }
           }
-
         }
 
         public function getAllUsers() {
           $database = new Database();
-
           $sql = 'SELECT *
           FROM users';
           // var_dump($database);
           return $database->query($sql, []);
-
         }
 
         public function getOneUser() {
@@ -98,18 +93,19 @@ class UserModel {
         public function updateUser($post)
         {
           $database = new Database();
-
           $database->executeSql('UPDATE users
           SET FirstName = ?, LastName = ?, Pseudo = ?, Email = ?, Address = ?, City = ?, Zip = ?
-          WHERE Id = ?', [
-          $post['firstname'],
-          $post['lastname'],
-          $post['pseudo'],
-          $post['email'],
-          $post['address'],
-          $post['city'],
-          $post['zip'],
-          $_SESSION['id']]
+          WHERE Id = ?', 
+          [
+            $post['firstname'],
+            $post['lastname'],
+            $post['pseudo'],
+            $post['email'],
+            $post['address'],
+            $post['city'],
+            $post['zip'],
+            $_SESSION['id']
+          ]
           );
           $_SESSION['email'] = $post['email'];
           $_SESSION['firstName'] = $post['firstname'];
@@ -162,6 +158,5 @@ class UserModel {
               $http->redirectTo('users/admin');
             }
       }
-
     }
 ?>

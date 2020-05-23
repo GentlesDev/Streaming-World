@@ -6,32 +6,29 @@ class StreamingController
   {
 
     $artworkModel = new ArtworksModel();
+    $productsModel = new ProductsModel();
     $artworks = $artworkModel->getAllArtworks();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
-    $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
     return[
-      'lines'=>$lines,
+      "lines"=>$lines,
       "artworks"=>$artworks,
       "artworkStreams"=>$artworkStreams
     ];
-
   }
 
   public function httpPostMethod(Http $http, array $formFields)
   {
     $artworkModel = new ArtworksModel();
-    $search = $_POST['search'];
-    // var_dump($search);
-    $streamings = $artworkModel->search($search);
     $productsModel = new ProductsModel();
     $lines = $productsModel->getAllLines();
+    $search = $_POST['search'];
+    $searches = $artworkModel->search($search);
+    // var_dump($search);
     return[
-      'lines'=>$lines,
-      "streamings"=>$streamings
+      "lines"=>$lines,
+      "searches"=>$searches
     ];
-
-
   }
 }
 ?>

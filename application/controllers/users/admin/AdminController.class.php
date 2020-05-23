@@ -6,22 +6,17 @@ class AdminController
     if (empty($_SESSION) == true || $_SESSION['role'] !== "admin") {
       $http->redirectTo('/');
     }
-
-
     $userModel = new UserModel();
-
-    $users = $userModel->getAllUsers();
     $artworkModel = new ArtworksModel();
-    $artworks = $artworkModel->getAllArtworks();
     $productsModel = new ProductsModel();
+    $users = $userModel->getAllUsers();
+    $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
-
-
     return [
-      "artworkStreams" => $artworkStreams,
+      'artworkStreams' => $artworkStreams,
       'lines' => $lines,
-      "artworks" => $artworks,
+      'artworks' => $artworks,
       'users' => $users
     ];
   }

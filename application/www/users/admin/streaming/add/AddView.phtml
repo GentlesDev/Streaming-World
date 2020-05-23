@@ -24,12 +24,12 @@
       <?php } ?>
     </select>
     <label for="artwork-Id">Nom de la saison</label>
-    <select style="margin: 20px 0;" name="specifie" id="specifie" required>
-      <?php foreach ($specifies as $specifie) { ?>
-        <option value="<?= $specifie['Specifie_Name'] ?>"><?= $specifie['Specifie_Name'] ?></option>
+    <select style="margin: 20px 0;" name="season" id="season" required>
+      <?php foreach ($seasons as $season) { ?>
+        <option value="<?= $season['Season_Name'] ?>"><?= $season['Season_Name'] ?></option>
       <?php } ?>
     </select>
-    <small style="font-size: 10px; margin: 10px;">Vous ne trouvez pas votre saison, ajoutez la <a href="<?= $requestUrl ?>/users/admin/specifie/add">ICI</a></small>
+    <small style="font-size: 10px; margin: 10px;">Vous ne trouvez pas votre saison, ajoutez la <a href="<?= $requestUrl ?>/users/admin/season/add">ICI</a></small>
     <textarea type="text" name="description" maxlength="1000" required placeholder="Description de la vidéo"></textarea>
     <input type="text" name="status" placeholder="N° de l'episode" required>
     <input type="submit" name="Enregister">

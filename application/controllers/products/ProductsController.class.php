@@ -14,8 +14,8 @@ class ProductsController
       return[
         "artworkStreams" => $artworkStreams,
         "artworks"=>$artworks,
-        'products'=>$products,
-        'lines'=>$lines
+        "products"=>$products,
+        "lines"=>$lines
       ];
 
     }

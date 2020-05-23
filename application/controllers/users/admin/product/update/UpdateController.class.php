@@ -4,8 +4,7 @@ class UpdateController
 {
   public function httpGetMethod(Http $http, array $queryFields)
   {
-
-    if(empty($_SESSION) == true || $_SESSION['role'] !== "admin" ) {
+    if (empty($_SESSION) == true || $_SESSION['role'] !== "admin") {
       $http->redirectTo('/');
     }
     $artworkModel = new ArtworksModel();
@@ -14,15 +13,12 @@ class UpdateController
     $lines = $productsModel->getAllLines();
     $product = $productsModel->getOneProduct($_GET['productId']);
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
-    
-    // var_dump($figurines);
     return [
-      "artworkStreams" => $artworkStreams,
-      'product'=>$product,
-      "artworks"=>$artworks,
-      'lines'=>$lines
+      'artworkStreams' => $artworkStreams,
+      'product' => $product,
+      'artworks' => $artworks,
+      'lines' => $lines
     ];
-
   }
 
   public function httpPostMethod(Http $http, array $formFields)
@@ -35,12 +31,10 @@ class UpdateController
     $product = $productsModel->getOneProduct($_GET['productId']);
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return [
-      "artworkStreams" => $artworkStreams,
-      'product'=>$product,
-      "artworks"=>$artworks,
-      'lines'=>$lines
+      'artworkStreams' => $artworkStreams,
+      'product' => $product,
+      'artworks' => $artworks,
+      'lines' => $lines
     ];
-
-
   }
 }

@@ -4,40 +4,31 @@ class SearchController
 {
     public function httpGetMethod(Http $http, array $queryFields)
     {
-
       $artworkModel = new ArtworksModel();
-      $artworks = $artworkModel->getAllArtworks();
       $productsModel = new ProductsModel();
+      $artworks = $artworkModel->getAllArtworks();
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       return[
         "artworkStreams" => $artworkStreams,
-        'lines'=>$lines,
+        "lines"=>$lines,
         "artworks"=>$artworks
       ];
-
     }
-
     public function httpPostMethod(Http $http, array $formFields)
     {
       $artworkModel = new ArtworksModel();
-      $artworks = $artworkModel->getAllArtworks();
-      $search = $_POST['search'];
-      // var_dump($search);
-      $streamings = $artworkModel->search($search);
-      // var_dump($streamings);
       $productsModel = new ProductsModel();
+      $artworks = $artworkModel->getAllArtworks();
+      $searches = $artworkModel->search($_POST['search']);
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
+      // var_dump($searches);
       return[
         "artworkStreams" => $artworkStreams,
-        'lines'=>$lines,
-        "search"=>$search,
+        "lines"=>$lines,
         "artworks"=>$artworks,
-        "streamings"=>$streamings
+        "searches"=>$searches
       ];
-
-
     }
 }
-?>

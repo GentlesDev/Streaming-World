@@ -9,13 +9,13 @@ class ProfilController
       $http->redirectTo('/');
     }
     $artworkModel = new ArtworksModel();
-    $artworks = $artworkModel->getAllArtworks();
     $productsModel = new ProductsModel();
+    $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return [
       "artworkStreams" => $artworkStreams,
-      'lines' => $lines,
+      "lines" => $lines,
       "artworks" => $artworks
     ];
   }
@@ -24,15 +24,15 @@ class ProfilController
   {
 
     $userModel = new UserModel();
-    $userModel->updateUser($_POST);
     $artworkModel = new ArtworksModel();
-    $artworks = $artworkModel->getAllArtworks();
     $productsModel = new ProductsModel();
+    $userModel->updateUser($_POST);
+    $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
     return [
       "artworkStreams" => $artworkStreams,
-      'lines' => $lines,
+      "lines" => $lines,
       "artworks" => $artworks
     ];
   }

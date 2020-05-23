@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streaming.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streamingStyle.css">
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/artwork/artwork.css">
+
+<main class="container">
+    <?php if (strpos($title['Season_Name'], $title['Name']) === false) { ?>
+        <h2 class="title-section"><?= $title['Name'] . ' ' . $title['Season_Name'] ?></h2>
+    <?php } else { ?>
+        <h2 class="title-section"><?= $title['Season_Name'] ?></h2>
+    <?php } ?>
+    <div class="episode-list">
+        <?php if (empty($seasons) === false) {
+            foreach ($seasons as $season) { ?>
+                <div class="episode-detail">
+                    <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $season['ArtworkId'] ?>&season=<?= $season['Season_Url'] ?>&status=<?= $season['Status'] ?>&id=<?= $season['Id'] ?>"><?= $season['Caption'] ?>
+                        <img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $season['Image_Cover'] ?>" alt="">
+                        En ligne le <?= $season['CreationTimestamp'] ?></a>
+                </div>
+            <?php }
+        } else { ?>
+            <p>Il n'y a aucun épisode pour le moment...</p>
+        <?php } ?>
+    </div>
+</main>

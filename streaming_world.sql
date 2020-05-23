@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 21 mai 2020 à 15:14
+-- Généré le :  sam. 23 mai 2020 à 12:26
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -59,24 +59,24 @@ INSERT INTO `artworks` (`Id`, `Name`, `Url`, `Image`, `Image_Cover`, `In_Streami
 -- --------------------------------------------------------
 
 --
--- Structure de la table `artworks_specifies`
+-- Structure de la table `artworks_seasons`
 --
 
-DROP TABLE IF EXISTS `artworks_specifies`;
-CREATE TABLE IF NOT EXISTS `artworks_specifies` (
+DROP TABLE IF EXISTS `artworks_seasons`;
+CREATE TABLE IF NOT EXISTS `artworks_seasons` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
-  `Specifie_Name` varchar(10010) NOT NULL,
-  `Specifie_Image` varchar(10001) NOT NULL,
-  `Specifie_Url` varchar(10000) DEFAULT NULL,
+  `Season_Name` varchar(10010) NOT NULL,
+  `Season_Image` varchar(10001) NOT NULL,
+  `Season_Url` varchar(10000) DEFAULT NULL,
   `Artwork_Id` int(255) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `artworks_specifies`
+-- Déchargement des données de la table `artworks_seasons`
 --
 
-INSERT INTO `artworks_specifies` (`Id`, `Specifie_Name`, `Specifie_Image`, `Specifie_Url`, `Artwork_Id`) VALUES
+INSERT INTO `artworks_seasons` (`Id`, `Season_Name`, `Season_Image`, `Season_Url`, `Artwork_Id`) VALUES
 (1, 'Kimetsu No Yaiba Saison 1', 'knys1.jpg', 'knys1', 1),
 (2, 'Kimetsu No Yaiba Films/OAV', 'knyfo.png', 'knyfo', 1),
 (3, 'Dragon Ball', 'db.jpg', 'db', 2),
@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `Episode_Id` int(255) DEFAULT NULL,
   `Artwork_Id` int(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `post`
@@ -202,7 +202,11 @@ INSERT INTO `post` (`Id`, `Content`, `CreationTimestamp`, `Nickname`, `Product_I
 (34, 'Best animation db', '2020-05-12 14:32:06', 'admin', NULL, 1, 2),
 (35, 'wow', '2020-05-13 14:52:51', 'admin', 2, NULL, NULL),
 (36, 'nani', '2020-05-13 14:53:20', 'admin', 3, NULL, NULL),
-(37, 'Superbe figurine', '2020-05-13 14:57:41', 'admin', 1, NULL, NULL);
+(37, 'Superbe figurine', '2020-05-13 14:57:41', 'admin', 1, NULL, NULL),
+(38, 'Meilleur Fate', '2020-05-23 12:56:23', 'admin', NULL, 1, 10),
+(39, 'ça promet', '2020-05-23 13:01:20', 'admin', NULL, 26, 10),
+(40, 'yaree Broly !!', '2020-05-23 13:08:31', 'admin', NULL, 1, 2),
+(41, 'yes', '2020-05-23 14:24:38', 'admin', NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -283,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `streaming` (
   `Video` varchar(120) NOT NULL,
   `CreationTimestamp` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `streaming`
@@ -384,7 +388,9 @@ INSERT INTO `streaming` (`Id`, `Artworks_Id`, `Caption`, `Status`, `Saison`, `De
 (101, 5, 'Vinland Saga 01 VOSTFR', 1, 'My Hero Academia Saison 3', 'fdgfdg', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:26:41'),
 (102, 5, 'Vinland Saga 02 VOSTFR', 2, 'My Hero Academia Saison 3', 'fdgdfg', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:30:00'),
 (103, 5, 'My Hero Academia 22 VOSTFR', 22, 'My Hero Academia Saison 4', 'qsq', 'Kimetsu_no_Yaiba_22_VOSTFR.mp4', '2020-05-21 15:32:35'),
-(104, 5, 'My Hero Academia 23 VOSTFR', 23, 'My Hero Academia Saison 4', 'fsdsdfsd', 'Kimetsu_no_Yaiba_23_VOSTFR.mp4', '2020-05-21 15:33:55');
+(104, 5, 'My Hero Academia 23 VOSTFR', 23, 'My Hero Academia Saison 4', 'fsdsdfsd', 'Kimetsu_no_Yaiba_23_VOSTFR.mp4', '2020-05-21 15:33:55'),
+(105, 10, 'Fate Apocrypha 1 VOSTFR', 1, 'Apocrypha', 'fate apo 1', 'fateapocrypha01.mp4', '2020-05-22 17:00:07'),
+(106, 10, 'Fate Apocrypha 2 VOSTFR', 2, 'Apocrypha', 'fate apocrypha 02', 'fateapocrypha02.mp4', '2020-05-23 14:26:10');
 
 -- --------------------------------------------------------
 

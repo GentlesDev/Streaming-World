@@ -14,14 +14,14 @@
           <td>Saison</td>
           <td>Action</td>
         </tr>
-        <?php foreach ($streamings as $streaming):?>
+        <?php foreach ($episodes as $episode):?>
           <tr>
-            <td class="nCoke"><?=$streaming['Caption']?></td>
-            <td class="nCoke"><?=$streaming['Description']?></td>
-            <td class="nCoke"><?= $streaming['Saison'] ?></td>
+            <td class="nCoke"><?=$episode['Caption']?></td>
+            <td class="nCoke"><?=$episode['Description']?></td>
+            <td class="nCoke"><?= $episode['Saison'] ?></td>
             <td class="aCoke">
-              <a href="<?= $requestUrl ?>/users/admin/streaming/update?streamingId=<?= $streaming['Id'] ?>&artworkId=<?= $streaming['Artworks_Id'] ?>&specifie=<?= $streaming['Specifie_Url'] ?>"><i class="fas fa-pen"></i></a>
-              <a href="<?= $requestUrl ?>/users/admin/streaming/delete?streamingId=<?= $streaming['Id'] ?>&artworkId=<?= $streaming['Artworks_Id'] ?>"><i class="fas fa-trash"></i></a>
+              <a href="<?= $requestUrl ?>/users/admin/streaming/update?streamingId=<?= $episode['Id'] ?>&artworkId=<?= $episode['Artworks_Id'] ?>&season=<?= $episode['Season_Url'] ?>"><i class="fas fa-pen"></i></a>
+              <a href="<?= $requestUrl ?>/users/admin/streaming/delete?streamingId=<?= $episode['Id'] ?>&artworkId=<?= $episode['Artworks_Id'] ?>"><i class="fas fa-trash"></i></a>
             </td>
           </tr>
         <?php endforeach;?>

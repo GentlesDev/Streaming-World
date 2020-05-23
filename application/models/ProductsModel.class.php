@@ -3,12 +3,10 @@ class ProductsModel {
 
   public function getAllProducts() {
     $database = new Database();
-
     $sql = 'SELECT *
     FROM products';
     // var_dump($database);
     return $database->query($sql, []);
-
 
   }
 

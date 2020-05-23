@@ -6,16 +6,17 @@ class StreamingController
     {
 
       $artworkModel = new ArtworksModel();
-      $artworks = $artworkModel->getAllArtworks();
-      $streamings = $artworkModel->getAllEpisodes();
       $productsModel = new ProductsModel();
+      $streamingModel = new StreamingModel();
+      $artworks = $artworkModel->getAllArtworks();
+      $episodes = $streamingModel->getAllEpisodes();
       $lines = $productsModel->getAllLines();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
-      // var_dump($streamings);
+      // var_dump($episodes);
       return[
         "artworkStreams" => $artworkStreams,
-        'lines'=>$lines,
-        "streamings"=>$streamings,
+        "lines"=>$lines,
+        "episodes"=>$episodes,
         "artworks"=>$artworks
       ];
 
@@ -28,4 +29,3 @@ class StreamingController
 
     }
 }
-?>
