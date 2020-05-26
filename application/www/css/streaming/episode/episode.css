@@ -58,3 +58,7 @@ aside.episode-list a:hover {
 .add-comment{
   cursor: pointer;
 }
+
+.form-post textarea{
+  color: white;
+}

@@ -2,22 +2,25 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
-<a href="<?= $requestUrl ?>/users/admin/order"><button type="button" name="button" class="btn btn-back">Retour</button></a>
 
-<h2 class="title title-page">Détail de la commande</h2>
-<table class="admin-table">
-  <thead>
-    <th>Numéro de commande</th>
-    <th>Prix Unitaire</th>
-    <th>Quantité</th>
-  </thead>
-  <tbody>
-    <?php foreach ($orderdetail as $order) : ?>
-      <tr>
-        <td><?= $order['Name'] ?></td>
-        <td><?= number_format($order['PriceEach'], 2) ?> €</td>
-        <td><?= $order['Quantity_ordered'] ?></td>
-      </tr>
-    <?php endforeach ?>
-  </tbody>
-</table>
+<div class="orders">
+  
+  <h2 class="title title-page">Détail de la commande</h2>
+  <a href="<?= $requestUrl ?>/users/admin/order"><button type="button" name="button" class="btn btn-back">Retour</button></a>
+  <table class="admin-table">
+    <thead>
+      <th>Numéro de commande</th>
+      <th>Prix Unitaire</th>
+      <th>Quantité</th>
+    </thead>
+    <tbody>
+      <?php foreach ($orderdetail as $order) : ?>
+        <tr>
+          <td><?= $order['Name'] ?></td>
+          <td><?= number_format($order['PriceEach'], 2) ?> €</td>
+          <td><?= $order['Quantity_Ordered'] ?></td>
+        </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+</div>

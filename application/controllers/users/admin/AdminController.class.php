@@ -13,11 +13,17 @@ class AdminController
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $link = mysqli_connect("localhost", "root", "", "streaming_world");
+    $table_name = "artworks";
+    $query = mysqli_query($link, "SHOW TABLE STATUS WHERE name='$table_name'");
+    $row = mysqli_fetch_array($query);
+    $dir = $row[10] - 1;
     return [
       'artworkStreams' => $artworkStreams,
       'lines' => $lines,
       'artworks' => $artworks,
-      'users' => $users
+      'users' => $users,
+      'dir' => $dir
     ];
   }
 

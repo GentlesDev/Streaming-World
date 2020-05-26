@@ -19,7 +19,7 @@
         <input type="text" name="url" placeholder="Url de la saison" required>
         <label for="artwork">Artwork rattaché</label>
         <select style="margin: 20px 0;" name="artwork" id="artwork">
-            <?php foreach ($artworkStreams as $artwork) { ?>
+            <?php foreach ($artworks as $artwork) { ?>
                 <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
             <?php } ?>
         </select>

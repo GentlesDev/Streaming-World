@@ -4,7 +4,8 @@ class ArtworksModel
   public function addArtwork($post, $files)
   {
     $database = new Database();
-    $artwork = $database->queryOne("SELECT Name, Url 
+    $artwork = $database->queryOne(
+      "SELECT Name, Url 
       FROM artworks 
       WHERE Name = ?",
       [$post["name"]]
@@ -13,31 +14,52 @@ class ArtworksModel
     // var_dump($files);
     if ($artwork !== false) {
       return 'Vous ne pouvez pas enregistrer deux artworks ayant le même nom ou le même url.';
-    }else{
-    $database->executeSql('INSERT INTO artworks(Name, Url, Image, Image_Cover, In_Streaming)
+    } else {
+      $database->executeSql(
+        'INSERT INTO artworks(Name, Url, Image, Image_Cover, In_Streaming)
       VALUES (?, ?, ?, ?, "non")',
-      [
-        $post["name"],
-        $post["url"],
-        $files["artwork_pics"]["name"],
-        $files["cover_pics"]["name"]
-      ]
-    );
-    $http = new HTTP();
-    $http->moveUploadedFile("artwork_pics", "/ressources/images/cover");
-    $http->moveUploadedFile("cover_pics", "/ressources/images/cover");
-    $http->redirectTo("/users/admin");
-    return null;
+        [
+          $post["name"],
+          $post["url"],
+          $files["artwork_pics"]["name"],
+          $files["cover_pics"]["name"]
+        ]
+      );
+      $link = mysqli_connect("localhost", "root", "", "streaming_world");
+      $table_name = "artworks";
+      $query = mysqli_query($link, "SHOW TABLE STATUS WHERE name='$table_name'");
+      $row = mysqli_fetch_array($query);
+      $dir = $row[10] - 1;
+      $dirName = 'application/www/ressources/images/bg/' . $dir;
+      mkdir($dirName, 0777, TRUE);
+      $http = new HTTP();
+      $http->moveUploadedFile("artwork_pics", "/ressources/images/cover");
+      $http->moveUploadedFile("cover_pics", "/ressources/images/cover");
+      $http->redirectTo("/users/admin");
+      return null;
     }
   }
+
 
   public function suppArtwork($id)
   {
     $database = new Database();
-    $database->executeSql('DELETE 
+    $database->executeSql(
+      'DELETE 
     FROM artworks 
     WHERE Id = ?',
-    [$id]
+      [$id]
+    );
+    if (file_exists('application/www/ressources/images/bg/' . $id . '/bg.jpg')) {
+      unlink('application/www/ressources/images/bg/' . $id . '/bg.jpg');
+    }
+    if (is_dir('application/www/ressources/images/bg/' . $id)) {
+    rmdir('application/www/ressources/images/bg/' . $id);
+    }
+    $database->executeSql(
+      'ALTER TABLE artworks 
+      AUTO_INCREMENT = '.$id,
+      []
     );
   }
 
@@ -45,7 +67,8 @@ class ArtworksModel
   {
     $database = new Database();
     if (empty($files["artwork_pics"]["name"]) && empty($files["cover_pics"]["name"])) {
-      $database->executeSql('UPDATE artworks
+      $database->executeSql(
+        'UPDATE artworks
           SET Name = ?, Url = ?
           WHERE Id = ?',
         [
@@ -55,7 +78,8 @@ class ArtworksModel
         ]
       );
     } else if (empty($files["artwork_pics"]["name"])) {
-      $database->executeSql('UPDATE artworks
+      $database->executeSql(
+        'UPDATE artworks
           SET Name = ?, Url = ?, Image_Cover = ?
           WHERE Id = ?',
         [
@@ -66,7 +90,8 @@ class ArtworksModel
         ]
       );
     } else if (empty($files["cover_pics"]["name"])) {
-      $database->executeSql('UPDATE artworks
+      $database->executeSql(
+        'UPDATE artworks
           SET Name = ?, Url = ?, Image = ?
           WHERE Id = ?',
         [
@@ -77,7 +102,8 @@ class ArtworksModel
         ]
       );
     } else {
-      $database->executeSql('UPDATE artworks
+      $database->executeSql(
+        'UPDATE artworks
           SET Name = ?, Url = ?, Image = ?, Image_Cover = ?
           WHERE Id = ?',
         [
@@ -108,7 +134,7 @@ class ArtworksModel
     return $database->query($sql, []);
   }
 
-  
+
   public function getAllArtworks()
   {
     $database = new Database();
@@ -118,7 +144,7 @@ class ArtworksModel
     // var_dump($database);
     return $database->query($sql, []);
   }
-  
+
   public function getOneArtwork($get)
   {
     $database = new Database();
@@ -128,7 +154,7 @@ class ArtworksModel
     // var_dump($database);
     return $database->queryOne($sql, [$get]);
   }
-  
+
   public function getAllArtworkSeasons($get)
   {
     $database = new Database();
@@ -241,7 +267,7 @@ class ArtworksModel
     $http->moveUploadedFile("cover_pics", "/ressources/images/saisons");
     $http->redirectTo("/users/admin");
   }
-  
+
   public function search($post)
   {
     $database = new Database();
@@ -251,5 +277,4 @@ class ArtworksModel
             ORDER BY Name';
     return $database->query($sql, [$post, $post]);
   }
-  
 }

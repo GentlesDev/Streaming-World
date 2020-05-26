@@ -50,7 +50,7 @@ class OrderModel
     $database = new Database();
     $sql = 'SELECT *
       FROM orderline
-      INNER JOIN figurines ON orderline.Product_Id = figurines.Id
+      INNER JOIN products ON orderline.Product_Id = products.Id
       INNER JOIN orders ON orderline.Order_Id = orders.Id
       INNER JOIN users ON orders.User_Id = users.Id
       WHERE orders.Id = ?';

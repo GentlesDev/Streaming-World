@@ -25,7 +25,8 @@ $('.addToBasket').on('click', function (event) {
 
 $('.closePopUp').on('click', function () {
   $('#productPopUp').addClass('hide');
-  $('#errorPopUp').addClass('hide');
+  $('#errorPopUp').addClass('hide'); 
+  $('#infoPopUp').addClass('hiden');
 });
 
 $('.empty').on('click', function () {
@@ -71,7 +72,7 @@ let params = url.searchParams.get("artworkId");
 let currentBg = $('#haut').css('background');
 let j = 1;
 for (let i = 0; i <= variable.length; i++) {
-  //console.log(j);
+  console.log(j);
   if (params == j) {
     let newurl = currentBg.replace('images/tanjiro_nezu.png', 'images/bg/' + j + '/bg.jpg');
     $('#haut').css('background', newurl);
@@ -89,4 +90,31 @@ if (params == 3) {
 } else if (params == 10) {
   $('#haut').css('background-position-y', '105px');
 }
+
+
+
+if (window.location.href.indexOf('/index') != -1) {
+  $('.menu__item--current').removeClass('menu__item--current');
+  $('#home').addClass('menu__item--current');
+} 
+
+if (window.location.href.indexOf('/products') != -1) {
+  $('.menu__item--current').removeClass('menu__item--current');
+  $('#products').addClass('menu__item--current');
+  console.log('product');
+}
+
+if (window.location.href.indexOf('/streaming') != -1) {
+  $('.menu__item--current').removeClass('menu__item--current');
+  $('#streaming').addClass('menu__item--current');
+} 
+
+if (window.location.href.indexOf('/users') != -1) {
+  $('.menu__item--current').removeClass('menu__item--current');
+  $('#user').addClass('menu__item--current'); 
+  $('#users').addClass('menu__item--current');
+}
+
+
+//console.log(currentMenu);
 

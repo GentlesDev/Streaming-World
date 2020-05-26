@@ -2,26 +2,28 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
-<div>
-  <h3>Récapitulatif des commandes</h3>
+<div class='orders'>
+  <h2>Récapitulatif des commandes</h2>
   <a href="<?= $requestUrl ?>/users/admin"><button type="button" name="button" class="btn btn-back">Retour</button></a>
   <p>Cliquez sur un numéro de commande pour voir le détail !</p>
-  <table class="admin-table">
-    <thead>
-      <tr>
-        <th>Numéro de commande</th>
-        <th>Prix total</th>
-        <th>Détail de la commande</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($orders as $order) : ?>
+  <div style="height:730px; overflow:auto;">
+    <table class="admin-table">
+      <thead>
         <tr>
-          <td><a href="<?= $requestUrl ?>/users/admin/order/detail?orderId=<?= $order['Id'] ?>"><?= $order['Id'] ?></a></td>
-          <td><?= $order['TotalAmount'] ?>€</td>
-          <td><?= date('d/m/Y à H:i:s', strtotime($order['CreationTimestamp'])) ?></td>
+          <th>Numéro de commande</th>
+          <th>Prix total</th>
+          <th>Détail de la commande</th>
         </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <?php foreach ($orders as $order) : ?>
+          <tr>
+            <td><a href="<?= $requestUrl ?>/users/admin/order/detail?orderId=<?= $order['Id'] ?>"><?= $order['Id'] ?></a></td>
+            <td><?= $order['TotalAmount'] ?>€</td>
+            <td><?= date('d/m/Y à H:i:s', strtotime($order['CreationTimestamp'])) ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+    </div>
+  </div>

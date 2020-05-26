@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 23 mai 2020 à 12:26
+-- Généré le :  mar. 26 mai 2020 à 14:47
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `artworks` (
   `Image_Cover` varchar(150) NOT NULL,
   `In_Streaming` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `artworks`
@@ -54,7 +54,9 @@ INSERT INTO `artworks` (`Id`, `Name`, `Url`, `Image`, `Image_Cover`, `In_Streami
 (8, 'Gintama', 'gintama', 'gintama_cover.gif', 'gintama_cover.jpg', 'oui'),
 (9, 'Hajime No Ippo', 'ippo', 'ippo_cover.gif', 'ippo_cover.jpg', 'oui'),
 (10, 'Fate', 'fate', 'fate_cover.gif', 'fate_cover.jpg', 'oui'),
-(11, 'Saiki Kusuo No Psi Nan', 'saiki', 'saiki_cover.gif', 'saiki_cover.jpg', 'oui');
+(11, 'Saiki Kusuo No Psi Nan', 'saiki', 'saiki_cover.gif', 'saiki_cover.jpg', 'oui'),
+(12, 'Made In Abyss', 'madeinabyss', 'madeinabyss.gif', 'madeinabyss_cover.jpg', 'oui'),
+(13, 'Shingeki No Kyojin', 'snk', 'snk_cover.gif', 'snk_cover.jpg', 'oui');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `artworks_seasons` (
   `Season_Url` varchar(10000) DEFAULT NULL,
   `Artwork_Id` int(255) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `artworks_seasons`
@@ -109,7 +111,9 @@ INSERT INTO `artworks_seasons` (`Id`, `Season_Name`, `Season_Image`, `Season_Url
 (31, 'Fate Films/OAV', 'ffo.jpg', 'ffo', 10),
 (32, 'Saiki Kusuo No Psi Nan Saison 1', 'saiki.jpg', 'sks1', 11),
 (33, 'Saiki Kusuo No Psi Nan Saison 2', 'saiki.jpg', 'sks2', 11),
-(34, 'Saiki Kusuo No Psi Nan Saison 3', 'saiki.jpg', 'sks3', 11);
+(34, 'Saiki Kusuo No Psi Nan Saison 3', 'saiki.jpg', 'sks3', 11),
+(38, 'Made In Abyss Saison 1', 'madeinabyss_cover.jpg', 'madeinabysss1', 12),
+(39, 'Shingeki No Kyojin Saison 1', 'snk_cover.jpg', 'snks1', 13);
 
 -- --------------------------------------------------------
 
@@ -287,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `streaming` (
   `Video` varchar(120) NOT NULL,
   `CreationTimestamp` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `streaming`
@@ -390,7 +394,12 @@ INSERT INTO `streaming` (`Id`, `Artworks_Id`, `Caption`, `Status`, `Saison`, `De
 (103, 5, 'My Hero Academia 22 VOSTFR', 22, 'My Hero Academia Saison 4', 'qsq', 'Kimetsu_no_Yaiba_22_VOSTFR.mp4', '2020-05-21 15:32:35'),
 (104, 5, 'My Hero Academia 23 VOSTFR', 23, 'My Hero Academia Saison 4', 'fsdsdfsd', 'Kimetsu_no_Yaiba_23_VOSTFR.mp4', '2020-05-21 15:33:55'),
 (105, 10, 'Fate Apocrypha 1 VOSTFR', 1, 'Apocrypha', 'fate apo 1', 'fateapocrypha01.mp4', '2020-05-22 17:00:07'),
-(106, 10, 'Fate Apocrypha 2 VOSTFR', 2, 'Apocrypha', 'fate apocrypha 02', 'fateapocrypha02.mp4', '2020-05-23 14:26:10');
+(106, 10, 'Fate Apocrypha 2 VOSTFR', 2, 'Apocrypha', 'fate apocrypha 02', 'fateapocrypha02.mp4', '2020-05-23 14:26:10'),
+(107, 4, 'op 05 vostfr', 5, 'One Piece', 'sqdqsd', 'Kimetsu_no_Yaiba_11_VOSTFR.mp4', '2020-05-25 16:02:17'),
+(108, 4, 'op 08 vostfr', 8, 'One Piece', 'sqdsqdqsd', 'Kimetsu_no_Yaiba_17_VOSTFR.mp4', '2020-05-25 16:03:11'),
+(109, 13, 'Made In Abyss 01 VOSTFR', 1, 'Made In Abyss Saison 1', 'Episode 1', 'Made in Abyss - 01 vostfr FHD.mp4', '2020-05-26 15:23:52'),
+(110, 12, 'Made In Abyss 01 VOSTFR', 1, 'Made In Abyss Saison 1', 'Episode 01 VOSTFR', 'Made in Abyss - 01 vostfr FHD.mp4', '2020-05-26 16:10:07'),
+(111, 13, 'Shingeki No Kyojin 02 VOSTFR', 2, 'Shingeki No Kyojin Saison 1', 'Ep 2', 'shingeki+no+kyojin+02.mp4', '2020-05-26 16:27:53');
 
 -- --------------------------------------------------------
 

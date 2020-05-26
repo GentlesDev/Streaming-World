@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/persos/persos.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/persos/zenitsu/zenitsu.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/persos/zenitsu/zenitsuStyle.css">
-  <div></div>
+<div></div>
 <header>
   <h1 class="title title-main" style="text-align:center;">Zenitsu Agatsuma</h1>
   <div class="ban-top">
     <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav menu__list">
-        <li class="active menu__item menu__item--current"><a class="menu__link" href="<?= $requestUrl ?>/">Home <span class="sr-only">(current)</span></a></li>
-        <li class="dropdown menu__item">
+        <li class="menu__item"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
+        <li class="dropdown menu__item" id='persos'>
           <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">personnages <span class="caret"></span></a>
           <ul class="dropdown-menu multi-column columns-3">
             <div class="row">
@@ -35,15 +35,15 @@
               </div>
               <div class="col-sm-3 multi-gd-img">
                 <ul class="multi-column-dropdown">
-                  <?php foreach ($lines as $line) {?>
+                  <?php foreach ($lines as $line) { ?>
                     <li>
-                      <a href="<?= $requestUrl ?>/products/product?name=<?=$line['ProductLine']?>"><?= ucfirst($line['ProductLine']) ?></a>
-                      </li>
-                    <?php } ?>
+                      <a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>"><?= ucfirst($line['ProductLine']) ?></a>
+                    </li>
+                  <?php } ?>
                 </ul>
-              <div class="clearfix"></div>
+                <div class="clearfix"></div>
+              </div>
             </div>
-          </div>
           </ul>
         </li>
         <li class="dropdown menu__item">
@@ -57,7 +57,7 @@
               </div>
               <div class="col-sm-3 multi-gd-img">
                 <ul class="multi-column-dropdown">
-                  <?php foreach ($artworks as $artwork): ?>
+                  <?php foreach ($artworks as $artwork) : ?>
                     <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
                   <?php endforeach; ?>
                 </ul>
@@ -66,35 +66,36 @@
             </div>
           </ul>
         </li>
-        <?php if (array_key_exists('role', $_SESSION) === false){ ?>
-        <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
-      <?php }else{ ?>
-        <li class="dropdown menu__item">
-          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
-          <ul class="dropdown-menu multi-column columns-3">
-            <div class="row">
-              <div class="col-sm-3 multi-gd-img">
-                <ul class="multi-column-dropdown">
-                  <?php if ($_SESSION['role'] === 'admin'){ ?>
-                    <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
-                  <?php } ?>
-                  <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
-                  <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
-                </ul>
+        <?php if (array_key_exists('role', $_SESSION) === false) { ?>
+          <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
+        <?php } else { ?>
+          <li class="dropdown menu__item">
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="col-sm-3 multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <?php if ($_SESSION['role'] === 'admin') { ?>
+                      <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
+                    <?php } ?>
+                    <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
+                    <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
               </div>
-              <div class="clearfix"></div>
-            </div>
-          </ul>
-        </li>
+            </ul>
+          </li>
         <?php } ?>
       </ul>
     </div>
     <div class="top_nav_right">
       <div class="cart box_1">
         <a href="<?= $requestUrl ?>/basket">
-          <h3> <div class="total">
-            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-            <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
+          <h3>
+            <div class="total">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+              <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
           </h3>
         </a>
         <p><a href="javascript:;" class="empty">Vider votre panier</a></p>
@@ -105,57 +106,57 @@
 </header>
 <main class="container">
   <a class="comeBack" href="<?= $requestUrl ?>/oeuvres/kny"><i class="fas fa-arrow-circle-left"></i> Retour à la présentation</a>
-<section class="section-main background">
-	<h2 class="title-second">Background</h2>
-	<p>Il est un pourfendeurs de démons et un compagnon de voyage de Tanjiro. Zen'itsu est d'une personnalité lâche dû à une faible estime de lui-même, mais voulait toujours être à la hauteur des attentes des autres, même s'il était constamment effrayé, pleurait et s'enfuyait toujours. Il prétend vouloir vivre une vie modeste où il peut être utile à quelqu'un. Il devient une tout autre personne quand il s'endort lors d'un combat. Il s'est entraîné au « souffle de la foudre » (雷の呼吸法, Kaminari no kokyū-hō), par l'ancien pilier de la foudre, mais n'a pu apprendre que la première technique ; et pour cette raison, il se rabaisse souvent, malgré le fait qu'il n'est pas sans talent. Il a rejoint Tanjirō pour une mission et l'a accompagne depuis, en partie parce qu'il pense que Nezuko est belle. Son katana est jaune.</p>
-</section>
-<section class="section-main caractere">
-	<h2 class="title-second">Caractere</h2>
-	<p>Zenitsu a une faible estime de soi mais veut toujours être à la hauteur des attentes des autres. Cependant, il avait constamment peur et pleurait toujours. Il prétend qu'il veut vivre une vie modeste où il peut être utile à quelqu'un. En dépit de son manque de perspicacité, Zenitsu garde un grand respect et une grande admiration pour ses camarades et son enseignant Jigoro Kuwajima. Sa concentration et sa détermination à le venger l'ont aidé à se débarrasser de sa lâcheté et de ses pensées.<p>
-	<div class="second-container">
-		<figure>
-			<img alt="cara1" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_1.png">
-			<figcaption>Peureux</figcaption>
-		</figure>
-		<figure>
-			<img alt="cara2" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_2.png">
-			<figcaption>Pervers</figcaption>
-		</figure>
-		<figure>
-			<img alt="cara5" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_5.jpg">
-			<figcaption>Gag</figcaption>
-		</figure>
-		<figure>
-			<img alt="cara3" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_3.jpg">
-			<figcaption>Gag</figcaption>
-		</figure>
-		<figure id="str">
-			<img alt="cara4" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_4.jpg">
-			<figcaption>Strong</figcaption>
-		</figure>
-	</div>
-	<p>La nature féminine de Zenitsu l'emporte sur sa personnalité docile, en particulier lorsqu'il croit que ses camarades "flirtent" avec de jolies filles, il se met vite à photographier et se plaint. Au cours de ces périodes, il a également montré qu'il devenait agressif physiquement, libérant ses frustrations.</p>
-</section>
-<section class="section-main capacity">
-	<h2 class="title-second">Capacites</h2>
-	<article class="article-main natural">
-		<h3 class="title-third">Capacités Naturelles </h3>
-		<p><span class="capa">Sens de l'audition amélioré:</span> Zenitsu a un sens aigu de l'audition qui lui permet de détecter les dangers même des sons les plus faibles. Il pourrait également entendre les pensées intérieures des gens s'il utilispleinement le sens de l'audition. Cette capacité lui permet également de localiser immédiatement les démons en entendant le son différent produit par le corps du démon par rapport à un humain.</p>
-		<p><span class="capa">Capacité inconsciente:</span> Zenitsu devient plus fort quand il dort. Quand sa vie est en danger, la peur qu'il éprouve dépasse ses limites, le rendant inconscient. Lorsque Zenitsu est endormi, il peut exercer son escrime un haut niveau uniquement sur la base de son instinct. Cependant, alors qu'il continue d'améliorer ses compétences et son courage, il commence à dépendre de moins en moins de cette capacité et commence à présenter les mêmes compétences ecapacités lorsqu'il est conscient.</p>
-	</article>
-	<article class="article-main style">
-		<h3 class="title-third">Style</h3>
-		<p><span class="capa">Souffle électrique (雷の呼吸 Kaminari no kokyū):</span> Enseigné à Zenitsu par un ancien pilier, Jigoro Kuwajima. Cette technique augmente la force et l'agilité de l'utilisateur pour égaler celle d'un démon. Au total, six styles peuvent être utilisés avec le Souffle du tonnerre, mais Zenitsu était si peu talentueux qu'il n'a pu apprendre que le premier des six styles, ce qui est considéré comme le plus simple. Plus tard, il a réussi à créer un septième style econfrontant son ancien supérieur.</p>
-		<p><span class="gras">Premier style:</span> Coup de tonnerre et flash (Ichi no kata: Hekireki Issen) - L'utilisateur se précipite en avant et frappe son adversaire avec une rapidité incroyable. Zenitsu a affiné cette capacité au point de pouvoir répéter le tiret plusieurs fois de suite.</p>
-		<figure>
-			<img alt="souffle1" src="<?= $wwwUrl ?>/ressources/images/persos/first_mouv.gif">
-			<figcaption>1er mouvement</figcaption>
-		</figure>
-		<p><span class="gras">Premier style bis:</span> Il utilise généralement Six Fold (六連 Rokuren) (Six tirets), mais a pu utiliser Eight Fold (八連 Hachiren) pour courir huit fois au cours d'une utilisation de la technique.</p>
-		<figure>
-			<img alt="souffle2" src="<?= $wwwUrl ?>/ressources/images/persos/first_mouv_kai.gif">
-			<figcaption>1er mouvement: Six tirets</figcaption>
-		</figure>
-	</article>
-</section>
+  <section class="section-main background">
+    <h2 class="title-second">Background</h2>
+    <p>Il est un pourfendeurs de démons et un compagnon de voyage de Tanjiro. Zen'itsu est d'une personnalité lâche dû à une faible estime de lui-même, mais voulait toujours être à la hauteur des attentes des autres, même s'il était constamment effrayé, pleurait et s'enfuyait toujours. Il prétend vouloir vivre une vie modeste où il peut être utile à quelqu'un. Il devient une tout autre personne quand il s'endort lors d'un combat. Il s'est entraîné au « souffle de la foudre » (雷の呼吸法, Kaminari no kokyū-hō), par l'ancien pilier de la foudre, mais n'a pu apprendre que la première technique ; et pour cette raison, il se rabaisse souvent, malgré le fait qu'il n'est pas sans talent. Il a rejoint Tanjirō pour une mission et l'a accompagne depuis, en partie parce qu'il pense que Nezuko est belle. Son katana est jaune.</p>
+  </section>
+  <section class="section-main caractere">
+    <h2 class="title-second">Caractere</h2>
+    <p>Zenitsu a une faible estime de soi mais veut toujours être à la hauteur des attentes des autres. Cependant, il avait constamment peur et pleurait toujours. Il prétend qu'il veut vivre une vie modeste où il peut être utile à quelqu'un. En dépit de son manque de perspicacité, Zenitsu garde un grand respect et une grande admiration pour ses camarades et son enseignant Jigoro Kuwajima. Sa concentration et sa détermination à le venger l'ont aidé à se débarrasser de sa lâcheté et de ses pensées.<p>
+        <div class="second-container">
+          <figure>
+            <img alt="cara1" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_1.png">
+            <figcaption>Peureux</figcaption>
+          </figure>
+          <figure>
+            <img alt="cara2" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_2.png">
+            <figcaption>Pervers</figcaption>
+          </figure>
+          <figure>
+            <img alt="cara5" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_5.jpg">
+            <figcaption>Gag</figcaption>
+          </figure>
+          <figure>
+            <img alt="cara3" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_3.jpg">
+            <figcaption>Gag</figcaption>
+          </figure>
+          <figure id="str">
+            <img alt="cara4" src="<?= $wwwUrl ?>/ressources/images/persos/cara_zen_4.jpg">
+            <figcaption>Strong</figcaption>
+          </figure>
+        </div>
+        <p>La nature féminine de Zenitsu l'emporte sur sa personnalité docile, en particulier lorsqu'il croit que ses camarades "flirtent" avec de jolies filles, il se met vite à photographier et se plaint. Au cours de ces périodes, il a également montré qu'il devenait agressif physiquement, libérant ses frustrations.</p>
+  </section>
+  <section class="section-main capacity">
+    <h2 class="title-second">Capacites</h2>
+    <article class="article-main natural">
+      <h3 class="title-third">Capacités Naturelles </h3>
+      <p><span class="capa">Sens de l'audition amélioré:</span> Zenitsu a un sens aigu de l'audition qui lui permet de détecter les dangers même des sons les plus faibles. Il pourrait également entendre les pensées intérieures des gens s'il utilispleinement le sens de l'audition. Cette capacité lui permet également de localiser immédiatement les démons en entendant le son différent produit par le corps du démon par rapport à un humain.</p>
+      <p><span class="capa">Capacité inconsciente:</span> Zenitsu devient plus fort quand il dort. Quand sa vie est en danger, la peur qu'il éprouve dépasse ses limites, le rendant inconscient. Lorsque Zenitsu est endormi, il peut exercer son escrime un haut niveau uniquement sur la base de son instinct. Cependant, alors qu'il continue d'améliorer ses compétences et son courage, il commence à dépendre de moins en moins de cette capacité et commence à présenter les mêmes compétences ecapacités lorsqu'il est conscient.</p>
+    </article>
+    <article class="article-main style">
+      <h3 class="title-third">Style</h3>
+      <p><span class="capa">Souffle électrique (雷の呼吸 Kaminari no kokyū):</span> Enseigné à Zenitsu par un ancien pilier, Jigoro Kuwajima. Cette technique augmente la force et l'agilité de l'utilisateur pour égaler celle d'un démon. Au total, six styles peuvent être utilisés avec le Souffle du tonnerre, mais Zenitsu était si peu talentueux qu'il n'a pu apprendre que le premier des six styles, ce qui est considéré comme le plus simple. Plus tard, il a réussi à créer un septième style econfrontant son ancien supérieur.</p>
+      <p><span class="gras">Premier style:</span> Coup de tonnerre et flash (Ichi no kata: Hekireki Issen) - L'utilisateur se précipite en avant et frappe son adversaire avec une rapidité incroyable. Zenitsu a affiné cette capacité au point de pouvoir répéter le tiret plusieurs fois de suite.</p>
+      <figure>
+        <img alt="souffle1" src="<?= $wwwUrl ?>/ressources/images/persos/first_mouv.gif">
+        <figcaption>1er mouvement</figcaption>
+      </figure>
+      <p><span class="gras">Premier style bis:</span> Il utilise généralement Six Fold (六連 Rokuren) (Six tirets), mais a pu utiliser Eight Fold (八連 Hachiren) pour courir huit fois au cours d'une utilisation de la technique.</p>
+      <figure>
+        <img alt="souffle2" src="<?= $wwwUrl ?>/ressources/images/persos/first_mouv_kai.gif">
+        <figcaption>1er mouvement: Six tirets</figcaption>
+      </figure>
+    </article>
+  </section>
 </main>

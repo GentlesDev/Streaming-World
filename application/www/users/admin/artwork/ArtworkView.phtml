@@ -4,30 +4,32 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/admin/admin.css">
 
-  <main class="container">
+<main class="container">
 
-    <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
+  <a class="comeBack" href="<?= $requestUrl ?>/users/admin"><i class="fas fa-arrow-circle-left"></i></a>
+  <div style="height:730px; overflow:auto;">
     <table class="tableArtwork">
       <tbody>
         <tr class="titleCoke">
-          <td>Nom</td>
-          <td>Url</td>
-          <td>Image</td>
-          <td>Cover</td>
-          <td>Action</td>
+        <td>Nom</td>
+        <td>Url</td>
+        <td>Image</td>
+        <td>Cover</td>
+        <td>Action</td>
+      </tr>
+      <?php foreach ($artworks as $artwork) : ?>
+        <tr>
+          <td class="nCoke"><?= $artwork['Name'] ?></td>
+          <td class="nCoke"><?= $artwork['Url'] ?></td>
+          <td class="nCoke"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artwork['Image'] ?>" alt=""></td>
+          <td class="nCoke"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artwork['Image_Cover'] ?>" alt=""></td>
+          <td class="aCoke">
+            <a href="<?= $requestUrl ?>/users/admin/artwork/update?artworkId=<?= $artwork['Id'] ?>"><i class="fas fa-pen"></i></a>
+            <a href="<?= $requestUrl ?>/users/admin/artwork/delete?artworkId=<?= $artwork['Id'] ?>"><i class="fas fa-trash"></i></a>
+          </td>
         </tr>
-        <?php foreach ($artworks as $artwork):?>
-          <tr>
-            <td class="nCoke"><?=$artwork['Name']?></td>
-            <td class="nCoke"><?=$artwork['Url']?></td>
-            <td class="nCoke"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?=$artwork['Image']?>" alt=""></td>
-            <td class="nCoke"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?=$artwork['Image_Cover']?>" alt=""></td>
-            <td class="aCoke">
-              <a href="<?= $requestUrl ?>/users/admin/artwork/update?artworkId=<?= $artwork['Id'] ?>"><i class="fas fa-pen"></i></a>
-              <a href="<?= $requestUrl ?>/users/admin/artwork/delete?artworkId=<?= $artwork['Id'] ?>"><i class="fas fa-trash"></i></a>
-            </td>
-          </tr>
-        <?php endforeach;?>
+        <?php endforeach; ?>
       </tbody>
     </table>
-  </main>
+  </div>
+</main>

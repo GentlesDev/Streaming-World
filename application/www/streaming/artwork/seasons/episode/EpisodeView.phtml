@@ -13,13 +13,33 @@
 <main class="container">
   <div class="content">
     <div class="episode">
-      <?php if ($status - 1 === 0) { ?>
+      <?php
+      $previous = null;
+      $next = null;
+      $tab = [];
+      for ($i=0; $i < count($episodes); $i++) { 
+        if ($episodes[$i]['Status'] == $status - 1) {
+          //var_dump('previous');
+          $previous = 'previous';
+        }
+        if ($episodes[$i]['Status'] == $status + 1) {
+          //var_dump('next');
+          $next = 'next';
+        }
+        //array_push($tab, $episodes[$i]);
+      }
+      //var_dump($tab[0]['Status']);
+      //var_dump($episodes[0]['Status']);
+      //var_dump(array_search($status, $episodes[0]));
+      //var_dump($status+1);
+      if ($previous !== 'previous') { ?>
 
       <?php } else { ?>
-        <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $status - 1 ?>"><i class="far fa-arrow-alt-circle-left"></i> Episode précédent</a>
+        
+        <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $status -1 ?>"><i class="far fa-arrow-alt-circle-left"></i> Episode précédent</a>
       <?php } ?>
       <h2 class="title-vid"><?= $artworkEpisode['Caption'] ?></h2>
-      <?php if (($status + 1) > count($episodes)) { ?>
+      <?php if ($next !== 'next') { ?>
 
       <?php } else { ?>
         <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $status + 1 ?>">Episode suivant <i class="far fa-arrow-alt-circle-right"></i></a>
