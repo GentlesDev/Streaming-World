@@ -9,11 +9,13 @@ class StreamingController
     $productsModel = new ProductsModel();
     $artworks = $artworkModel->getAllArtworks();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $artworksList = $artworkModel->getAllArtworksAvailableList();
     $lines = $productsModel->getAllLines();
     return[
       "lines"=>$lines,
       "artworks"=>$artworks,
-      "artworkStreams"=>$artworkStreams
+      "artworkStreams"=>$artworkStreams,
+      "artworksList"=>$artworksList
     ];
   }
 

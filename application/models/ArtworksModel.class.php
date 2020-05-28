@@ -122,6 +122,16 @@ class ArtworksModel
     $http->moveUploadedFile("cover_pics", "/ressources/images/cover");
     $http->redirectTo("/users/admin");
   }
+  
+  public function getAllArtworks()
+  {
+    $database = new Database();
+    $sql = 'SELECT *
+            FROM artworks
+            ORDER BY Name';
+    // var_dump($database);
+    return $database->query($sql, []);
+  }
 
   public function getAllArtworksAvailable()
   {
@@ -134,13 +144,14 @@ class ArtworksModel
     return $database->query($sql, []);
   }
 
-
-  public function getAllArtworks()
+  public function getAllArtworksAvailableList()
   {
     $database = new Database();
-    $sql = 'SELECT *
+    $sql ='SELECT *
             FROM artworks
-            ORDER BY Name';
+            WHERE In_Streaming = "oui"
+            ORDER BY Name
+            LIMIT 9 OFFSET ' . intval($_GET['start']);
     // var_dump($database);
     return $database->query($sql, []);
   }

@@ -8,14 +8,25 @@
     <input type="search" name="search" id="search" placeholder="Recherchez votre film, série, anime...">
     <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
   </form>
-  <div class="display-vid">
-    <?php foreach ($searches as $search) : ?>
-      <div class="banner-vid">
-        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $search['Url'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $search['Image'] ?>" alt="">
-          <p style="text-transform: capitalize"><?= $search['Name'] ?></p>
-        </a>
+  <?php if (count($searches) < 9) { ?>
+    <div class="display-vid">
+      <?php foreach ($searches as $search) : ?>
+        <div class="banner-vid">
+          <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $search['Url'] ?>&artworkId=<?= $search['Id'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $search['Image'] ?>" alt="">
+            <p style="text-transform: capitalize"><?= $search['Name'] ?></p>
+          </a>
+        </div>
+      <?php endforeach;
+    } else { ?>
+      <div class="display-vid" style="height: 680px;overflow: auto;">
+        <?php foreach ($searches as $search) : ?>
+          <div class="banner-vid">
+            <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $search['Url'] ?>&artworkId=<?= $search['Id'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $search['Image'] ?>" alt="">
+              <p style="text-transform: capitalize"><?= $search['Name'] ?></p>
+            </a>
+          </div>
+      <?php endforeach;
+      }  ?>
       </div>
-    <?php endforeach; ?>
-  </div>
 </main>
 <script type="text/javascript" src="<?= $wwwUrl ?>/js/search.js"></script>

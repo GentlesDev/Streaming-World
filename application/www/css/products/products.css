@@ -1,51 +1,73 @@
-main{
+main {
   display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-.container{
+.container {
   width: 100%;
 }
 
-.title-section{
+.title-section {
   text-align: center;
   margin-bottom: 20px;
   width: 100%;
 }
 
+.result strong{
+  color: #faa30f;
+}
 
-.products{
+.products {
   display: flex;
   align-items: flex-start;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  width: 100%;
 }
 
-.list{
+.list {
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 20px;
   width: 65%;
   background: rgba(0, 0, 0, 0.7);
   padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+}
+
+.nav-product {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.nav-product a {
+  color: rgba(250, 163, 15, 0.5);
+  transition: all 500ms;
+}
+
+.nav-product a:hover {
+  color: rgba(250, 163, 15, 1);
 }
 
 .product-mosaic {
-	text-align: center;
-	width: 23%;
-	padding: 10px 1%;
-	vertical-align: top;
-	border-radius:5%;
-	margin-right: 1%;
-	margin-left: 1%;
+  text-align: center;
+  width: 23%;
+  padding: 10px 1%;
+  vertical-align: top;
+  border-radius: 5%;
+  margin-right: 1%;
+  margin-left: 1%;
   display: flex;
   flex-direction: column;
 }
 
 .product-mosaic a {
-	text-decoration: none;
-	color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .lines {
@@ -57,56 +79,56 @@ main{
   margin-right: 20px;
 }
 
-.lines li{
+.lines li {
   list-style: none;
 }
 
 .lines a {
-	text-decoration: none;
-	color: white;
+  text-decoration: none;
+  color: white;
 }
 
-.lines h4{
+.lines h4 {
   color: #faa30f;
   text-decoration: underline;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.addToBasket p{
-  background: rgba(0,0,0,0);
+.addToBasket p {
+  background: rgba(0, 0, 0, 0);
   padding: 10px;
   transition: 0.5s all;
 }
 
-.addToBasket p:hover{
+.addToBasket p:hover {
   background: #faa30f;
 }
 
-.search-bar{
+.search-bar {
   width: 100%;
   margin-bottom: 15px;
 }
 
 input[type="search"] {
-    border: none;
-    background: none;
-    border-bottom: 3px solid #fda30d;
+  border: none;
+  background: none;
+  border-bottom: 3px solid #fda30d;
 }
 
 button {
-    border: none;
-    /* padding: 5px 10px; */
-    background: none;
+  border: none;
+  /* padding: 5px 10px; */
+  background: none;
 }
 
 form.search-form {
-    background-color: rgba(0,0,0,0.2);
-    width: 23%;
-    padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 23%;
+  padding: 10px;
 }
 
-.display-vid{
+.display-vid {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,70 +136,68 @@ form.search-form {
   margin-top: 20px;
 }
 
-.banner-vid{
+.banner-vid {
   width: 30%;
   margin: 20px 0;
 }
 
 .product {
-	color: #faa30f;
+  color: #faa30f;
   text-align: center;
 }
 
 .product-mosaic h3 {
-	color: white;
-	font-size: 22px;
+  color: white;
+  font-size: 22px;
 }
 
 .product-mosaic:hover h3 {
-	text-shadow:0 1px 0 black, 0 -1px 0 black;
-	color: #faa30f;
+  text-shadow: 0 1px 0 black, 0 -1px 0 black;
+  color: #faa30f;
 }
 
 .product-mosaic img {
-	display: block;
-	width: 100px;
-	height: 100px;
-	margin:auto;
-	border: 1px solid grey;
-	border-radius: 50%;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 1px solid grey;
+  border-radius: 50%;
 }
 
 .product-mosaic form {
-	display: inline-block;
+  display: inline-block;
   margin-top: auto;
 }
 
 .product-mosaic form input {
-	width: 25px;
-	height: 25px;
-	margin:0;
-	padding:0;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
   border: none;
 }
 
 .product-mosaic form button {
-	background-color: rgba(0, 0, 0, 0);
-	border: none;
-	vertical-align: middle;
-	outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  vertical-align: middle;
+  outline: none;
 }
 
 .product-mosaic form button i {
-	color: #faa30f;
-	font-size: 30px;
-
+  color: #faa30f;
+  font-size: 30px;
 }
 
 @media only screen and (max-width:760px) {
-	main {
-		padding-left: 10%;
-    	padding-right: 10%;
-	}
-
-	.product-mosaic {
-		width: 90%;
-		margin-left: 0;
-		margin-right: 0;
-	}
+  main {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .product-mosaic {
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

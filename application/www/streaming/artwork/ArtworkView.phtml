@@ -3,11 +3,8 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/artwork/artwork.css">
 
 <main class="container">
+  <a class="comeBack" href="<?= $requestUrl ?>/streaming?start=0" style="background:none;line-height: 0;"><i class="fas fa-arrow-circle-left" aria-hidden="true"></i></a>
   <h2 class="title-section"><?= $title['Name'] ?></h2>
-  <form class="search-form" action="<?= $requestUrl ?>/streaming/search" method="post">
-    <input type="search" name="search" id="search" placeholder="Recherchez votre film, série, anime...">
-    <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
-  </form>
   <div class="display-vid">
     <?php foreach ($seasons as $season) : ?>
       <div class="banner-vid">

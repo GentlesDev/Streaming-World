@@ -12,6 +12,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  overflow: auto;
 }
 
 .episode-list a {
@@ -33,6 +34,6 @@ ul {
   height: 190px;
 }
 
-.title-section{
+.title-section {
   color: #fda30e;
 }

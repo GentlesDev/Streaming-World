@@ -7,13 +7,34 @@
     <input type="search" name="search" id="search" placeholder="Recherchez votre film, série, anime...">
     <button type="submit" name="envoi"><i class="fas fa-search"></i></button>
   </form>
-    <div class="display-vid">
-    <?php foreach ($artworkStreams as $artworkStream): ?>
+  <div class="display-vid">
+    <?php foreach ($artworksList as $artwork) : ?>
       <div class="banner-vid">
-        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artworkStream['Url'] ?>&artworkId=<?= $artworkStream['Id'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artworkStream['Image'] ?>" alt="">
-      <p style="text-transform: capitalize"><?= $artworkStream['Name'] ?></p></a>
-    </div>
+        <a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>&artworkId=<?= $artwork['Id'] ?>"><img src="<?= $wwwUrl ?>/ressources/images/cover/<?= $artwork['Image'] ?>" alt="">
+          <p style="text-transform: capitalize"><?= $artwork['Name'] ?></p>
+        </a>
+      </div>
     <?php endforeach; ?>
+    <div class="nav-episode">
+      <?php if ($_GET['start'] != 0) {
+        if ($_GET['start'] - 9 <= 0) { ?>
+          <a href="<?= $requestUrl ?>/streaming?start=0">Précédent <i class="fas fa-chevron-left"></i></a>
+        <?php } else { ?>
+          <a href="<?= $requestUrl ?>/streaming?start=<?= $_GET['start'] - 9 ?>">Précédent <i class="fas fa-chevron-left"></i></a>
+        <?php }
+      } else { ?>
+        <i class="fas fa-chevron-left"></i>
+      <?php } ?>
+      <?php if ($_GET['start'] + 9 <= count($artworksList)) {
+        if ($_GET['start'] + 9 >= count($artworksList)) { ?>
+          <a href="<?= $requestUrl ?>/streaming?start=<?= count($artworksList) ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php } else { ?>
+          <a href="<?= $requestUrl ?>/streaming?start=<?= $_GET['start'] + 9 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php }
+      } else { ?>
+        <i class="fas fa-chevron-right"></i>
+      <?php } ?>
+    </div>
   </div>
 </main>
 <script type="text/javascript" src="<?= $wwwUrl ?>/js/search.js"></script>

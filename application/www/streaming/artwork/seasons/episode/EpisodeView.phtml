@@ -3,21 +3,30 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/episode/episode.css">
 <div class="background"></div>
 
-<aside class="episode-list">
-  <ul>
-    <?php foreach ($episodes as $episode) : ?>
-      <li><a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $episode['ArtworkId'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>"><?= $episode['Caption'] ?></a></li>
-    <?php endforeach; ?>
-  </ul>
-</aside>
-<main class="container">
+<?php if (count($episodes) < 30) { ?>
+  <aside class="episode-list">
+    <ul>
+      <?php foreach ($episodes as $episode) : if ($episode['Caption'] == $artworkEpisode['Caption']) { ?>
+          <li><a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $episode['ArtworkId'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>" id="current"><?= $episode['Caption'] ?></a></li>
+        <?php } else { ?>
+          <li><a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $episode['ArtworkId'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>"><?= $episode['Caption'] ?></a></li>
+      <?php }
+      endforeach; ?>
+    </ul>
+  </aside>
+<?php } else { ?>
+  <aside class="episode-list" style="height: 680px;">
+    <ul>
+      <?php foreach ($episodes as $episode) : ?>
+        <li><a href=" <?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $episode['ArtworkId'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>"><?= $episode['Caption'] ?> </a> </li> <?php endforeach; ?> </ul>
+  </aside> <?php } ?> <main class="container">
   <div class="content">
     <div class="episode">
       <?php
       $previous = null;
       $next = null;
       $tab = [];
-      for ($i=0; $i < count($episodes); $i++) { 
+      for ($i = 0; $i < count($episodes); $i++) {
         if ($episodes[$i]['Status'] == $status - 1) {
           //var_dump('previous');
           $previous = 'previous';
@@ -35,8 +44,8 @@
       if ($previous !== 'previous') { ?>
 
       <?php } else { ?>
-        
-        <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $status -1 ?>"><i class="far fa-arrow-alt-circle-left"></i> Episode précédent</a>
+
+        <a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $status - 1 ?>"><i class="far fa-arrow-alt-circle-left"></i> Episode précédent</a>
       <?php } ?>
       <h2 class="title-vid"><?= $artworkEpisode['Caption'] ?></h2>
       <?php if ($next !== 'next') { ?>
@@ -50,17 +59,30 @@
   </div>
   <section class="espace-com">
     <h4>Espace commentaire</h4>
-    <div class="show-post">
-      <?php for ($i = 0; $i < count($posts); $i++) { ?>
-        <div class="post">
-          <h5 class="title-post"><?= $posts[$i]['Nickname'] ?></h5>
-          <p><?= $posts[$i]['Content'] ?></p>
-          <small><em>Le <?= date('d/m/Y à H:m:s', strtotime($posts[$i]['CreationTimestamp'])) ?></em></small>
-          <hr class="separation">
-        </div>
-      <?php } ?>
-    </div>
-    <?php if (array_key_exists('pseudo', $_SESSION)) { ?>
+    <?php if (count($posts) < 3) { ?>
+      <div class="show-post">
+        <?php for ($i = 0; $i < count($posts); $i++) { ?>
+          <div class="post">
+            <h5 class="title-post"><?= $posts[$i]['Nickname'] ?></h5>
+            <p><?= $posts[$i]['Content'] ?></p>
+            <small><em>Le <?= date('d/m/Y à H:m:s', strtotime($posts[$i]['CreationTimestamp'])) ?></em></small>
+            <hr class="separation">
+          </div>
+        <?php } ?>
+      </div>
+    <?php } else { ?>
+      <div class="show-post" style="height: 320px;">
+        <?php for ($i = 0; $i < count($posts); $i++) { ?>
+          <div class="post">
+            <h5 class="title-post"><?= $posts[$i]['Nickname'] ?></h5>
+            <p><?= $posts[$i]['Content'] ?></p>
+            <small><em>Le <?= date('d/m/Y à H:m:s', strtotime($posts[$i]['CreationTimestamp'])) ?></em></small>
+            <hr class="separation">
+          </div>
+        <?php } ?>
+      </div>
+    <?php }
+    if (array_key_exists('pseudo', $_SESSION)) { ?>
       <form class="form-post" action="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $artworkEpisode['ArtworkId'] ?>&season=<?= $artworkEpisode['Season_Url'] ?>&status=<?= $artworkEpisode['Status'] ?>" method="post">
         <textarea name="post" rows="4" cols="80" placeholder="Ecrire un nouveau commentaire"></textarea>
         <input type="hidden" name="episodeId" value="<?= $artworkEpisode['Status'] ?>">

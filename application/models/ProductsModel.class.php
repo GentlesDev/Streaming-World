@@ -7,7 +7,16 @@ class ProductsModel {
     FROM products';
     // var_dump($database);
     return $database->query($sql, []);
+  }
 
+  public function getAllProductsList($get)
+  {
+    $database = new Database();
+    $sql = 'SELECT *
+    FROM products
+    LIMIT 12 OFFSET '.intval($get);
+    // var_dump($database);
+    return $database->query($sql, []);
   }
 
   public function getOneProduct($id)
@@ -40,7 +49,8 @@ class ProductsModel {
     $sql = 'SELECT *
     FROM products
     INNER JOIN productline ON productline.ProductLine = products.ProductLine
-    WHERE products.ProductLine = ?';
+    WHERE products.ProductLine = ?
+    LIMIT 12 OFFSET '. intval($_GET['start']);
     return $database->query($sql, [$_GET['name']]);
   }
 

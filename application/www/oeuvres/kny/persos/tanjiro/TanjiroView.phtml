@@ -1,231 +1,232 @@
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/persos/persos.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/persos/tanjiro/tanjiro.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/kny/persos/tanjiro/tanjiroStyle.css">
-  <div></div>
+<div></div>
 <header>
-  <h1 class="title title-main" style="text-align:center;">Tanjiro Kamado</h1>
-  <div class="ban-top">
-    <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav menu__list">
-        <li class="menu__item"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
-        <li class="dropdown menu__item" id='persos'>
-          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">personnages <span class="caret"></span></a>
-          <ul class="dropdown-menu multi-column columns-3">
-            <div class="row">
-              <div class="col-sm-3 multi-gd-img">
-                <ul class="multi-column-dropdown">
-                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/tanjiro">Tanjiro</a></li>
-                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/nezuko">Nezuko</a></li>
-                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/inosuke">Inosuke</a></li>
-                  <li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/zenitsu">Zenitsu</a></li>
-                </ul>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </ul>
-        </li>
-        <li class="dropdown menu__item">
-          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
-          <ul class="dropdown-menu multi-column columns-3">
-            <div class="row">
-              <div class="col-sm-3 multi-gd-img">
-                <ul class="multi-column-dropdown">
-                  <li><a href="<?= $requestUrl ?>/products">Tous nos produits</a></li>
-                </ul>
-              </div>
-              <div class="col-sm-3 multi-gd-img">
-                <ul class="multi-column-dropdown">
-                  <?php foreach ($lines as $line) {?>
-                    <li>
-                      <a href="<?= $requestUrl ?>/products/product?name=<?=$line['ProductLine']?>"><?= ucfirst($line['ProductLine']) ?></a>
-                      </li>
-                    <?php } ?>
-                </ul>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          </ul>
-        </li>
-        <li class="dropdown menu__item">
-          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
-          <ul class="dropdown-menu multi-column columns-3">
-            <div class="row">
-              <div class="col-sm-3 multi-gd-img">
-                <ul class="multi-column-dropdown">
-                  <li><a href="<?= $requestUrl ?>/streaming">Tous nos streamings</a></li>
-                </ul>
-              </div>
-              <div class="col-sm-3 multi-gd-img">
-                <ul class="multi-column-dropdown">
-                  <?php foreach ($artworks as $artwork): ?>
-                    <li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>"><?= $artwork['Name'] ?></a></li>
-                  <?php endforeach; ?>
-                </ul>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </ul>
-        </li>
-        <?php if (array_key_exists('role', $_SESSION) === false){ ?>
-        <li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
-      <?php }else{ ?>
-        <li class="dropdown menu__item">
-          <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
-          <ul class="dropdown-menu multi-column columns-3">
-            <div class="row">
-              <div class="col-sm-3 multi-gd-img">
-                <ul class="multi-column-dropdown">
-                  <?php if ($_SESSION['role'] === 'admin'){ ?>
-                    <li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
-                  <?php } ?>
-                  <li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
-                  <li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
-                </ul>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </ul>
-        </li>
-        <?php } ?>
-      </ul>
-    </div>
-    <div class="top_nav_right">
-      <div class="cart box_1">
-        <a href="<?= $requestUrl ?>/basket">
-          <h3> <div class="total">
-            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-            <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
-          </h3>
-        </a>
-        <p><a href="javascript:;" class="empty">Vider votre panier</a></p>
+	<h1 class="title title-main" style="text-align:center;">Tanjiro Kamado</h1>
+	<div class="ban-top">
+		<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav menu__list">
+				<li class="menu__item" id='home'><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
+				<li class="dropdown menu__item" id='persos'>
+					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">personnages</a>
+					<ul class="dropdown-menu multi-column columns-3">
+						<div class="row">
+							<div class="col-sm-3 multi-gd-img">
+								<ul class="multi-column-dropdown">
+									<li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/tanjiro">Tanjiro</a></li>
+									<li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/nezuko">Nezuko</a></li>
+									<li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/inosuke">Inosuke</a></li>
+									<li><a href="<?= $requestUrl ?>/oeuvres/kny/persos/zenitsu">Zenitsu</a></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</ul>
+				</li>
+				<li class="dropdown menu__item">
+					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+					<ul class="dropdown-menu multi-column columns-3">
+						<div class="row">
+							<div class="col-sm-3 multi-gd-img">
+								<ul class="multi-column-dropdown">
+									<li><a href="<?= $requestUrl ?>/products?start=0">Tous nos produits</a></li>
+								</ul>
+							</div>
+							<div class="col-sm-3 multi-gd-img">
+								<ul class="multi-column-dropdown">
+									<?php foreach ($lines as $line) { ?>
+										<li>
+											<a href="<?= $requestUrl ?>/products/product?name=<?= $line['ProductLine'] ?>&start=0"><?= ucfirst($line['ProductLine']) ?></a>
+										</li>
+									<?php } ?>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</ul>
+				</li>
+				<li class="dropdown menu__item">
+					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+					<ul class="dropdown-menu multi-column columns-3">
+						<div class="row">
+							<div class="col-sm-3 multi-gd-img">
+								<ul class="multi-column-dropdown">
+									<li><a href="<?= $requestUrl ?>/streaming?start=0">Tous nos streamings</a></li>
+								</ul>
+							</div>
+							<div class="col-sm-3 multi-gd-img">
+								<ul class="multi-column-dropdown">
+									<?php foreach ($artworkStreams as $artwork) : ?>
+										<li><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artwork['Url'] ?>&artworkId=<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></a></li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</ul>
+				</li>
+				<?php if (array_key_exists('role', $_SESSION) === false) { ?>
+					<li class=" menu__item"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
+				<?php } else { ?>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+						<ul class="dropdown-menu multi-column columns-3">
+							<div class="row">
+								<div class="col-sm-3 multi-gd-img">
+									<ul class="multi-column-dropdown">
+										<?php if ($_SESSION['role'] === 'admin') { ?>
+											<li><a href="<?= $requestUrl ?>/users/admin">Admin</a></li>
+										<?php } ?>
+										<li><a href="<?= $requestUrl ?>/users/profil">Profil</a></li>
+										<li><a href="<?= $requestUrl ?>/users/logout">Logout</a></li>
+									</ul>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</ul>
+					</li>
+				<?php } ?>
+			</ul>
+		</div>
+		<div class="top_nav_right">
+			<div class="cart box_1">
+				<a href="<?= $requestUrl ?>/basket">
+					<h3>
+						<div class="total">
+							<i class="fas fa-shopping-cart" aria-hidden="true"></i>
+							<span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
+					</h3>
+				</a>
+				<p><a href="javascript:;" class="empty">Vider votre panier</a></p>
 
-      </div>
-    </div>
-  </div>
-</header>
-<main class="container">
-    <a class="comeBack" href="<?= $requestUrl ?>/oeuvres/kny"><i class="fas fa-arrow-circle-left"></i> Retour à la présentation</a>
-<section class="section-main background">
-	<h2 class="title-second">Background</h2>
-	<p>Protagoniste de l'histoire, il est le premier enfant d'un vendeur de charbon de bois. Toute sa famille a été attaquée par un démon alors qu'il vendait du charbon de bois, seule sa sœur Nezuko ayant survécu ; il voyage depuis lors avec sa sœur à la recherche d'un antidote pour cette dernière afin de la reconvertir en une humaine. Il est devenu un pourfendeurs de démons après un long entraînement avec Sakonji Urokodaki et appris le style d'épée « souffle de l'eau » (水の呼吸法, Mizu no kokyū-hō), mais a depuis commencé à se diversifier ; il a commencé à utiliser la « Danse du dieu du feu » (ヒノカミ神楽, Hinokami kagura) de sa famille, comme forme de combat plus puissant. Son crâne est extrêmement épais et ses coups de boule sont souvent utilisés comme des gags à travers la série. C'est un garçon au bon cœur et il éprouve souvent de la tristesse pour les démons et leurs victimes. Son optimisme sans fin et sa nature simple font souvent que les gens apprécient sa compagnie, mais en même temps, cela le met également en contradiction avec certaines personnalités. Il a également un sens de l'odorat très développé. Son katana est noir.</p>
-</section>
-<section class="section-main caractere">
-	<h2 class="title-second">Caractere</h2>
-	<p>Tanjiro est gentil par nature et a été décrit par d'autres comme ayant des yeux très doux. Il a beaucoup de détermination et n'abandonnera pas tant qu'il aura un objectif à atteindre. Le meilleur exemple de cela est sa quête incessante de trouver un traitement curatif pour Nezuko. Même s'il est relativement fort en soi, Tanjiro n'est pas opposé à demander de l'aide aux autres quand il en a besoin. Il est très protecteur de ses amis et encore plus de sa sœur cadette. Cependant, malgré sa nature aimable et compréhensive, Tanjiro a une limite à sa tolérance et un dégoût pour la grossièreté, car il est facilement contrarié par les plaintes constantes de Zenitsu Agatsuma et irrité par les actes barbares d’Inosuke Hashibira.</p>
-	<div class="second-container">
-		<figure>
-			<img alt="cara1" src="<?= $wwwUrl ?>/ressources/images/persos/cara1.png">
-			<figcaption>Déterminé</figcaption>
-		</figure>
-		<figure>
-			<img alt="cara2" src="<?= $wwwUrl ?>/ressources/images/persos/cara2.png">
-			<figcaption>Déterminé</figcaption>
-		</figure>
-		<figure>
-			<img alt="cara3" src="<?= $wwwUrl ?>/ressources/images/persos/cara3.png">
-			<figcaption>Soucieux</figcaption>
-		</figure>
-		<figure>
-			<img alt="cara4" src="<?= $wwwUrl ?>/ressources/images/persos/cara4.png">
-			<figcaption>Family</figcaption>
-		</figure>
-		<figure>
-			<img alt="cara5" src="<?= $wwwUrl ?>/ressources/images/persos/cara5.png">
-			<figcaption>Family</figcaption>
-		</figure>
-	</div>
-	<p>L'attribut le plus remarquable de Tanjiro est sa capacité d'empathie avec quiconque, même avec les démons, ce qui le faisait souvent hésiter avant de porter le coup de grâce. Ce moment d'hésitation présentait néanmoins un inconvénient, car il a permis à certains démons de tirer parti de la nature compréhensive de Tanjiro pour se rétablir et poursuivre le combat, même si c'est rarement le cas. Son courage pour protéger les plus faibles l'a engagé à faire face à ses ennemis avec respect et dignité, qu'il soit bon ou mauvais.</p>
-</section>
-<section class="section-main capacity">
-	<h2 class="title-second">Capacites</h2>
-	<article class="article-main natural">
-		<h3 class="title-third">Capacités Naturelles </h3>
-		<p><span class="capa">Amélioration du sens de l'odorat:</span> Tanjiro a eu un sens de l'odorat élevé avant même d'avoir suivi un entraînement d'épée. Il est assez fort pour sentir la «ligne d'intervalle» - la légère pause dans le mouvement d'un ennemi qui lui permet une ouverture pour frapper - et pour distinguer les espèces ainsi que leur position approximative. Après avoir pratiqué cette technique pendant qu'il était chasseur de démons, Tanjiro a acquis la capacité de sentir les émotions ainsi que de suivre les objets, les humains et les démons sur de longues distances.</p>
-		<p><span class="capa">Capacité de combat:</span> Ce trait de Tanjiro a été souligné par Giyu Tomioka lors de leur première rencontre, dans laquelle Tanjiro a habilement préparé un plan pour attaquer Giyu par surprise en le chargeant, ne montrant pas au Chasseur de démons qu'il n'était pas armé et en abattant Giyu avec une hache qu'il avait jeté en l'air auparavant. L'attaque a échoué, mais Giyu était toujours très impressionné par le plan de Tanjiro, d'autant plus qu'il était un débutant à l'époque.</p>
-		<p><span class="capa">Force accrue:</span> Après son entraînement à la montagne Sagiri, Tanjiro a acquis une force et une vitesse immenses et en a fait un grand usage, comme il l'a vu lorsqu'il a sauté deux fois de sa taille par-dessus le démon à pusieurs mains, qui a tué les disciples de Sakonji Urokodaki (son maître), lors de la sélection finale. Son front est remarquablement robuste, bien que cela ne serve finalement qu’à devenir l’un des gags courants de la série.</p>
-	</article>
-	<article class="article-main style">
-		<h3 class="title-third">Style</h3>
-		<p><span class="capa">Souffle d'eau (水 の 呼吸 Mizu no kokyū):</span> Il lui a été enseigné par Sakonji Urokodaki, le pilier de l'eau avant Giyu. L'utilisateur peut augmenter la quantité d'oxygène dans son sang en contrôlant son schéma respiratoire, ce qui augmente sa force et son agilité jusqu'à égaler celle d'un démon. Tanjiro a maintenant appris à faire des respirations avec concentration totale à tout moment, augmentant encore sa force de base, sa vitesse et son endurance. Avec cette force accrue et cette capacité à trouver la «ligne d'intervalle», Tanjiro peut utiliser dix mouvements différents:</p>
-		<div class="mvts">
-			<div class="mvt">
-				<p><span class="gras">Premier style:</span> tranche de surface de l'eau (Ichi no kata: Minamo giri): Une seule barre concentrée.</p>
-				<figure>
-					<img alt="souffle1" src="<?= $wwwUrl ?>/ressources/images/persos/souffle1.gif">
-					<figcaption>1er mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Deuxième style:</span> roue à eau (ノ 型 水車 Ni no kata: Mizu guruma): Tanjiro saute et fait tourner son corps en tranchant.<span class="gras">Deuxième style modifié:</span> roue à eau horizontale (型 水車 水車 Ni no kata kai: Yoko mizu guruma)</p>
-				<figure>
-					<img alt="souffle2" src="<?= $wwwUrl ?>/ressources/images/persos/souffle2.gif">
-					<figcaption>2eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Troisième style:</span> Danse du courant rapide (San no kata: Ryūryū mai): Tanjiro lance sa lame sur son adversaire de manière à imiter le mouvement des vagues à la surface de l'eau.</p>
-				<figure>
-					<img alt="souffle3" src="<?= $wwwUrl ?>/ressources/images/persos/souffle3.gif">
-					<figcaption>3eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Quatrième style:</span> marée saisissante (肆 型 潮 Shi no kata: Uchishio): Tanjiro fait plusieurs coups consécutifs tout en tordant son corps de façon semblable à une marée dure.</p>
-				<figure>
-					<img alt="souffle4" src="<?= $wwwUrl ?>/ressources/images/persos/souffle4.gif">
-					<figcaption>4eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Cinquième style:</span> La pluie clémente d'un jour sec / La pluie bénie après la sécheresse (型 干 天 の 慈 雨 Go no kata: Kanten no jiu): Un "coup d'épée de bonté" qui décapite la cible avec une douleur minime. Tanjiro l'utilise lorsque l'ennemi se rend volontairement.</p>
-				<figure>
-					<img alt="souffle5" src="<?= $wwwUrl ?>/ressources/images/persos/souffle5.gif">
-					<figcaption>5eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Sixième style:</span> tourbillon tordu (Roku no kata: Nejire uzu): Tanjiro tord violemment le haut et le bas de son corps, ce qui crée un tourbillon qui coupe tout ce qui s'y prend.</p>
-				<figure>
-					<img alt="souffle6" src="<?= $wwwUrl ?>/ressources/images/persos/souffle6.gif">
-					<figcaption>6eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Septième style:</span> Goutte de pluie perforante (漆 型 ichi Shichi no kata: Shizuku hamon tsuki): Un coup rapide et précis. La technique la plus rapide de souffle d'eau.<span class="gras">Septième style:</span> Goutte de pluie piercing - Courbe (Shichi no kata: Shizuku hamon tsuki - kyoku)</p>
-				<figure>
-					<img alt="souffle7" src="<?= $wwwUrl ?>/ressources/images/persos/souffle7.gif">
-					<figcaption>7eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Huitième style:</span> Pot en cascade (捌 型 壷 Hachi no kata: Takitsubo): Tanjiro coupe la cible à la verticale.</p>
-				<figure>
-					<img alt="souffle8" src="<?= $wwwUrl ?>/ressources/images/persos/souffle8.gif">
-					<figcaption>8eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Neuvième style:</span> éclaboussure d'eau (飛沫 玖 型 水流 Kyu no kata: Suiryū shibuki): Ce mouvement minimise l'heure et la surface d'atterrissage nécessaires lors de l'atterrissage, permettant ainsi à Tanjiro de se déplacer sans limites. C'est idéal lorsque vous vous battez dans un endroit sans aucune base solide.<span class="gras">Neuvième style:</span> éclaboussure d'eau - chaos (型 水流 飛沫 乱 乱 Kyu no kata: Suiryū shibuki)</p>
-				<figure>
-					<img alt="souffle9" src="<?= $wwwUrl ?>/ressources/images/persos/souffle9.gif">
-					<figcaption>9eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Dixième style:</span> Le dragon du changement (転拾ノ転ū no kiseiuten Attack).</p>
-				<figure>
-					<img alt="souffle10" src="<?= $wwwUrl ?>/ressources/images/persos/souffle10.gif">
-					<figcaption>10eme mouvement</figcaption>
-				</figure>
-			</div>
-			<div class="mvt">
-				<p><span class="gras">Danse du feu (ノ カ ミ 楽 Hinokami Kagura):</span> Il lui a été enseigné par le père de Tanjiro. Une technique de respiration qui augmente la force et l'endurance de l'utilisateur.</p>
-				<figure>
-					<img alt="danse" src="<?= $wwwUrl ?>/ressources/images/persos/danse.gif">
-					<figcaption>Danse du feu</figcaption>
-				</figure>
 			</div>
 		</div>
-	</article>
-</section>
+	</div>
+</header>
+<main class="container">
+	<a class="comeBack" href="<?= $requestUrl ?>/oeuvres/kny"><i class="fas fa-arrow-circle-left"></i> Retour à la présentation</a>
+	<section class="section-main background">
+		<h2 class="title-second">Background</h2>
+		<p>Protagoniste de l'histoire, il est le premier enfant d'un vendeur de charbon de bois. Toute sa famille a été attaquée par un démon alors qu'il vendait du charbon de bois, seule sa sœur Nezuko ayant survécu ; il voyage depuis lors avec sa sœur à la recherche d'un antidote pour cette dernière afin de la reconvertir en une humaine. Il est devenu un pourfendeurs de démons après un long entraînement avec Sakonji Urokodaki et appris le style d'épée « souffle de l'eau » (水の呼吸法, Mizu no kokyū-hō), mais a depuis commencé à se diversifier ; il a commencé à utiliser la « Danse du dieu du feu » (ヒノカミ神楽, Hinokami kagura) de sa famille, comme forme de combat plus puissant. Son crâne est extrêmement épais et ses coups de boule sont souvent utilisés comme des gags à travers la série. C'est un garçon au bon cœur et il éprouve souvent de la tristesse pour les démons et leurs victimes. Son optimisme sans fin et sa nature simple font souvent que les gens apprécient sa compagnie, mais en même temps, cela le met également en contradiction avec certaines personnalités. Il a également un sens de l'odorat très développé. Son katana est noir.</p>
+	</section>
+	<section class="section-main caractere">
+		<h2 class="title-second">Caractere</h2>
+		<p>Tanjiro est gentil par nature et a été décrit par d'autres comme ayant des yeux très doux. Il a beaucoup de détermination et n'abandonnera pas tant qu'il aura un objectif à atteindre. Le meilleur exemple de cela est sa quête incessante de trouver un traitement curatif pour Nezuko. Même s'il est relativement fort en soi, Tanjiro n'est pas opposé à demander de l'aide aux autres quand il en a besoin. Il est très protecteur de ses amis et encore plus de sa sœur cadette. Cependant, malgré sa nature aimable et compréhensive, Tanjiro a une limite à sa tolérance et un dégoût pour la grossièreté, car il est facilement contrarié par les plaintes constantes de Zenitsu Agatsuma et irrité par les actes barbares d’Inosuke Hashibira.</p>
+		<div class="second-container">
+			<figure>
+				<img alt="cara1" src="<?= $wwwUrl ?>/ressources/images/persos/cara1.png">
+				<figcaption>Déterminé</figcaption>
+			</figure>
+			<figure>
+				<img alt="cara2" src="<?= $wwwUrl ?>/ressources/images/persos/cara2.png">
+				<figcaption>Déterminé</figcaption>
+			</figure>
+			<figure>
+				<img alt="cara3" src="<?= $wwwUrl ?>/ressources/images/persos/cara3.png">
+				<figcaption>Soucieux</figcaption>
+			</figure>
+			<figure>
+				<img alt="cara4" src="<?= $wwwUrl ?>/ressources/images/persos/cara4.png">
+				<figcaption>Family</figcaption>
+			</figure>
+			<figure>
+				<img alt="cara5" src="<?= $wwwUrl ?>/ressources/images/persos/cara5.png">
+				<figcaption>Family</figcaption>
+			</figure>
+		</div>
+		<p>L'attribut le plus remarquable de Tanjiro est sa capacité d'empathie avec quiconque, même avec les démons, ce qui le faisait souvent hésiter avant de porter le coup de grâce. Ce moment d'hésitation présentait néanmoins un inconvénient, car il a permis à certains démons de tirer parti de la nature compréhensive de Tanjiro pour se rétablir et poursuivre le combat, même si c'est rarement le cas. Son courage pour protéger les plus faibles l'a engagé à faire face à ses ennemis avec respect et dignité, qu'il soit bon ou mauvais.</p>
+	</section>
+	<section class="section-main capacity">
+		<h2 class="title-second">Capacites</h2>
+		<article class="article-main natural">
+			<h3 class="title-third">Capacités Naturelles </h3>
+			<p><span class="capa">Amélioration du sens de l'odorat:</span> Tanjiro a eu un sens de l'odorat élevé avant même d'avoir suivi un entraînement d'épée. Il est assez fort pour sentir la «ligne d'intervalle» - la légère pause dans le mouvement d'un ennemi qui lui permet une ouverture pour frapper - et pour distinguer les espèces ainsi que leur position approximative. Après avoir pratiqué cette technique pendant qu'il était chasseur de démons, Tanjiro a acquis la capacité de sentir les émotions ainsi que de suivre les objets, les humains et les démons sur de longues distances.</p>
+			<p><span class="capa">Capacité de combat:</span> Ce trait de Tanjiro a été souligné par Giyu Tomioka lors de leur première rencontre, dans laquelle Tanjiro a habilement préparé un plan pour attaquer Giyu par surprise en le chargeant, ne montrant pas au Chasseur de démons qu'il n'était pas armé et en abattant Giyu avec une hache qu'il avait jeté en l'air auparavant. L'attaque a échoué, mais Giyu était toujours très impressionné par le plan de Tanjiro, d'autant plus qu'il était un débutant à l'époque.</p>
+			<p><span class="capa">Force accrue:</span> Après son entraînement à la montagne Sagiri, Tanjiro a acquis une force et une vitesse immenses et en a fait un grand usage, comme il l'a vu lorsqu'il a sauté deux fois de sa taille par-dessus le démon à pusieurs mains, qui a tué les disciples de Sakonji Urokodaki (son maître), lors de la sélection finale. Son front est remarquablement robuste, bien que cela ne serve finalement qu’à devenir l’un des gags courants de la série.</p>
+		</article>
+		<article class="article-main style">
+			<h3 class="title-third">Style</h3>
+			<p><span class="capa">Souffle d'eau (水 の 呼吸 Mizu no kokyū):</span> Il lui a été enseigné par Sakonji Urokodaki, le pilier de l'eau avant Giyu. L'utilisateur peut augmenter la quantité d'oxygène dans son sang en contrôlant son schéma respiratoire, ce qui augmente sa force et son agilité jusqu'à égaler celle d'un démon. Tanjiro a maintenant appris à faire des respirations avec concentration totale à tout moment, augmentant encore sa force de base, sa vitesse et son endurance. Avec cette force accrue et cette capacité à trouver la «ligne d'intervalle», Tanjiro peut utiliser dix mouvements différents:</p>
+			<div class="mvts">
+				<div class="mvt">
+					<p><span class="gras">Premier style:</span> tranche de surface de l'eau (Ichi no kata: Minamo giri): Une seule barre concentrée.</p>
+					<figure>
+						<img alt="souffle1" src="<?= $wwwUrl ?>/ressources/images/persos/souffle1.gif">
+						<figcaption>1er mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Deuxième style:</span> roue à eau (ノ 型 水車 Ni no kata: Mizu guruma): Tanjiro saute et fait tourner son corps en tranchant.<span class="gras">Deuxième style modifié:</span> roue à eau horizontale (型 水車 水車 Ni no kata kai: Yoko mizu guruma)</p>
+					<figure>
+						<img alt="souffle2" src="<?= $wwwUrl ?>/ressources/images/persos/souffle2.gif">
+						<figcaption>2eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Troisième style:</span> Danse du courant rapide (San no kata: Ryūryū mai): Tanjiro lance sa lame sur son adversaire de manière à imiter le mouvement des vagues à la surface de l'eau.</p>
+					<figure>
+						<img alt="souffle3" src="<?= $wwwUrl ?>/ressources/images/persos/souffle3.gif">
+						<figcaption>3eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Quatrième style:</span> marée saisissante (肆 型 潮 Shi no kata: Uchishio): Tanjiro fait plusieurs coups consécutifs tout en tordant son corps de façon semblable à une marée dure.</p>
+					<figure>
+						<img alt="souffle4" src="<?= $wwwUrl ?>/ressources/images/persos/souffle4.gif">
+						<figcaption>4eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Cinquième style:</span> La pluie clémente d'un jour sec / La pluie bénie après la sécheresse (型 干 天 の 慈 雨 Go no kata: Kanten no jiu): Un "coup d'épée de bonté" qui décapite la cible avec une douleur minime. Tanjiro l'utilise lorsque l'ennemi se rend volontairement.</p>
+					<figure>
+						<img alt="souffle5" src="<?= $wwwUrl ?>/ressources/images/persos/souffle5.gif">
+						<figcaption>5eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Sixième style:</span> tourbillon tordu (Roku no kata: Nejire uzu): Tanjiro tord violemment le haut et le bas de son corps, ce qui crée un tourbillon qui coupe tout ce qui s'y prend.</p>
+					<figure>
+						<img alt="souffle6" src="<?= $wwwUrl ?>/ressources/images/persos/souffle6.gif">
+						<figcaption>6eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Septième style:</span> Goutte de pluie perforante (漆 型 ichi Shichi no kata: Shizuku hamon tsuki): Un coup rapide et précis. La technique la plus rapide de souffle d'eau.<span class="gras">Septième style:</span> Goutte de pluie piercing - Courbe (Shichi no kata: Shizuku hamon tsuki - kyoku)</p>
+					<figure>
+						<img alt="souffle7" src="<?= $wwwUrl ?>/ressources/images/persos/souffle7.gif">
+						<figcaption>7eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Huitième style:</span> Pot en cascade (捌 型 壷 Hachi no kata: Takitsubo): Tanjiro coupe la cible à la verticale.</p>
+					<figure>
+						<img alt="souffle8" src="<?= $wwwUrl ?>/ressources/images/persos/souffle8.gif">
+						<figcaption>8eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Neuvième style:</span> éclaboussure d'eau (飛沫 玖 型 水流 Kyu no kata: Suiryū shibuki): Ce mouvement minimise l'heure et la surface d'atterrissage nécessaires lors de l'atterrissage, permettant ainsi à Tanjiro de se déplacer sans limites. C'est idéal lorsque vous vous battez dans un endroit sans aucune base solide.<span class="gras">Neuvième style:</span> éclaboussure d'eau - chaos (型 水流 飛沫 乱 乱 Kyu no kata: Suiryū shibuki)</p>
+					<figure>
+						<img alt="souffle9" src="<?= $wwwUrl ?>/ressources/images/persos/souffle9.gif">
+						<figcaption>9eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Dixième style:</span> Le dragon du changement (転拾ノ転ū no kiseiuten Attack).</p>
+					<figure>
+						<img alt="souffle10" src="<?= $wwwUrl ?>/ressources/images/persos/souffle10.gif">
+						<figcaption>10eme mouvement</figcaption>
+					</figure>
+				</div>
+				<div class="mvt">
+					<p><span class="gras">Danse du feu (ノ カ ミ 楽 Hinokami Kagura):</span> Il lui a été enseigné par le père de Tanjiro. Une technique de respiration qui augmente la force et l'endurance de l'utilisateur.</p>
+					<figure>
+						<img alt="danse" src="<?= $wwwUrl ?>/ressources/images/persos/danse.gif">
+						<figcaption>Danse du feu</figcaption>
+					</figure>
+				</div>
+			</div>
+		</article>
+	</section>
 </main>
