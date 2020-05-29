@@ -59,6 +59,35 @@ if (window.location.href.indexOf('/products?product') != -1) {
   console.log('ok');
 }
 
+$('#list1').on('click', ()=>{
+  $('#product').addClass('display');
+  $('#stream').addClass('display');
+  $('#userInfo').addClass('display');
+  $('#artworks').toggleClass('display');
+  //console.log('ok');
+});
+
+$('#products').on('click', ()=>{
+  $('#artworks').addClass('display');
+  $('#stream').addClass('display');
+  $('#userInfo').addClass('display');
+  $('#product').toggleClass('display');
+});
+
+$('#streaming').on('click', ()=>{
+  $('#product').addClass('display');
+  $('#artworks').addClass('display');
+  $('#userInfo').addClass('display');
+  $('#stream').toggleClass('display');
+});
+
+$('#users').on('click', ()=>{
+  $('#product').addClass('display');
+  $('#stream').addClass('display');
+  $('#artworks').addClass('display');
+  $('#userInfo').toggleClass('display');
+});
+
 //PERMET DE TROUVER LES PARAMETRE DE URL
 let url_string = window.location.href;
 let url = new URL(url_string);
@@ -93,7 +122,7 @@ if (params == 3) {
 
 
 
-if (window.location.href.indexOf('/index') != -1) {
+if (window.location.href.indexOf('/index') != -1 || window.location.href.indexOf('/Streaming-World') != 1) {
   $('.menu__item--current').removeClass('menu__item--current');
   $('#home').addClass('menu__item--current');
 } 

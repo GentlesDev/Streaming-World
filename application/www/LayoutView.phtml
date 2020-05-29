@@ -26,9 +26,9 @@
       <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav menu__list">
           <li class="menu__item" id="home"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
-          <li class="dropdown menu__item">
+          <li class="dropdown menu__item" id='list1'>
             <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artworks <span class="caret"></span></a>
-            <ul class="dropdown-menu multi-column columns-3">
+            <ul class="dropdown-menu multi-column columns-3 display" id='artworks'>
               <div class="row">
                 <div class="col-sm-3 multi-gd-img" style="width:100%">
                   <ul class="multi-column-dropdown">
@@ -50,7 +50,7 @@
           </li>
           <li class="dropdown menu__item" id="products">
             <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
-            <ul class="dropdown-menu multi-column columns-3">
+            <ul class="dropdown-menu multi-column columns-3 display" id='product'>
               <div class="row">
                 <div class="col-sm-3 multi-gd-img">
                   <ul class="multi-column-dropdown">
@@ -72,7 +72,7 @@
           </li>
           <li class="dropdown menu__item" id="streaming">
             <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
-            <ul class="dropdown-menu multi-column columns-3">
+            <ul class="dropdown-menu multi-column columns-3 display" id='stream'>
               <div class="row">
                 <div class="col-sm-3 multi-gd-img">
                   <ul class="multi-column-dropdown">
@@ -95,7 +95,7 @@
           <?php } else { ?>
             <li class="dropdown menu__item" id="users">
               <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
-              <ul class="dropdown-menu multi-column columns-3">
+              <ul class="dropdown-menu multi-column columns-3 display" id='userInfo'>
                 <div class="row">
                   <div class="col-sm-3 multi-gd-img">
                     <ul class="multi-column-dropdown">
@@ -119,7 +119,7 @@
             <h3>
               <div class="total">
                 <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                <span class="simpleCart_total"></span> (<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</div>
+                <span class="simpleCart_total"></span> <small>(<span id="itemBasket" class="simpleCart_quantity"></span> item(s))</small></div>
             </h3>
           </a>
           <p><a href="javascript:;" class="empty">Vider votre panier</a></p>
