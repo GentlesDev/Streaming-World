@@ -1,11 +1,10 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/utilities.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streaming.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/streamingStyle.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/streaming/episode/episode.css">
 <div class="background"></div>
-
 <?php if (count($episodes) < 30) { ?>
   <aside class="episode-list">
-    <ul>
+    <ul class="list-episode">
       <?php foreach ($episodes as $episode) : if ($episode['Caption'] == $artworkEpisode['Caption']) { ?>
           <li><a href="<?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $episode['ArtworkId'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>" id="current"><?= $episode['Caption'] ?></a></li>
         <?php } else { ?>
@@ -16,7 +15,7 @@
   </aside>
 <?php } else { ?>
   <aside class="episode-list" style="height: 680px;">
-    <ul>
+    <ul class="list-episode">
       <?php foreach ($episodes as $episode) : ?>
         <li><a href=" <?= $requestUrl ?>/streaming/artwork/seasons/episode?artworkId=<?= $episode['ArtworkId'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>"><?= $episode['Caption'] ?> </a> </li> <?php endforeach; ?> </ul>
   </aside> <?php } ?> <main class="container">
@@ -95,4 +94,3 @@
     <?php } ?>
   </section>
 </main>
-<script type="text/javascript" src="<?= $wwwUrl ?>/js/episode.js"></script>

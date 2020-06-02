@@ -16,7 +16,9 @@ class DetailController
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       "orderdetail" => $orderdetail,
       "artworkStreams" => $artworkStreams,
       "lines" => $lines,

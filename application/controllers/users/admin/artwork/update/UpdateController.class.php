@@ -4,7 +4,7 @@ class UpdateController
 {
   public function httpGetMethod(Http $http, array $queryFields)
   {
-    if(empty($_SESSION) == true || $_SESSION['role'] !== "admin" ) {
+    if (empty($_SESSION) == true || $_SESSION['role'] !== "admin") {
       $http->redirectTo('/');
     }
     $artworkModel = new ArtworksModel();
@@ -12,12 +12,14 @@ class UpdateController
     $oeuvre = $artworkModel->getOneArtwork($_GET['artworkId']);
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
-    $artworkStreams = $artworkModel->getAllArtworksAvailable();  
+    $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       "artworkStreams" => $artworkStreams,
-      "lines"=>$lines,
-      "oeuvre"=>$oeuvre,
-      "artworks"=>$artworks
+      "lines" => $lines,
+      "oeuvre" => $oeuvre,
+      "artworks" => $artworks
     ];
   }
 
@@ -30,15 +32,15 @@ class UpdateController
     $artworkModel->updateArtwork($_POST, $_FILES);
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     // var_dump($_POST);
     // var_dump($_FILES);
     return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
-      'lines'=>$lines,
-      'oeuvre'=>$oeuvre,
-      'artworks'=>$artworks,
+      'lines' => $lines,
+      'oeuvre' => $oeuvre,
+      'artworks' => $artworks,
     ];
-
-
   }
 }

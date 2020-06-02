@@ -1,5 +1,6 @@
 main.container {
-    margin-top: 100px;
+  margin-top: 100px;
+  width: 50%;
 }
 
 .comeBack {
@@ -10,7 +11,7 @@ main.container {
   border-radius: 0;
 }
 
-.comeBack:hover{
+.comeBack:hover {
   background: none;
   border-radius: 0;
 }
@@ -23,8 +24,7 @@ form.b-form {
   align-items: center;
 }
 
-input,
-textarea {
+input, textarea {
   margin-bottom: 20px;
   width: 30%;
   border: none;
@@ -32,8 +32,7 @@ textarea {
   color: white;
 }
 
-input[type="text"],
-textarea {
+input[type="text"], textarea {
   padding: 5px;
 }
 
@@ -41,7 +40,7 @@ input[type="file"] {
   background: none;
 }
 
-::placeholder{
+::placeholder {
   color: white;
 }
 
@@ -50,15 +49,16 @@ input[type="submit"] {
   align-self: center;
   width: auto;
   padding: 5px 10px;
+  transition: all 500ms;
+  cursor: pointer;
 }
-
 
 input[type="submit"]:hover {
   transform: scale(1.2);
   color: black;
 }
 
-select{
+select {
   margin-bottom: 20px;
   color: white;
   background: #fda30e;

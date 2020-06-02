@@ -1,21 +1,16 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/utilities.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
-
-  <main class="container">
-
-    <h3 style="text-align: center;">Modifiez l'oeuvre !</h3>
-
-    <a class="comeBack" href="<?= $requestUrl ?>/users/admin/artwork"><i class="fas fa-arrow-circle-left"></i></a>
-
-    <form class="b-form" action="<?= $requestUrl ?>/users/admin/artwork/update" method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="<?= $oeuvre['Name'] ?>" value="<?= $oeuvre['Name'] ?>">
-      <input type="text" name="url" placeholder="<?= $oeuvre['Url'] ?>" value="<?= $oeuvre['Url'] ?>">
-      <input type="file" name="artwork_pics">
-      <input type="file" name="cover_pics">
-      <input type="hidden" name="artworkId" value="<?=$oeuvre['Id']?>">
-      <input type="submit" name="Enregister">
-    </form>
-  </main>
+<main class="container">
+  <h3 style="text-align: center;">Modifiez l'oeuvre !</h3>
+  <a class="comeBack" href="<?= $requestUrl ?>/users/admin/artwork"><i class="fas fa-arrow-circle-left"></i></a>
+  <form class="b-form" action="<?= $requestUrl ?>/users/admin/artwork/update" method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="<?= $oeuvre['Name'] ?>" value="<?= $oeuvre['Name'] ?>">
+    <input type="text" name="url" placeholder="<?= $oeuvre['Url'] ?>" value="<?= $oeuvre['Url'] ?>">
+    <input type="file" name="artwork_pics">
+    <input type="file" name="cover_pics">
+    <input type="hidden" name="artworkId" value="<?= $oeuvre['Id'] ?>">
+    <input type="submit" name="Enregister">
+  </form>
+</main>

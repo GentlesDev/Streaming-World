@@ -11,7 +11,9 @@ class SearchController
     $products = $productsModel->getAllProducts();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
       'artworks' => $artworks,
       'products' => $products,
@@ -32,7 +34,9 @@ class SearchController
     $results = $productsModel->search($_POST['search']);
     $search = $_POST['search'];
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
       'search' => $search,
       'results' => $results,

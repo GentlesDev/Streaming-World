@@ -1,8 +1,6 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/utilities.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/products/products.css">
-
 <main class="container">
   <h2 class="title-section">Tous nos produits !</h2>
   <small style="color: red; margin: 10px auto; font-size: 11px;"><i class="fas fa-exclamation-triangle"></i> <strong>Les articles présents sur ce site ne sont pas réels, ils sont à des fins représentatifs. N'entrez donc JAMAIS vos identifiants bancaires même si vous ne serez pas débité. Cette partie est réservée à une simultion d'un site e-commerce.</strong> <i class="fas fa-exclamation-triangle"></i></small>
@@ -13,79 +11,80 @@
     </form>
   </div>
   <div class="products">
-        <?php if (empty($products)) { ?>
+    <?php if (empty($products)) { ?>
       <p style="margin: 0 auto;">Il n'y a pas de produit ici pour le moment ...</p>
-    <?php }else{ ?>
-    <div id="product-page">
-      <ul class="list">
-        <?php if (count($products) === 1) {
-          foreach ($products as $product) { ?>
-            <li class="product-mosaic" style="width:100%;">
-              <a href="<?= $requestUrl ?>/products/detail?productId=<?= $product['Id'] ?>">
-                <div>
-                  <?php if (strlen($product['Name']) >= 20) { ?>
-                    <h3><?= substr($product['Name'], 0, 20) ?> ...</h3>
-                  <?php } else { ?>
-                    <h3><?= $product['Name'] ?></h3>
-                  <?php } ?>
-                  <img src="<?= $wwwUrl ?>/ressources/images/products/<?= $product['Photo'] ?>">
-                  <p><?= substr($product['Description'], 0, 30) ?> ...</p>
-                </div>
-              </a>
-              <form>
-                <input type="number" name="quantity" id="product-<?= $product['Id'] ?>">
-                <button class="addToBasket" data-name="<?= $product['Name'] ?>" data-price="<?= $product['Price'] ?>" data-id="<?= $product['Id'] ?>">
-                  <p>Ajouter au panier</p>
-                </button>
-              </form>
-            </li>
+    <?php } else { ?>
+      <div id="product-page">
+        <ul class="list">
+          <?php if (count($products) === 1) {
+            foreach ($products as $product) { ?>
+              <li class="product-mosaic" style="width:100%;">
+                <a href="<?= $requestUrl ?>/products/detail?productId=<?= $product['Id'] ?>">
+                  <div>
+                    <?php if (strlen($product['Name']) >= 20) { ?>
+                      <h3><?= substr($product['Name'], 0, 20) ?> ...</h3>
+                    <?php } else { ?>
+                      <h3><?= $product['Name'] ?></h3>
+                    <?php } ?>
+                    <img src="<?= $wwwUrl ?>/ressources/images/products/<?= $product['Photo'] ?>">
+                    <p><?= substr($product['Description'], 0, 30) ?> ...</p>
+                  </div>
+                </a>
+                <form>
+                  <input type="number" name="quantity" id="product-<?= $product['Id'] ?>">
+                  <button class="addToBasket" data-name="<?= $product['Name'] ?>" data-price="<?= $product['Price'] ?>" data-id="<?= $product['Id'] ?>">
+                    <p>Ajouter au panier</p>
+                  </button>
+                </form>
+              </li>
+            <?php }
+          } else {
+            foreach ($products as $product) { ?>
+              <li class="product-mosaic">
+                <a href="<?= $requestUrl ?>/products/detail?productId=<?= $product['Id'] ?>">
+                  <div>
+                    <?php if (strlen($product['Name']) >= 20) { ?>
+                      <h3><?= substr($product['Name'], 0, 20) ?> ...</h3>
+                    <?php } else { ?>
+                      <h3><?= $product['Name'] ?></h3>
+                    <?php } ?>
+                    <img src="<?= $wwwUrl ?>/ressources/images/products/<?= $product['Photo'] ?>">
+                    <p><?= substr($product['Description'], 0, 30) ?> ...</p>
+                  </div>
+                </a>
+                <form>
+                  <input type="number" name="quantity" id="product-<?= $product['Id'] ?>">
+                  <button class="addToBasket" data-name="<?= $product['Name'] ?>" data-price="<?= $product['Price'] ?>" data-id="<?= $product['Id'] ?>">
+                    <p>Ajouter au panier</p>
+                  </button>
+                </form>
+              </li>
           <?php }
-        } else {
-          foreach ($products as $product) { ?>
-            <li class="product-mosaic">
-              <a href="<?= $requestUrl ?>/products/detail?productId=<?= $product['Id'] ?>">
-                <div>
-                  <?php if (strlen($product['Name']) >= 20) { ?>
-                    <h3><?= substr($product['Name'], 0, 20) ?> ...</h3>
-                  <?php } else { ?>
-                    <h3><?= $product['Name'] ?></h3>
-                  <?php } ?>
-                  <img src="<?= $wwwUrl ?>/ressources/images/products/<?= $product['Photo'] ?>">
-                  <p><?= substr($product['Description'], 0, 30) ?> ...</p>
-                </div>
-              </a>
-              <form>
-                <input type="number" name="quantity" id="product-<?= $product['Id'] ?>">
-                <button class="addToBasket" data-name="<?= $product['Name'] ?>" data-price="<?= $product['Price'] ?>" data-id="<?= $product['Id'] ?>">
-                  <p>Ajouter au panier</p>
-                </button>
-              </form>
-            </li>
-        <?php }
-        } ?>
-        <div class="nav-product">
-          <?php if ($_GET['start'] != 0) {
-            if ($_GET['start'] - 12 <= 0) { ?>
-              <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=0">Précédent <i class="fas fa-chevron-left"></i></a>
-            <?php } else { ?>
-              <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=<?= $_GET['start'] - 12 ?>">Précédent <i class="fas fa-chevron-left"></i></a>
-            <?php }
-          } else { ?>
-            <i class="fas fa-chevron-left"></i>
-          <?php } ?>
-          <?php if ($_GET['start'] + 12 <= count($products)) {
-            if ($_GET['start'] + 12 >= count($products)) { ?>
-              <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=<?= count($products) ?>">Suivant <i class="fas fa-chevron-right"></i></a>
-            <?php } else { ?>
-              <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=<?= $_GET['start'] + 12 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
-            <?php }
-          } else { ?>
-            <i class="fas fa-chevron-right"></i>
-          <?php } ?>
-        </div>
-      </ul>
-    </div>
-          <?php }if (empty($products)) { ?>
+          } ?>
+          <div class="nav-product">
+            <?php if ($_GET['start'] != 0) {
+              if ($_GET['start'] - 12 <= 0) { ?>
+                <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=0">Précédent <i class="fas fa-chevron-left"></i></a>
+              <?php } else { ?>
+                <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=<?= $_GET['start'] - 12 ?>">Précédent <i class="fas fa-chevron-left"></i></a>
+              <?php }
+            } else { ?>
+              <i class="fas fa-chevron-left"></i>
+            <?php } ?>
+            <?php if ($_GET['start'] + 12 <= count($products)) {
+              if ($_GET['start'] + 12 >= count($products)) { ?>
+                <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=<?= count($products) ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+              <?php } else { ?>
+                <a href="<?= $requestUrl ?>/products/product?name=<?= $product['ProductLine'] ?>&start=<?= $_GET['start'] + 12 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+              <?php }
+            } else { ?>
+              <i class="fas fa-chevron-right"></i>
+            <?php } ?>
+          </div>
+        </ul>
+      </div>
+    <?php }
+    if (empty($products)) { ?>
       <ul class="lines" style="width: 21%">
         <h4>Toutes les catégories:</h4>
         <?php foreach ($lines as $line) { ?>

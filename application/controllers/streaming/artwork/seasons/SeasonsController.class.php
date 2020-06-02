@@ -13,7 +13,9 @@ class SeasonsController
         $title = $artworkModel->getOneArtworkSeason();
         $seasons = $streamingModel->getAllEpisodesByArtworksId();
         $artworkStreams = $artworkModel->getAllArtworksAvailable($_GET['artworkId']);
+        $allArtworks = $artworkModel->get7ArtworksAvailable();
         return [
+            "allArtworks" => $allArtworks,
             "seasons" => $seasons,
             "artworkStreams" => $artworkStreams,
             "title" => $title,

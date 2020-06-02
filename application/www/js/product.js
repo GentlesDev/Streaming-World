@@ -64,7 +64,7 @@ $('#list1').on('click', ()=>{
   $('#stream').addClass('display');
   $('#userInfo').addClass('display');
   $('#artworks').toggleClass('display');
-  //console.log('ok');
+  console.log('ok');
 });
 
 $('#products').on('click', ()=>{
@@ -72,6 +72,7 @@ $('#products').on('click', ()=>{
   $('#stream').addClass('display');
   $('#userInfo').addClass('display');
   $('#product').toggleClass('display');
+  console.log('ok2');
 });
 
 $('#streaming').on('click', ()=>{
@@ -79,6 +80,7 @@ $('#streaming').on('click', ()=>{
   $('#artworks').addClass('display');
   $('#userInfo').addClass('display');
   $('#stream').toggleClass('display');
+  console.log('ok3');
 });
 
 $('#users').on('click', ()=>{
@@ -86,6 +88,14 @@ $('#users').on('click', ()=>{
   $('#stream').addClass('display');
   $('#artworks').addClass('display');
   $('#userInfo').toggleClass('display');
+  console.log('ok4');
+});
+
+$(document).on('click', function (event) {
+  $('.dropdown-menu').addClass('display');
+});
+$('.ban-top').on('click', function (event) {
+  event.stopPropagation();
 });
 
 //PERMET DE TROUVER LES PARAMETRE DE URL

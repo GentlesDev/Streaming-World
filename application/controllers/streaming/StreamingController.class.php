@@ -11,11 +11,13 @@ class StreamingController
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
     $artworksList = $artworkModel->getAllArtworksAvailableList();
     $lines = $productsModel->getAllLines();
-    return[
-      "lines"=>$lines,
-      "artworks"=>$artworks,
-      "artworkStreams"=>$artworkStreams,
-      "artworksList"=>$artworksList
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
+    return [
+      "allArtworks" => $allArtworks,
+      "lines" => $lines,
+      "artworks" => $artworks,
+      "artworkStreams" => $artworkStreams,
+      "artworksList" => $artworksList
     ];
   }
 
@@ -26,11 +28,12 @@ class StreamingController
     $lines = $productsModel->getAllLines();
     $search = $_POST['search'];
     $searches = $artworkModel->search($search);
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     // var_dump($search);
-    return[
-      "lines"=>$lines,
-      "searches"=>$searches
+    return [
+      "allArtworks" => $allArtworks,
+      "lines" => $lines,
+      "searches" => $searches
     ];
   }
 }
-?>

@@ -13,7 +13,9 @@ class UpdateController
     $lines = $productsModel->getAllLines();
     $product = $productsModel->getOneProduct($_GET['productId']);
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
       'product' => $product,
       'artworks' => $artworks,
@@ -30,7 +32,9 @@ class UpdateController
     $productsModel->updateProduct($_POST, $_FILES);
     $product = $productsModel->getOneProduct($_GET['productId']);
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
       'product' => $product,
       'artworks' => $artworks,

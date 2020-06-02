@@ -1,0 +1,64 @@
+.container {
+    width: 65%;
+}
+
+.login-right {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.login-right h3, .login-bottom h3 {
+    color: #FDA30E;
+    font-size: 22px;
+    margin-bottom: 23px;
+}
+
+.login-right h4, .login-bottom h4 {
+    color: #000000;
+    font-size: 14px;
+    margin: 0 0 0px 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.login-right input[type="text"], .login-right input[type="password"], .login-bottom input[type="text"], .login-bottom input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-weight: normal;
+    background: none;
+    border: 1px solid #E6E4E4;
+    color: #D2D1D1;
+    outline: none;
+    font-size: 14px;
+    margin: 6px 0 17px 0px;
+}
+
+.login-right input[type="text"]:hover, .login-right input[type="password"]:hover, .login-bottom input[type="text"]:hover, .login-bottom input[type="password"]:hover {
+    border: 1px solid #FDA30E;
+}
+
+.login-right input[type="submit"], .login-bottom input[type="submit"] {
+    background: #7B7B7B;
+    color: #fff;
+    font-size: 17px;
+    border: none;
+    width: 100%;
+    outline: none;
+    -webkit-appearance: none;
+    padding: 8px 15px 9px 15px;
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+    cursor: pointer;
+}
+
+.login-right input[type="submit"]:hover, .login-bottom input[type="submit"]:hover {
+    background: #FDA30E;
+}
+
+.sign-in a {
+    color: #7b7b7b;
+    transition: all 500ms;
+}
+
+a:hover {
+    color: #fda30e;
+}

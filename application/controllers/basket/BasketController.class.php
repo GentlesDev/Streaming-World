@@ -9,7 +9,9 @@ class BasketController
       $artworks = $artworkModel->getAllArtworks();
       $artworkStreams = $artworkModel->getAllArtworksAvailable();
       $lines = $productsModel->getAllLines();
+      $allArtworks = $artworkModel->get7ArtworksAvailable();
       return[
+        "allArtworks"=> $allArtworks,
         "lines"=>$lines,
         "artworks"=> $artworks,
         "artworkStreams" => $artworkStreams

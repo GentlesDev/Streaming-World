@@ -1,8 +1,6 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/utilities.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/products/products.css">
-
 <main class="container">
   <h2 style="width:100%; text-align:center;" class="result">Résultats des recherches pour "<strong><?= $search ?></strong>"</h2>
   <a style="margin:10px;" class="comeBack" href="<?= $requestUrl ?>/products?start=0"><i class="fas fa-hand-point-left"></i> Retour</a>
@@ -13,9 +11,9 @@
     </form>
   </div>
   <div class="products">
-  <?php if (empty($results)) { ?>
-    <p style="margin: 0 auto">Il n'existe aucun produit de ce genre !</p>
-    <?php }else if (count($results) < 9) { ?>
+    <?php if (empty($results)) { ?>
+      <p style="margin: 0 auto">Il n'existe aucun produit de ce genre !</p>
+    <?php } else if (count($results) < 9) { ?>
       <ul class="list">
         <?php foreach ($results as $result) { ?>
           <li class="product-mosaic">

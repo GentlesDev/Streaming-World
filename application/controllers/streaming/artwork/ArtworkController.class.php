@@ -12,7 +12,9 @@ class ArtworkController
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
     $title = $artworkModel->getOneArtwork($_GET['artworkId']);
     $seasons = $artworkModel->getAllArtworkSeasons($_GET['artworkId']);
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       "seasons" => $seasons,
       "title" => $title,
       "artworkStreams" => $artworkStreams,

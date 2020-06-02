@@ -4,7 +4,7 @@ class AddController
 {
   public function httpGetMethod(Http $http, array $queryFields)
   {
-    if(empty($_SESSION) == true || $_SESSION['role'] !== "admin" ) {
+    if (empty($_SESSION) == true || $_SESSION['role'] !== "admin") {
       $http->redirectTo('/');
     }
     $artworkModel = new ArtworksModel();
@@ -12,13 +12,13 @@ class AddController
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
-    return[
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
+    return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
-      'artworks'=>$artworks,
-      'lines'=>$lines
+      'artworks' => $artworks,
+      'lines' => $lines
     ];
-
-
   }
 
   public function httpPostMethod(Http $http, array $formFields)
@@ -31,11 +31,12 @@ class AddController
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
-    return[
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
+    return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
-      'artworks'=>$artworks,
-      'lines'=>$lines
+      'artworks' => $artworks,
+      'lines' => $lines
     ];
-
   }
 }

@@ -1,24 +1,21 @@
+<link rel="stylesheet" href="<?= $wwwUrl ?>/css/utilities.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/home.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/homeStyle.css">
-<link rel="stylesheet" href="<?= $wwwUrl ?>/css/home/fontHome.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/admin.css">
 <link rel="stylesheet" href="<?= $wwwUrl ?>/css/users/update.css">
-
-
 <main class="container">
   <h3 style="text-align: center;">Modifiez le produit !</h3>
   <a class="comeBack" href="<?= $requestUrl ?>/users/admin/product"><i class="fas fa-arrow-circle-left"></i></a>
-
   <form class="b-form" action="<?= $requestUrl ?>/users/admin/product/update" method="POST" enctype="multipart/form-data">
     <input type="text" name="name" placeholder="Nom du produit" value="<?= $product['productName'] ?>">
     <input type="file" name="product_pics">
     <label for="artwork-Id">Nom de l'artwork</label>
     <select style="margin: 20px 0;" name="artworksId" id="artwork-Id">
       <option value="<?= $product['Id'] ?>" selected><?= $product['Name'] ?></option>
-      <?php foreach ($artworks as $artwork) { 
-        if($artwork['Id'] !== $product['Artworks_Id']) {?>
-        <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
-      <?php }} ?>
+      <?php foreach ($artworks as $artwork) {
+        if ($artwork['Id'] !== $product['Artworks_Id']) { ?>
+          <option value="<?= $artwork['Id'] ?>"><?= $artwork['Name'] ?></option>
+      <?php }
+      } ?>
     </select>
     <label for="product-type">Type de produit</label>
     <select style="margin: 20px 0; text-transform:capitalize;" name="productline" id=product-type required>

@@ -12,8 +12,10 @@ class AddController
         $artworks = $artworkModel->getAllArtworks();
         $lines = $productsModel->getAllLines();
         $artworkStreams = $artworkModel->getAllArtworksAvailable();
+        $allArtworks = $artworkModel->get7ArtworksAvailable();
         $error = null;
         return [
+            "allArtworks" => $allArtworks,
             "artworkStreams" => $artworkStreams,
             "lines" => $lines,
             "artworks" => $artworks,
@@ -29,7 +31,9 @@ class AddController
         $error = $artworkModel->addSeason($_POST, $_FILES);
         $lines = $productsModel->getAllLines();
         $artworkStreams = $artworkModel->getAllArtworksAvailable();
+        $allArtworks = $artworkModel->get7ArtworksAvailable();
         return [
+            "allArtworks" => $allArtworks,
             "artworkStreams" => $artworkStreams,
             "lines" => $lines,
             "artworks" => $artworks,

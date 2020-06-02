@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +7,23 @@
   <title>Streaming World</title>
   <link rel="stylesheet" href="<?= $wwwUrl ?>/css/style.css">
   <script type="text/javascript" src="<?= $wwwUrl ?>/js/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="<?= $wwwUrl ?>/js/bootstrap-3.1.1.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <!-- Feuilles de styles de l'application -->
   <script src="<?= $wwwUrl ?>/js/classes/Basket.class.js"></script>
   <!-- Librairie jQuery -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
   <!-- JavaScript de l'application -->
   <script src="<?= $wwwUrl ?>/js/utilities.js"></script>
 </head>
-
 <body id='haut'>
   <?php if (strpos($_SERVER['REQUEST_URI'], 'oeuvres') === false) { ?>
     <h1 class="title title-main" style="text-align:center;">Streaming World</h1>
-    <div class="ban-top">
+    <div class="ban-top" id="ban-top">
       <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav menu__list">
           <li class="menu__item" id="home"><a class="menu__link" href="<?= $requestUrl ?>/">Home</a></li>
           <li class="dropdown menu__item" id='list1'>
-            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artworks <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artworks <i class="fas fa-sort-down" aria-hidden="true"></i></a>
             <ul class="dropdown-menu multi-column columns-3 display" id='artworks'>
               <div class="row">
                 <div class="col-sm-3 multi-gd-img" style="width:100%">
@@ -49,7 +45,7 @@
             </ul>
           </li>
           <li class="dropdown menu__item" id="products">
-            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <i class="fas fa-sort-down" aria-hidden="true"></i></a>
             <ul class="dropdown-menu multi-column columns-3 display" id='product'>
               <div class="row">
                 <div class="col-sm-3 multi-gd-img">
@@ -71,7 +67,7 @@
             </ul>
           </li>
           <li class="dropdown menu__item" id="streaming">
-            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <i class="fas fa-sort-down" aria-hidden="true"></i></a>
             <ul class="dropdown-menu multi-column columns-3 display" id='stream'>
               <div class="row">
                 <div class="col-sm-3 multi-gd-img">
@@ -81,8 +77,8 @@
                 </div>
                 <div class="col-sm-3 multi-gd-img">
                   <ul class="multi-column-dropdown">
-                    <?php foreach ($artworkStreams as $artworkStream) : ?>
-                      <li style="text-transform: capitalize"><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $artworkStream['Url'] ?>&artworkId=<?= $artworkStream['Id'] ?>"><?= $artworkStream['Name'] ?></a></li>
+                    <?php foreach ($allArtworks as $oneArtwork) : ?>
+                      <li style="text-transform: capitalize"><a href="<?= $requestUrl ?>/streaming/artwork?name=<?= $oneArtwork['Url'] ?>&artworkId=<?= $oneArtwork['Id'] ?>"><?= $oneArtwork['Name'] ?></a></li>
                     <?php endforeach; ?>
                   </ul>
                 </div>
@@ -94,7 +90,7 @@
             <li class=" menu__item" id="user"><a class="dropdown-toggle menu__link" href="<?= $requestUrl ?>/users/login">Login</a></li>
           <?php } else { ?>
             <li class="dropdown menu__item" id="users">
-              <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle" style="font-size: 0.9rem; color:white"></i> <i class="fas fa-sort-down" aria-hidden="true"></i></a>
               <ul class="dropdown-menu multi-column columns-3 display" id='userInfo'>
                 <div class="row">
                   <div class="col-sm-3 multi-gd-img">

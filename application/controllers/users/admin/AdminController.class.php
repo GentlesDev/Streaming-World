@@ -18,7 +18,9 @@ class AdminController
     $query = mysqli_query($link, "SHOW TABLE STATUS WHERE name='$table_name'");
     $row = mysqli_fetch_array($query);
     $dir = $row[10] - 1;
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       'artworkStreams' => $artworkStreams,
       'lines' => $lines,
       'artworks' => $artworks,

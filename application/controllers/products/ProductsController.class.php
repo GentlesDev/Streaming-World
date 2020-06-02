@@ -12,9 +12,11 @@ class ProductsController
     $productsList = $productsModel->getAllProductsList($_GET['start']);
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     // var_dump($productsList);
     // var_dump(intval($_GET['start']));
     return [
+      "allArtworks" => $allArtworks,
       "artworkStreams" => $artworkStreams,
       "artworks" => $artworks,
       "products" => $products,

@@ -44,6 +44,38 @@ if (window.location.href.indexOf('/oeuvres') != -1) {
 
 if (window.location.href.indexOf('/persos') != -1) {
 	$('.menu__item--current').removeClass('menu__item--current');
-	$('#persos').addClass('menu__item--current');
+	$('.persos').addClass('menu__item--current');
 	console.log('persos');
 }
+
+$('.persos').on('click', () => {
+	$('.produit').addClass('display');
+	$('.video').addClass('display');
+	$('.userInfos').addClass('display');
+	$('.perso').toggleClass('display');
+	console.log('ok');
+});
+
+$('.produits').on('click', () => {
+	$('.perso').addClass('display');
+	$('.video').addClass('display');
+	$('.userInfos').addClass('display');
+	$('.produit').toggleClass('display');
+	console.log('ok2');
+});
+
+$('.videos').on('click', () => {
+	$('.produit').addClass('display');
+	$('.perso').addClass('display');
+	$('.userInfos').addClass('display');
+	$('.video').toggleClass('display');
+	console.log('ok3');
+});
+
+$('.usersInfos').on('click', () => {
+	$('.produit').addClass('display');
+	$('.video').addClass('display');
+	$('.perso').addClass('display');
+	$('.userInfos').toggleClass('display');
+	console.log('ok4');
+});

@@ -13,7 +13,9 @@ class ProfilController
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       "artworkStreams" => $artworkStreams,
       "lines" => $lines,
       "artworks" => $artworks
@@ -30,7 +32,9 @@ class ProfilController
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     return [
+      "allArtworks" => $allArtworks,
       "artworkStreams" => $artworkStreams,
       "lines" => $lines,
       "artworks" => $artworks

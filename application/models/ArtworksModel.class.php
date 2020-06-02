@@ -156,6 +156,18 @@ class ArtworksModel
     return $database->query($sql, []);
   }
 
+  public function get7ArtworksAvailable()
+  {
+    $database = new Database();
+    $sql = 'SELECT *
+            FROM artworks
+            WHERE In_Streaming = "oui"
+            ORDER BY Id DESC
+            LIMIT 7';
+    // var_dump($database);
+    return $database->query($sql, []);
+  }
+
   public function getOneArtwork($get)
   {
     $database = new Database();

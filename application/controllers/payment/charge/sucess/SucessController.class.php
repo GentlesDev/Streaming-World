@@ -15,9 +15,11 @@ class SucessController
     $orderModel->sucessTime($user);
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();
+    $allArtworks = $artworkModel->get7ArtworksAvailable();
     // var_dump($user);
 
     return [
+      "allArtworks" => $allArtworks,
       "artworkStreams" => $artworkStreams,
       "lines" => $lines,
       "user" => $user,

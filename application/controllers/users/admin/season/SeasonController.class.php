@@ -11,7 +11,9 @@ class SeasonController
         $seasons = $artworkModel->getAllSeasons();
         $lines = $productsModel->getAllLines();
         $artworkStreams = $artworkModel->getAllArtworksAvailable();
+        $allArtworks = $artworkModel->get7ArtworksAvailable();
         return [
+            "allArtworks" => $allArtworks,
             "artworkStreams" => $artworkStreams,
             'lines' => $lines,
             "seasons" => $seasons,

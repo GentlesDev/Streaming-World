@@ -1,34 +1,180 @@
-.header-main p{
+body {
+  margin: 0;
+}
+
+.header-main p {
   text-align: center;
 }
-.title-main{
+
+.title-main {
   font-size: 40px;
   font-family: 'magic_fleuronsregular';
-  color:rgb(0, 0, 102);
+  color: rgb(0, 0, 102);
   text-align: center;
   text-shadow: 10px 10px 10px rgb(0, 6, 26);
 }
-.title-second{
+
+.title-second {
   font-size: 28px;
   font-family: 'magic_fleuronsregular';
   text-align: center;
   color: rgb(150, 2, 30);
   text-decoration: underline;
 }
-.title-third{
+
+.title-third {
   text-align: left;
   font-size: 40px;
   font-family: 'strong_bold_bold_one';
 }
-p{
+
+p {
   font-size: 20px;
   font-family: mangalaregular;
   text-align: justify;
   text-indent: 50px;
 }
 
+div#bs-example-navbar-collapse-1 {
+  background: rgba(175, 12, 12, 0.45);
+  padding: 25px 0px;
+}
 
-.second-container{
+ul.nav.navbar-nav.menu__list {
+  display: flex;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  margin: 0;
+}
+
+.menu__item {
+  margin: 0 15px 0 0;
+  position: relative;
+  display: block;
+}
+
+.menu__link {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 26px 16px;
+  position: relative;
+}
+
+ul.dropdown-menu {
+  min-width: 700px;
+  padding: 30px;
+  position: absolute;
+  z-index: 1000;
+  margin: 30px 0 0;
+  font-size: 14px;
+  text-align: left;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+ul.multi-column-dropdown li {
+  list-style-type: none;
+  line-height: 2.5em;
+}
+
+ul.multi-column-dropdown li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #8e8e8e;
+  transition: all 500ms;
+}
+
+.multi-column-dropdown li a:hover {
+  color: #fda30e;
+}
+
+.display {
+  display: none;
+}
+
+.menu--shylock .menu__link::before, .menu--shylock .menu__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  -webkit-transform: scale3d(0, 1, 1);
+  transform: scale3d(0, 1, 1);
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+  -webkit-transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.menu--shylock .menu__link::before {
+  background: #FDA30E;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.menu--shylock .menu__item--current .menu__link::after, .menu--shylock .menu__item--current .menu__link::before {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+}
+
+.cart.box_1 {
+  background: #fda30e;
+  padding: 1px 22px;
+  text-align: center;
+}
+
+.cart.box_1 p {
+  text-align: center;
+  text-indent: 0;
+}
+
+.top_nav_right {
+  float: right;
+  width: 21%;
+}
+
+.cart a {
+  text-decoration: none;
+}
+
+.inner-w3layouts-wrap {
+  margin: 0 auto;
+  width: 55%;
+  padding-top: 4em;
+  text-align: center;
+}
+
+.inner-w3layouts-wrap h4, .inner-w3layouts-wrap h2 {
+  color: #fff;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
+  margin: 0.5em 0 3em 0;
+}
+
+.nav .menu__item>a:focus {
+  background-color: #FDA30E;
+  color: #fff;
+}
+
+.nav>li>a:hover {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+.second-container {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -37,56 +183,57 @@ p{
   justify-content: space-around;
 }
 
-.second-container figure{
+.second-container figure {
   width: 40%;
   margin: 10px 0;
   text-align: center;
 }
 
-
-.mvts{
+.mvts {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
 }
 
-.mvt{
+.mvt {
   width: 30%;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
-.mvt p{
+.mvt p {
   margin-bottom: 20px;
 }
 
-.mvt figure{
+.mvt figure {
   margin-top: auto;
   align-self: center;
 }
 
-figcaption{
-  font-style: italic;
-}
-#haut>div{
-  position:fixed;
-  height:100%;
-  width: 100%;
-  top:0;
-  left:0;
-  opacity:.55;
-  z-index:-1;
-}
-.capa{
+figcaption {
   font-style: italic;
 }
 
-.gras{
+#haut>div {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: .55;
+  z-index: -1;
+}
+
+.capa {
+  font-style: italic;
+}
+
+.gras {
   font-weight: bold;
 }
 
-.footer-main p{
+.footer-main p {
   text-align: center;
 }
