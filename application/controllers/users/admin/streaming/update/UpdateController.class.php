@@ -11,7 +11,7 @@ class UpdateController
     $artworkModel = new ArtworksModel();
     $productsModel = new ProductsModel();
     $streamingModel = new StreamingModel();
-    $episode = $streamingModel->getOneEpisodeByArtworkId($_GET['streamingId'], $_GET['artworkId'], $_GET['season']);
+    $episode = $streamingModel->getOneEpisodeByArtworkId($_GET['status'], $_GET['artworkId'], $_GET['season']);
     $artworks = $artworkModel->getAllArtworks();
     $lines = $productsModel->getAllLines();
     $artworkStreams = $artworkModel->getAllArtworksAvailable();

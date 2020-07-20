@@ -19,7 +19,7 @@
             <td class="nCoke"><?= $episode['Description'] ?></td>
             <td class="nCoke"><?= $episode['Saison'] ?></td>
             <td class="aCoke">
-              <a href="<?= $requestUrl ?>/users/admin/streaming/update?streamingId=<?= $episode['Id'] ?>&artworkId=<?= $episode['Artworks_Id'] ?>&season=<?= $episode['Season_Url'] ?>"><i class="fas fa-pen"></i></a>
+              <a href="<?= $requestUrl ?>/users/admin/streaming/update?streamingId=<?= $episode['Id'] ?>&artworkId=<?= $episode['Artworks_Id'] ?>&season=<?= $episode['Season_Url'] ?>&status=<?= $episode['Status'] ?>"><i class="fas fa-pen"></i></a>
               <a href="<?= $requestUrl ?>/users/admin/streaming/delete?streamingId=<?= $episode['Id'] ?>&artworkId=<?= $episode['Artworks_Id'] ?>"><i class="fas fa-trash"></i></a>
             </td>
           </tr>

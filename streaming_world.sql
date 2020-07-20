@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 02 juin 2020 à 14:10
+-- Généré le :  lun. 20 juil. 2020 à 12:02
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -301,7 +301,7 @@ INSERT INTO `streaming` (`Id`, `Artworks_Id`, `Caption`, `Status`, `Saison`, `De
 (1, 1, 'Kimetsu No Yaiba 01 VOSTFR', 1, 'Kimetsu No Yaiba Saison 1', 'Regardez le nouvel anime far de la decennie', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2019-12-28 15:17:47'),
 (2, 1, 'Kimetsu No Yaiba 02 VOSTFR', 2, 'Kimetsu No Yaiba Saison 1', 'Continuez avec l\'episode 2 !!', 'Kimetsu_no_Yaiba_02_VOSTFR.mp4', '2019-12-28 16:26:43'),
 (4, 7, 'Vinland Saga 24 VOSTFR', 24, 'Vinland Saga Saison 1', 't\'as vu le titre', 'Vinland_Saga_24_VOSTFR.mp4', '2019-12-31 10:28:00'),
-(5, 2, 'DBS Broly', 1, 'Dragon Ball Films/OAV', 't\'as vu le titre', 'DBS_FILM_01_Broly_2018_VOSTFR.mp4', '2019-12-31 10:29:13'),
+(5, 2, 'DBS Broly', 1, 'Dragon Ball Films/OAV', 'Film 01 DBS : Broly', 'DBS_FILM_01_Broly_2018_VOSTFR.mp4', '2019-12-31 10:29:13'),
 (6, 1, 'Kimetsu No Yaiba 03 VOSTFR', 3, 'Kimetsu No Yaiba Saison 1', 'ep kny 03', 'Kimetsu_no_Yaiba_03_VOSTFR.mp4', '2019-12-31 10:37:46'),
 (8, 1, 'Kimetsu No Yaiba 04 VOSTFR', 4, 'Kimetsu No Yaiba Saison 1', 'ep 4', 'Kimetsu_no_Yaiba_04_VOSTFR.mp4', '2020-01-01 17:00:07'),
 (9, 1, 'Kimetsu No Yaiba 05 VOSTFR', 5, 'Kimetsu No Yaiba Saison 1', 'ep 5', 'Kimetsu_no_Yaiba_05_VOSTFR.mp4', '2020-01-01 17:00:31'),
@@ -386,17 +386,17 @@ INSERT INTO `streaming` (`Id`, `Artworks_Id`, `Caption`, `Status`, `Saison`, `De
 (94, 10, 'Fate/Zero 23 VOSTFR', 23, 'Zero', 'Fate/zero 23', 'fatezero23.mp4', '2020-05-17 13:42:27'),
 (95, 10, 'Fate/Zero 24 VOSTFR', 24, 'Zero', 'Fate/zero 24', 'fatezero24.mp4', '2020-05-17 13:43:32'),
 (96, 10, 'Fate/Zero 25 VOSTFR', 25, 'Zero', 'Fate/zero 25', 'fatezero25.mp4', '2020-05-17 13:43:55'),
-(99, 5, 'Vinland Saga 01 VOSTFR', 1, 'My Hero Academia Saison 2', 'JSP', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:11:05'),
+(99, 5, 'test 01 VOSTFR', 1, 'My Hero Academia Saison 2', 'JSP', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:11:05'),
 (98, 10, 'Fate/Stay Night: Unlimited Blade Works 01 VOSTFR', 26, 'Stay Night: Unlimited Blade Works', 'fate ubw 1', 'fateubw01.mp4', '2020-05-18 13:32:34'),
-(100, 5, 'dsqdsq', 1, 'My Hero Academia Saison 1', 'qsd', 'sqdqsd.mp4', '2020-05-21 15:14:05'),
-(101, 5, 'Vinland Saga 01 VOSTFR', 1, 'My Hero Academia Saison 3', 'fdgfdg', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:26:41'),
-(102, 5, 'Vinland Saga 02 VOSTFR', 2, 'My Hero Academia Saison 3', 'fdgdfg', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:30:00'),
-(103, 5, 'My Hero Academia 22 VOSTFR', 22, 'My Hero Academia Saison 4', 'qsq', 'Kimetsu_no_Yaiba_22_VOSTFR.mp4', '2020-05-21 15:32:35'),
-(104, 5, 'My Hero Academia 23 VOSTFR', 23, 'My Hero Academia Saison 4', 'fsdsdfsd', 'Kimetsu_no_Yaiba_23_VOSTFR.mp4', '2020-05-21 15:33:55'),
+(100, 5, 'test', 1, 'My Hero Academia Saison 1', 'test', 'sqdqsd.mp4', '2020-05-21 15:14:05'),
+(101, 5, 'test 02 VOSTFR', 1, 'My Hero Academia Saison 3', 'JSP', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:26:41'),
+(102, 5, 'test 03 VOSTFR', 2, 'My Hero Academia Saison 3', 'JSP', 'Kimetsu_no_Yaiba_01_VOSTFR.mp4', '2020-05-21 15:30:00'),
+(103, 5, 'My Hero Academia 22 VOSTFR', 22, 'My Hero Academia Saison 4', 'JSP', 'Kimetsu_no_Yaiba_22_VOSTFR.mp4', '2020-05-21 15:32:35'),
+(104, 5, 'My Hero Academia 23 VOSTFR', 23, 'My Hero Academia Saison 4', 'JSP', 'Kimetsu_no_Yaiba_23_VOSTFR.mp4', '2020-05-21 15:33:55'),
 (105, 10, 'Fate Apocrypha 1 VOSTFR', 1, 'Apocrypha', 'fate apo 1', 'fateapocrypha01.mp4', '2020-05-22 17:00:07'),
 (106, 10, 'Fate Apocrypha 2 VOSTFR', 2, 'Apocrypha', 'fate apocrypha 02', 'fateapocrypha02.mp4', '2020-05-23 14:26:10'),
-(107, 4, 'op 05 vostfr', 5, 'One Piece', 'sqdqsd', 'Kimetsu_no_Yaiba_11_VOSTFR.mp4', '2020-05-25 16:02:17'),
-(108, 4, 'op 08 vostfr', 8, 'One Piece', 'sqdsqdqsd', 'Kimetsu_no_Yaiba_17_VOSTFR.mp4', '2020-05-25 16:03:11'),
+(107, 4, 'op 05 vostfr', 5, 'One Piece', 'JSP', 'Kimetsu_no_Yaiba_11_VOSTFR.mp4', '2020-05-25 16:02:17'),
+(108, 4, 'op 08 vostfr', 8, 'One Piece', 'JSP', 'Kimetsu_no_Yaiba_17_VOSTFR.mp4', '2020-05-25 16:03:11'),
 (109, 13, 'Made In Abyss 01 VOSTFR', 1, 'Made In Abyss Saison 1', 'Episode 1', 'Made in Abyss - 01 vostfr FHD.mp4', '2020-05-26 15:23:52'),
 (110, 12, 'Made In Abyss 01 VOSTFR', 1, 'Made In Abyss Saison 1', 'Episode 01 VOSTFR', 'Made in Abyss - 01 vostfr FHD.mp4', '2020-05-26 16:10:07'),
 (111, 13, 'Shingeki No Kyojin 02 VOSTFR', 2, 'Shingeki No Kyojin Saison 1', 'Ep 2', 'shingeki+no+kyojin+02.mp4', '2020-05-26 16:27:53');

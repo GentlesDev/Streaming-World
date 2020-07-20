@@ -14,7 +14,7 @@ main {
   width: 100%;
 }
 
-.result strong{
+.result strong {
   color: #faa30f;
 }
 
@@ -190,14 +190,15 @@ form.search-form {
   font-size: 30px;
 }
 
-@media only screen and (max-width:760px) {
-  main {
-    padding-left: 10%;
-    padding-right: 10%;
-  }
+@media only screen and (max-width:1024px) {
   .product-mosaic {
     width: 90%;
     margin-left: 0;
     margin-right: 0;
   }
+  form.search-form {
+    width: 40%;
+    overflow: hidden;
+  }
+
 }

@@ -74,3 +74,17 @@ aside.episode-list a#current {
 .form-post textarea {
   color: white;
 }
+
+@media only screen and (max-width:1024px) {
+  ul.list-episode {
+    font-size: 10px;
+    line-height: 2;
+  }
+  video {
+    width: 440px;
+  }
+  .espace-com .form-post textarea {
+    width: 460px;
+    align-self: center;
+  }
+}

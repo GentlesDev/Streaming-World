@@ -33,11 +33,11 @@ form.search-form {
   margin-top: 20px;
 }
 
-.banner-vid a p{
+.banner-vid a p {
   transition: all 500ms;
 }
 
-.banner-vid a:hover p{
+.banner-vid a:hover p {
   color: #fda30e;
 }
 
@@ -87,4 +87,15 @@ form.search-form {
 
 .nav-episode a:hover {
   color: rgba(250, 163, 15, 1);
+}
+
+@media only screen and (max-width:1024px) {
+  form.search-form {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 45%;
+    padding: 10px;
+  }
+  .banner-vid {
+    width: 47%;
+  }
 }

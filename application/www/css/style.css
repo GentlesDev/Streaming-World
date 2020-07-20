@@ -391,3 +391,12 @@ a {
   left: -50%;
   transition: all 800ms;
 }
+
+@media (max-width:1024px) {
+  .popUp {
+    left: 74%;
+  }
+  .hide {
+    left: -50%;
+  }
+  }

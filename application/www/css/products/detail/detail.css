@@ -1,4 +1,4 @@
-.container{
+.container {
   width: 50%;
 }
 
@@ -7,6 +7,7 @@
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 35px;
+  width: 100%;
 }
 
 .productDetail img {
@@ -16,16 +17,19 @@
 .productDetail h3 {
   font-family: 'Indie Flower', cursive;
   font-size: 32px;
-  text-shadow:0 1px 0 black, 0 -1px 0 black;
+  text-shadow: 0 1px 0 black, 0 -1px 0 black;
   color: #faa30f;
-  margin:0;
+  margin: 0;
+}
+
+.espace-com .form-post textarea {
+  width: 100%;
 }
 
 .paymentPart {
   display: flex;
   justify-content: space-around;
 }
-
 
 .paymentPart form {
   width: 50%;
@@ -34,7 +38,7 @@
   justify-content: center;
 }
 
-a:hover{
+a:hover {
   color: #faa30f;
 }
 
@@ -47,28 +51,25 @@ a:hover{
   display: block;
   width: 50%;
   font-family: 'Indie Flower', cursive;
-  color:#faa30f;
+  color: #faa30f;
   font-size: 23px;
-  text-shadow:0 1px 0 black, 0 -1px 0 black;
+  text-shadow: 0 1px 0 black, 0 -1px 0 black;
 }
-
 
 .paymentPart form input {
   width: 25px;
   height: 25px;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   border: none;
 }
 
 .paymentPart form button i {
   color: #faa30f;
   font-size: 28px;
-
 }
 
 @media only screen and (max-width:760px) {
-
   .paymentPart span {
     font-size: 16px;
   }

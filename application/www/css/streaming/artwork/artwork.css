@@ -37,3 +37,9 @@ ul {
 .title-section {
   color: #fda30e;
 }
+
+@media only screen and (max-width:1024px) {
+  .episode-detail {
+    width: 44%;
+  }
+}
