@@ -39,5 +39,5 @@
   - Pour passer un compte en 'admin', il faudra le changer directement avec un compte admin ou en bdd.
   - Les articles présents sur ce site ne sont pas réels, ils sont à des fins représentatifs. **`N'entrez donc JAMAIS vos identifiants bancaires même si vous ne serez pas débité`**. Cette partie est réservée à une simulation d'un site e-commerce.
 
-##### Amusez-Vous bien sur Streaming-World.
+##### Amusez-vous bien sur Streaming-World.
 ##### Respectez-vous dans l'espace commentaire :).
